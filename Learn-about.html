@@ -18,7 +18,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background: white; /* --- CHANGE: Ensuring white background --- */
+            background: white; /* Consistent white background */
             overflow-x: hidden;
         }
 
@@ -30,7 +30,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #f1f5f9;
+            /* --- CHANGE: Removed border-bottom as requested --- */
         }
 
         .logo {
@@ -302,8 +302,7 @@
             color: white;
             border: none;
             padding: 0.875rem 2rem;
-            /* --- CHANGE: Rounded corners as requested --- */
-            border-radius: 2rem; 
+            border-radius: 2rem; /* Rounded corners */
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -448,7 +447,7 @@
         /* --- Our Mission Section (2-Column) --- */
         .our-mission-section {
             padding: 5rem 0;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             position: relative;
         }
 
@@ -500,11 +499,8 @@
         /* --- Our Values Section (Card Grid) --- */
         .our-values-section {
             padding: 5rem 0;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             position: relative;
-            /* Add subtle borders to separate sections */
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
         }
 
         .values-container {
@@ -516,7 +512,7 @@
         /* --- Our Approach Section (2-Column) --- */
         .our-approach-section {
             padding: 5rem 0;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             position: relative;
         }
         
@@ -591,9 +587,8 @@
         /* --- Team Section (Card Grid) --- */
         .team-section {
             padding: 5rem 0;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             position: relative;
-            border-top: 1px solid #f1f5f9;
         }
 
         .team-container {
@@ -661,9 +656,8 @@
         /* --- Testimonial Section (Slider) --- */
         .testimonial-section {
             padding: 5rem 0;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             position: relative;
-            border-top: 1px solid #f1f5f9;
         }
         .testimonial-container {
             max-width: 1200px;
@@ -683,10 +677,10 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 320px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            /* --- CHANGE: Removed min-height to fix spacing --- */
         }
 
         .testimonial-card:hover {
@@ -749,9 +743,8 @@
         /* --- Join Us CTA Section --- */
         .join-us-section {
             padding: 5rem 2rem;
-            background: white; /* --- CHANGE: White background --- */
+            background: white; 
             text-align: center;
-            border-top: 1px solid #f1f5f9;
         }
         
         .join-us-container {
@@ -773,24 +766,16 @@
          * ===================================================================
          */
         
-        /* This rule is to make FontAwesome icons work with your 'svg' selector */
-        .contact-item i {
-            color: #3b82f6;
-            flex-shrink: 0;
-            width: 1.25em; /* Mimic SVG size */
-            font-size: 1.1rem;
-        }
-
         .footer-section {
             background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
             color: white;
             position: relative;
             padding: 4rem 0 2rem;
             margin-top: 0;
-            display: block; /* --- MODIFIED: Was 'none' --- */
+            display: block; 
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.5s ease-out; /* --- MODIFIED: Eased transition --- */
+            transition: all 0.5s ease-out; 
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -948,13 +933,17 @@
             font-size: 0.95rem;
         }
         
-        /* This rule styles FontAwesome icons as your CSS expects SVGs */
-        .contact-item i {
+        .contact-item i { /* Rule for FontAwesome */
             color: #3b82f6;
             flex-shrink: 0;
             font-size: 1.1rem;
             width: 1.25em;
             text-align: center;
+        }
+        
+        .contact-item svg { /* Rule from user CSS */
+            color: #3b82f6;
+            flex-shrink: 0;
         }
 
         .footer-bottom {
@@ -1130,8 +1119,8 @@
             <li><a href="Learn-with-ease.html#objectives">Core Objectives</a></li>
             <li><a href="#" class="active">About Us</a></li>
             <li><a href="Learn-with-ease.html#impact">Impact</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="Learn-with-ease.html#resources">Resources</a></li>
+            <li><a href="Learn-with-ease.html#faqs">FAQs</a></li>
         </nav>
         
         <button class="contact-btn">Contact Us</button>
@@ -1150,8 +1139,8 @@
                 <li><a href="Learn-with-ease.html#objectives">Core Objectives</a></li>
                 <li><a href="#" class="active">About Us</a></li>
                 <li><a href="Learn-with-ease.html#impact">Impact</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="Learn-with-ease.html#resources">Resources</a></li>
+                <li><a href="Learn-with-ease.html#faqs">FAQs</a></li>
             </ul>
             <button class="mobile-contact-btn">Contact Us</button>
         </div>
@@ -1514,6 +1503,11 @@
                     return;
                 }
                 
+                // Check if it's a link to another page
+                if (this.hostname !== window.location.hostname) {
+                    return; // Let the browser handle external links
+                }
+
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
@@ -1557,7 +1551,11 @@
             }
 
             function updateSlider() {
-                slideWidth = slides[0].offsetWidth + 24; 
+                // Recalculate slide width on update
+                const slideGap = 24; // 1.5rem
+                const cardWidth = slides[0].offsetWidth;
+                slideWidth = cardWidth + slideGap; 
+                
                 const maxSlide = getMaxSlide();
 
                 if (currentSlide > maxSlide) {
