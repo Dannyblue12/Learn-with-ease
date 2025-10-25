@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact - Learn With Ease</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ===================================================================
+         * START: BASE & REUSED STYLES (From Original)
+         * ===================================================================
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white; /* Consistent white background */
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* No border-bottom for seamless look */
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+        
+        .nav-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .mobile-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+        }
+
+        /* Reusable Section Header Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #1e40af;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Reusable CTA Button Style */
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 2rem; /* Rounded corners */
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        /* * ===================================================================
+         * END: BASE & REUSED STYLES
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: IMPACT.HTML PAGE-SPECIFIC STYLES
+         * ===================================================================
+         */
+
+        /* --- NEW: Impact Hero Split Section --- */
+        .impact-hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 4rem auto 6rem;
+            padding: 0 2rem;
+        }
+        
+        .impact-hero-left .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .impact-hero-left .hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .hero-stats-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .hero-stats-list li {
+            position: relative;
+            padding-left: 2rem; 
+            margin-bottom: 1rem;
+            color: #4a5568;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .hero-stats-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: white;
+            background: #1e40af;
+            font-weight: bold;
+            font-size: 0.9rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .impact-hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .impact-hero-right img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* --- NEW: Full-Width Story Section --- */
+        .full-width-story {
+            padding: 5rem 2rem;
+            background: white;
+            position: relative;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .story-container {
+            max-width: 800px; /* Narrower for readability */
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .story-container .story-title {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+        }
+        
+        .story-container .story-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #1e40af;
+            border-radius: 2px;
+        }
+        
+        .story-container p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.8;
+            text-align: justify;
+            margin: 3rem 0;
+        }
+        
+        .story-container p strong {
+            color: #1f2937;
+            font-weight: 600;
+        }
+        
+        /* --- NEW: Impact Areas Section --- */
+        .impact-areas-section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .impact-areas-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .impact-areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .impact-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .impact-card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .impact-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+        }
+        
+        .impact-card-title {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .impact-card-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* --- NEW: Pull Quote Section --- */
+        .pull-quote-section {
+            padding: 5rem 2rem;
+            background: white;
+            position: relative;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .pull-quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.09);
+        }
+        
+        .pull-quote-container::before {
+            content: "“";
+            font-size: 10rem;
+            color: #1e40af;
+            opacity: 0.05;
+            font-weight: 800;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            z-index: 1;
+            line-height: 1;
+        }
+        
+        .pull-quote-text {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #1f2937;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+        }
+        
+        .pull-quote-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .pull-quote-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #1e40af;
+        }
+        
+        .pull-quote-author-info .name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .pull-quote-author-info .role {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* --- Join Us CTA Section --- */
+        .join-us-section {
+            padding: 5rem 2rem;
+            background: white; 
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .join-us-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .join-us-section .section-title {
+            font-size: 2.2rem;
+        }
+        
+        .join-us-section .section-subtitle {
+            margin-top: 3rem; 
+            margin-bottom: 2.5rem;
+        }
+        
+        /* * ===================================================================
+         * START: FOOTER (CSS provided by user)
+         * ===================================================================
+         */
+        
+        .footer-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            position: relative;
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .logo-underline {
+            display: none;
+        }
+
+        .footer-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i { /* Rule for FontAwesome */
+            color: #3b82f6;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        
+        .contact-item svg { /* Rule from user CSS */
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding: 2rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+        /* * ===================================================================
+         * END: FOOTER
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+        
+        /* --- Tablet (max-width: 900px) --- */
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .impact-hero-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                margin-top: 2rem;
+                margin-bottom: 4rem;
+                text-align: center;
+            }
+            .impact-hero-left .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-stats-list {
+                display: inline-block;
+                text-align: left;
+                margin: 2rem auto;
+            }
+            .impact-hero-right {
+                order: -1; /* Image on top on mobile */
+            }
+        }
+        
+        /* --- Tablet (max-width: 768px) --- */
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* --- Mobile (max-width: 500px) --- */
+        @media (max-width: 500px) {
+            .header {
+                padding: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .full-width-story {
+                padding: 4rem 1.5rem;
+            }
+            .story-container p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .pull-quote-text {
+                font-size: 1.2rem;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-bottom-links {
+                gap: 1.5rem;
+            }
+        }
+        /* * ===================================================================
+         * END: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">Learn With Ease</div>
+        
+        <nav class="nav-menu">
+            <li><a href="Learn-with-ease.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#" class="active">Our Impact</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </nav>
+        
+        <button class="contact-btn">Contact Us</button>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="Learn-with-ease.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#" class="active">Our Impact</a></li>
+                <li><a href="gallery.html">Photo Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <button class="mobile-contact-btn">Contact Us</button>
+        </div>
+    </header>
+
+    <main class="impact-hero-split" id="impact-hero">
+        <div class="impact-hero-left">
+            <h1 class="hero-title">
+                The Ripple Effect of a Single "Yes"
+            </h1>
+            <p class="hero-subtitle">
+                Our mission isn't just an event. It's a continuous, prayer-fueled movement that starts with one person saying "yes" to God's calling, touching one student, and watching that spark of hope ignite a generation.
+            </p>
+            <ul class="hero-stats-list">
+                <li>Lives touched by the message of Christ.</li>
+                <li>Students empowered with skills and integrity.</li>
+                <li>Communities strengthened by a new generation.</li>
+            </ul>
+        </div>
+        <div class="impact-hero-right">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom engaged in learning">
+        </div>
+    </main>
+
+    <section class="full-width-story" id="story">
+        <div class="story-container">
+            <h2 class="story-title">Beyond the Numbers: A Story of Change</h2>
+            <p>
+                Imagine a student we'll call Samuel. He's bright, but hopeless. He sees cheating as the only path forward and feels the pull of bad company. He's one of hundreds, lost in the crowd.
+            </p>
+            <p>
+                Then our team arrives. It's not just another lecture. It's a conversation. A mentor listens to him. He hears a message of hope rooted in Christ's love—a message that tells him he was <strong>created for a purpose.</strong> He receives a textbook for a class he was failing. For the first time, he sees a different path.
+            </p>
+            <p>
+                A single decision. He chooses to study. He chooses integrity. He chooses to lead his friends instead of following them. <strong>That is the impact.</strong> It's not just one life changed; it's a family's future, a community's leader, and a nation's hope, all set in motion by a single encounter with God's love.
+            </p>
+        </div>
+    </section>
+    
+    <section class="impact-areas-section" id="areas">
+        <div class="impact-areas-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core Areas of Impact</h2>
+                <p class="section-subtitle">
+                    Our mission is focused on three pillars that create holistic, lasting transformation in every student we meet.
+                </p>
+            </div>
+
+            <div class="impact-areas-grid">
+                <div class="impact-card">
+                    <div class="impact-card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png-gqUqB9K1tHk02UjT0tct2Yk3dJcg2K.png" alt="Faith Icon" />
+                    </div>
+                    <h3 class="impact-card-title">Igniting Faith</h3>
+                    <p class="impact-card-description">
+                        We introduce students to the unconditional love of Jesus, giving them a foundation of hope and eternal purpose that transcends their circumstances.
+                    </p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png-u1hAn0u4sW5bAOMm2M9B6t5GqYAIg3.png" alt="Integrity Icon" />
+                    </div>
+                    <h3 class="impact-card-title">Building Character</h3>
+                    <p class="impact-card-description">
+                        We actively combat vices by championing integrity, courage, and respect. We don't just say "no" to malpractice; we show them a better "yes."
+                    </p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png-JqXvwhByz1YwcZq0D0M5AU5c040m06.png" alt="Education Icon" />
+                    </div>
+                    <h3 class="impact-card-title">Opening Doors</h3>
+                    <p class="impact-card-description">
+                        By providing essential resources like textbooks and mentorship, we remove practical barriers to education, empowering students to unlock their full potential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pull-quote-section" id="quote">
+        <div class="pull-quote-container">
+            <blockquote class="pull-quote-text">
+                "The 'Learn With Ease' team has become a true partner. I've seen a tangible shift in our students' attitudes... a new seriousness about their studies and a greater respect for one another. Their impact goes far beyond the materials they donate."
+            </blockquote>
+            <div class="pull-quote-author">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="School Principal">
+                <div class="pull-quote-author-info">
+                    <div class="name">Mrs. R. A. Bello</div>
+                    <div class="role">Principal, Unity Secondary School</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-us-section">
+        <div class="join-us-container">
+            <div class="section-header">
+                <h2 class="section-title">Be Part of the Impact</h2>
+                <p class="section-subtitle">
+                    Our impact is only possible through the generosity and passion of people like you. Join us in transforming lives and building a brighter future.
+                </p>
+                <a href="contact.html" class="cta-button">Get Involved Today</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <h2>Learn With Ease</h2>
+                    </div>
+                    <p class="footer-description">
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="Learn-with-ease.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Our Impact</a></li>
+                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Get Involved</h4>
+                        <ul>
+                            <li><a href="#">Partner With Us</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>+234 (800) 000 0000</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@learnwithease.org</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Garki, Abuja, Nigeria</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learn With Ease Initiative. All Rights Reserved.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        /* * ===================================================================
+         * JAVASCRIPT
+         * ===================================================================
+         */
+    
+        // --- Mobile Menu Functionality ---
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenu && mobileMenuBtn && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // --- Smooth Scrolling for Anchor Links (for this page) ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault(); 
+                    return;
+                }
+                
+                // Only smooth-scroll for links on THIS page
+                if (this.hostname === window.location.hostname && this.pathname === window.location.pathname) {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // --- Set Current Year in Footer ---
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // --- Intersection Observer for Animations ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Footer Animation
+            const footer = document.getElementById('footer');
+            if (footer) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('visible');
+                            footerObserver.unobserve(footer);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                footerObserver.observe(footer);
+            }
+        });
+
+    </script>
+</body>
+</html>
