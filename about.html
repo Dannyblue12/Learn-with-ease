@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Learn With Ease</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ===================================================================
+         * START: BASE & REUSED STYLES (From Original)
+         * ===================================================================
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white; /* Consistent white background */
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* --- CHANGE: Removed border-bottom as requested --- */
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+        
+        .nav-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .mobile-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+        }
+
+        /* Reusable Section Header Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #1e40af;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Reusable Card Styles (from Core Objectives) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: auto;
+            min-height: 280px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .card-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+        }
+        
+        /* Reusable Image Collage Styles (from Who We Are) */
+        .image-collage {
+            position: relative;
+            height: 550px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .collage-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-item {
+            position: absolute;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .first-image { width: 160px; height: 200px; top: 0; left: 0; z-index: 3; }
+        .second-image { width: 320px; height: 280px; top: 0; left: 170px; z-index: 2; }
+        .third-image { width: 160px; height: 200px; top: 160px; left: 350px; z-index: 4; }
+        .fourth-image { width: 160px; height: 200px; top: 290px; left: 170px; z-index: 1; }
+        .fifth-image { width: 150px; height: 200px; top: 220px; left: 0px; z-index: 2; }
+
+        /* Reusable CTA Button Style (from Who We Are) */
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 2rem; /* Rounded corners */
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        /* Reusable Slider Styles (from Our Impacts) */
+        .slider-container-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1.5rem; /* Standard gap for cards */
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .slider-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+        .slider-btn:hover {
+            background: #1e3a8a;
+            transform: scale(1.1);
+        }
+        .slider-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* * ===================================================================
+         * END: BASE & REUSED STYLES
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: ABOUT.HTML PAGE-SPECIFIC STYLES
+         * ===================================================================
+         */
+
+        /* --- About Page Hero Section --- */
+        .about-hero-container {
+            position: relative;
+            min-height: 60vh;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .about-hero-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.08) 0%,
+                rgba(59, 130, 246, 0.05) 30%,
+                rgba(59, 130, 246, 0.03) 50%,
+                rgba(59, 130, 246, 0.015) 70%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+        }
+
+        .about-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .about-hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .learn-more-btn {
+            background: #1e40af;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .learn-more-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* --- Our Mission Section (2-Column) --- */
+        .our-mission-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+
+        .our-mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .our-mission-text {
+            padding: 2rem 0;
+        }
+
+        .our-mission-text .section-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            text-align: left; 
+        }
+        
+        .our-mission-text .section-title::after {
+            left: 0; 
+            transform: translateX(0);
+        }
+
+        .content-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .content-description p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .content-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* --- Our Values Section (Card Grid) --- */
+        .our-values-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Our Approach Section (2-Column) --- */
+        .our-approach-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+        
+        .our-approach-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .our-approach-text .section-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            text-align: left;
+        }
+        
+        .our-approach-text .section-title::after {
+            left: 0;
+            transform: translateX(0);
+        }
+        
+        .methods-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 2rem;
+        }
+
+        .methods-list li {
+            position: relative;
+            padding-left: 2.5rem; 
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.05rem;
+        }
+
+        .methods-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: white;
+            background: #1e40af;
+            font-weight: bold;
+            font-size: 1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }
+
+        .methods-list h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* --- Team Section (Card Grid) --- */
+        .team-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: auto;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .team-role {
+            font-size: 0.9rem;
+            color: #1e40af; 
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* --- Testimonial Section (Slider) --- */
+        .testimonial-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+        .testimonial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .testimonial-card {
+            min-width: 350px;
+            flex-shrink: 0;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            /* --- CHANGE: Removed min-height to fix spacing --- */
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-quote {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-card::before {
+            content: "“";
+            font-size: 10rem;
+            color: #1e40af;
+            opacity: 0.05;
+            font-weight: 800;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            z-index: 1;
+            line-height: 1;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #1e40af;
+        }
+        
+        .author-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .author-role {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        /* --- Join Us CTA Section --- */
+        .join-us-section {
+            padding: 5rem 2rem;
+            background: white; 
+            text-align: center;
+        }
+        
+        .join-us-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .join-us-section .section-title {
+            font-size: 2.2rem;
+        }
+        
+        .join-us-section .section-subtitle {
+            margin-top: 3rem; 
+            margin-bottom: 2.5rem;
+        }
+        
+        /* * ===================================================================
+         * START: NEW FOOTER (CSS provided by user)
+         * ===================================================================
+         */
+        
+        .footer-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            position: relative;
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .logo-underline {
+            display: none;
+        }
+
+        .footer-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i { /* Rule for FontAwesome */
+            color: #3b82f6;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        
+        .contact-item svg { /* Rule from user CSS */
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding: 2rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+        /* * ===================================================================
+         * END: NEW FOOTER
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+        
+        /* --- Tablet (max-width: 900px) --- */
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* --- Tablet (max-width: 768px) --- */
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .image-collage {
+                height: 480px;
+                order: 2;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .first-image { width: 140px; height: 180px; top: 0; left: 0; }
+            .second-image { width: 280px; height: 240px; top: 0; left: 150px; }
+            .third-image { width: 140px; height: 180px; top: 140px; left: 300px; }
+            .fourth-image { width: 140px; height: 180px; top: 250px; left: 150px; }
+            .fifth-image { width: 130px; height: 180px; top: 190px; left: 0px; }
+            
+            .our-mission-content,
+            .our-approach-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 0 1rem;
+            }
+
+            .our-mission-text {
+                order: 1; /* Ensure text is first on mobile */
+            }
+            .image-collage {
+                order: 2;
+            }
+            .our-approach-text {
+                order: 1;
+            }
+
+            .our-mission-text .section-title,
+            .our-approach-text .section-title {
+                text-align: center;
+            }
+            .our-mission-text .section-title::after,
+            .our-approach-text .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* --- Mobile (max-width: 500px) --- */
+        @media (max-width: 500px) {
+            .header {
+                padding: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            .image-collage {
+                height: 420px;
+                max-width: 350px;
+            }
+            .first-image { width: 120px; height: 150px; top: 0; left: 0; }
+            .second-image { width: 200px; height: 180px; top: 0; left: 130px; }
+            .third-image { width: 120px; height: 150px; top: 120px; left: 210px; }
+            .fourth-image { width: 120px; height: 150px; top: 190px; left: 130px; }
+            .fifth-image { width: 115px; height: 150px; top: 170px; left: 0px; }
+            
+            .cta-button {
+                width: 100%;
+                padding: 1rem;
+            }
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            /* --- Footer Responsive (Mobile) --- */
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-bottom-links {
+                gap: 1.5rem;
+            }
+        }
+        /* * ===================================================================
+         * END: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">Learn With Ease</div>
+        
+        <nav class="nav-menu">
+            <li><a href="Learn-with-ease.html#home">Home</a></li>
+            <li><a href="Learn-with-ease.html#objectives">Core Objectives</a></li>
+            <li><a href="#" class="active">About Us</a></li>
+            <li><a href="Learn-with-ease.html#impact">Impact</a></li>
+            <li><a href="Learn-with-ease.html#resources">Resources</a></li>
+            <li><a href="Learn-with-ease.html#faqs">FAQs</a></li>
+        </nav>
+        
+        <button class="contact-btn">Contact Us</button>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="Learn-with-ease.html#home">Home</a></li>
+                <li><a href="Learn-with-ease.html#objectives">Core Objectives</a></li>
+                <li><a href="#" class="active">About Us</a></li>
+                <li><a href="Learn-with-ease.html#impact">Impact</a></li>
+                <li><a href="Learn-with-ease.html#resources">Resources</a></li>
+                <li><a href="Learn-with-ease.html#faqs">FAQs</a></li>
+            </ul>
+            <button class="mobile-contact-btn">Contact Us</button>
+        </div>
+    </header>
+
+    <main class="about-hero-container" id="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">
+                Our Story, Our Mission
+            </h1>
+            <p class="about-hero-subtitle">
+                Learn more about the passionate team, guiding principles, and unwavering commitment behind our mission to shape the next generation.
+            </p>
+            <a href="#mission" class="learn-more-btn" style="text-decoration: none;">Read Our Mission</a>
+        </div>
+    </main>
+
+    <section class="our-mission-section" id="mission">
+        <div class="our-mission-content">
+            <div class="our-mission-text">
+                <h2 class="section-title">Our Deeper Mission</h2>
+                
+                <div class="content-description">
+                    <p>
+                        <strong>Learn With Ease Initiative</strong> was born from a deep-seated belief that education transcends academics. Founded on a bedrock of faith, we are a collective of Nigerian professionals who felt a divine calling to invest in the future of our nation's youth. We saw a gap—not just in resources, but in guidance, morals, and spiritual grounding.
+                    </p>
+                    <p>
+                        We are not just educators; we are mentors, counselors, and advocates for a generation poised to make a difference. Our mission is to illuminate the path for young students, guiding them with the love of Christ to navigate the complex challenges of modern life. We stand firmly against societal vices like exam malpractice, cultism, and bullying, offering a positive alternative rooted in integrity and purpose.
+                    </p>
+                    <p>
+                        Every school outreach, every textbook distributed, and every counseling session is an investment in a brighter, Christ-centered future for Nigeria.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="image-collage">
+                <div class="collage-container">
+                    <div class="image-item first-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg-t5YjE6Uu5hCex2SmlSgI0BwgfA8bUa.jpeg" alt="Outreach Activity 1" />
+                    </div>
+                    <div class="image-item second-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.38.22_2d59d957.jpg-Kqy7s7XUuD3MwxO2Q8rGfNqXQ1sPvy.jpeg" alt="Outreach Activity 2" />
+                    </div>
+                    <div class="image-item third-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.40.58_9e07b776.jpg-Wk92lB3cJVnQvS8PIMkK7uT3cM1524.jpeg" alt="Outreach Activity 3" />
+                    </div>
+                    <div class="image-item fourth-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.06_bd38db26.jpg-K8vT0x1M2b6Jd4W8eG5q7C1mD3g9k6.jpeg" alt="Outreach Activity 4" />
+                    </div>
+                    <div class="image-item fifth-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.40.53_51e877bd.jpg-x60s9v9i0qgvy9q7H5kQg2n3f4gGgU.jpeg" alt="Outreach Activity 5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-values-section" id="values">
+        <div class="values-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-subtitle">
+                    These are the unwavering principles that guide our actions, decisions, and interactions as we fulfill our mission.
+                </p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png-gqUqB9K1tHk02UjT0tct2Yk3dJcg2K.png" alt="Faith Icon" />
+                    </div>
+                    <h3 class="card-title">Faith-Centered</h3>
+                    <p class="card-description">
+                        Our foundation is the love of Jesus Christ. We are committed to sharing this hope, guiding all our efforts with eternal purpose and grace.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png-u1hAn0u4sW5bAOMm2M9B6t5GqYAIg3.png" alt="Integrity Icon" />
+                    </div>
+                    <h3 class="card-title">Integrity & Character</h3>
+                    <p class="card-description">
+                        We champion honesty and moral uprightness, actively discouraging all forms of malpractice and vice to build a generation of integrity.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png-JqXvwhByz1YwcZq0D0M5AU5c040m06.png" alt="Empowerment Icon" />
+                    </div>
+                    <h3 class="card-title">Educational Empowerment</h3>
+                    <p class="card-description">
+                        We believe in the power of education. We provide tangible support, resources, and mentorship to help every student unlock their full potential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-approach-section" id="approach">
+        <div class="our-approach-content">
+            <div class="our-approach-text">
+                <h2 class="section-title">How We Help</h2>
+                <div class="content-description">
+                    <p>
+                        Our mission is put into action through a holistic, hands-on approach. We don't just talk about change; we actively create environments where students can thrive spiritually, morally, and academically.
+                    </p>
+                    <p>
+                        By combining faith with practical support, we address the root causes of challenges like exam malpractice and apathy, replacing them with hope, discipline, and a vision for a purposeful future.
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <ul class="methods-list">
+                    <li>
+                        <h3>Direct School Outreaches</h3>
+                        We visit secondary schools to engage students directly with inspiring talks, workshops, and spiritual guidance.
+                    </li>
+                    <li>
+                        <h3>One-on-One Mentorship</h3>
+                        We connect students with our team of professionals for personal counseling and mentorship, guiding them through life's challenges.
+                    </li>
+                    <li>
+                        <h3>Resource Distribution</h3>
+                        We provide essential learning materials, including textbooks, notebooks, and writing tools, to under-resourced students.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <div class="team-container">
+            <div class="section-header">
+                <h2 class="section-title">Meet The Team</h2>
+                <p class="section-subtitle">
+                    We are a dedicated group of professionals, mentors, and volunteers united by a common passion for service and change.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Team Member 1" class="team-photo">
+                    <h3 class="team-name">Mrs. Grace Adewale</h3>
+                    <p class="team-role">Founder & Lead Mentor</p>
+                    <p class="team-bio">
+                        Grace is a passionate educator with over 15 years of experience. She founded Learn With Ease to provide the spiritual and academic guidance she wished she had as a student.
+                    </p>
+                </div>
+
+                <div class="team-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0171.jpg-eeJdP24Ta8utXjz8tzJjAIYEgaoke0.jpeg" alt="Team Member 2" class="team-photo">
+                    <h3 class="team-name">Mr. David Okon</h3>
+                    <p class="team-role">Outreach Coordinator</p>
+                    <p class="team-bio">
+                        David manages our school partnerships and on-ground logistics. His dedication ensures our resources and programs reach the students who need them most.
+                    </p>
+                </div>
+
+                <div class="team-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Team Member 3" class="team-photo">
+                    <h3 class="team-name">Chiamaka Eze</h3>
+                    <p class="team-role">Head of Counseling</p>
+                    <p class="team-bio">
+                        A certified counselor, Chiamaka leads our mentorship and support programs, providing a safe space for students to discuss their challenges and aspirations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section" id="testimonials">
+        <div class="testimonial-container">
+            <div class="section-header">
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">
+                    Hear directly from the students, teachers, and partners whose lives we've had the privilege to touch.
+                </p>
+            </div>
+
+            <div class="slider-container-wrapper">
+                <div class="slider" id="testimonialSlider">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "The 'Learn With Ease' team visited my school, and it changed my perspective. I used to think cheating was the only way, but their talk on integrity and purpose really spoke to me. I'm now focused on studying hard."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student 1" class="author-photo">
+                            <div>
+                                <div class="author-name">Favour Adebayo</div>
+                                <div class="author-role">SS2 Student, Lagos</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "As a principal, I've seen many groups come and go. But the consistency and genuine passion from Learn With Ease are unmatched. They provided materials for 50 of our students and have become true partners in our mission."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Principal" class="author-photo">
+                            <div>
+                                <div class="author-name">Mrs. R. A. Bello</div>
+                                <div class="author-role">Principal, Unity Secondary School</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "I received a "Learn With Ease" scholarship pack which included textbooks for my WAEC. My parents couldn't afford them, and I was so worried. This was a direct answer to my prayers. Thank you so much."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Student 2" class="author-photo">
+                            <div>
+                                <div class="author-name">Samuel Okeke</div>
+                                <div class="author-role">SS3 Student, Abuja</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "The counseling session on bullying and cultism was powerful. It gave me the courage to speak up about a situation in my class, and the team helped us resolve it peacefully. I feel safer at school now."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 3" class="author-photo">
+                            <div>
+                                <div class="author-name">Titi Alabi</div>
+                                <div class="author-role">JSS3 Student, Ibadan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-nav">
+                <button class="slider-btn" id="testimonialPrevBtn">‹</button>
+                <button class="slider-btn" id="testimonialNextBtn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-us-section">
+        <div class="join-us-container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Make a Difference?</h2>
+                <p class="section-subtitle">
+                    Whether you're looking to volunteer your time, partner with our initiative, or support our mission financially, we welcome your help. Join us in bringing hope and light to the next generation.
+                </p>
+                <a href="#" class="cta-button">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <h2>Learn With Ease</h2>
+                    </div>
+                    <p class="footer-description">
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="Learn-with-ease.html#home">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="Learn-with-ease.html#objectives">Core Objectives</a></li>
+                            <li><a href="Learn-with-ease.html#impact">Our Impact</a></li>
+                            <li><a href="#team">Our Team</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Get Involved</h4>
+                        <ul>
+                            <li><a href="#">Partner With Us</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>+234 (800) 000 0000</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@learnwithease.org</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Garki, Abuja, Nigeria</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learn With Ease Initiative. All Rights Reserved.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        /* * ===================================================================
+         * JAVASCRIPT
+         * ===================================================================
+         */
+    
+        // --- Mobile Menu Functionality ---
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenu && mobileMenuBtn && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // --- Smooth Scrolling for Anchor Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault(); 
+                    return;
+                }
+                
+                // Check if it's a link to another page
+                if (this.hostname !== window.location.hostname) {
+                    return; // Let the browser handle external links
+                }
+
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // --- Set Current Year in Footer ---
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // --- Testimonial Slider Functionality ---
+        function initializeSlider(sliderId, prevBtnId, nextBtnId) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return; 
+
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const slides = slider.querySelectorAll('.testimonial-card');
+            if (slides.length === 0) return;
+
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let slideWidth = slides[0].offsetWidth + 24; // 24px for 1.5rem gap
+
+            function getSlidesToShow() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 1; 
+                if (window.innerWidth <= 1024) return 2; 
+                return 3; 
+            }
+            
+            function getMaxSlide() {
+                const slidesToShow = getSlidesToShow();
+                return Math.max(0, totalSlides - slidesToShow);
+            }
+
+            function updateSlider() {
+                // Recalculate slide width on update
+                const slideGap = 24; // 1.5rem
+                const cardWidth = slides[0].offsetWidth;
+                slideWidth = cardWidth + slideGap; 
+                
+                const maxSlide = getMaxSlide();
+
+                if (currentSlide > maxSlide) {
+                    currentSlide = maxSlide;
+                }
+                
+                const translateX = -currentSlide * slideWidth;
+                slider.style.transform = `translateX(${translateX}px)`;
+                
+                if (prevBtn) prevBtn.disabled = currentSlide === 0;
+                if (nextBtn) nextBtn.disabled = currentSlide >= maxSlide;
+            }
+
+            function moveSlider(direction) {
+                const maxSlide = getMaxSlide();
+                const newSlide = currentSlide + direction;
+                if (newSlide >= 0 && newSlide <= maxSlide) {
+                    currentSlide = newSlide;
+                    updateSlider();
+                }
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => moveSlider(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => moveSlider(1));
+
+            let startX = 0;
+            let isDragging = false;
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                
+                if (Math.abs(diffX) > 50) {
+                    moveSlider(diffX > 0 ? 1 : -1);
+                }
+            });
+
+            let isMouseDown = false;
+            let mouseStartX = 0;
+            slider.addEventListener('mousedown', (e) => {
+                isMouseDown = true;
+                mouseStartX = e.clientX;
+                slider.style.cursor = 'grabbing';
+            });
+            
+            slider.addEventListener('mousemove', (e) => {
+                if (!isMouseDown) return;
+                e.preventDefault();
+            });
+
+            slider.addEventListener('mouseup', (e) => {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                slider.style.cursor = 'grab';
+                const mouseEndX = e.clientX;
+                const diffX = mouseStartX - mouseEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    moveSlider(diffX > 0 ? 1 : -1);
+                }
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                isMouseDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            window.addEventListener('load', updateSlider);
+            window.addEventListener('resize', updateSlider);
+        }
+
+        // --- Initialize the Testimonial Slider ---
+        initializeSlider('testimonialSlider', 'testimonialPrevBtn', 'testimonialNextBtn');
+
+        // --- NEW: Footer Animation on Scroll ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.getElementById('footer');
+            if (!footer) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        footer.classList.add('visible');
+                        observer.unobserve(footer); // Stop observing once it's visible
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the footer is visible
+            });
+
+            observer.observe(footer);
+        });
+
+    </script>
+</body>
+
+</html>

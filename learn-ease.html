@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn With Ease - Bringing Hope And Light To The Next Generation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white;
+            overflow-x: hidden;
+        }
+
+        .hero-container {
+            position: relative;
+            min-height: 100vh;
+            background: white;
+        }
+
+        /* Reduced gradient intensity for better aesthetics */
+        .hero-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.08) 0%,
+                rgba(59, 130, 246, 0.05) 30%,
+                rgba(59, 130, 246, 0.03) 50%,
+                rgba(59, 130, 246, 0.015) 70%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Removed background to allow gradient to flow seamlessly */
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+
+        /* Updated Contact Us button to royal blue with full rounded corners */
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+
+        /* Updated mobile contact button to royal blue with rounded corners */
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .profile-images {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+            margin-left: -8px;
+        }
+
+        .profile-img:first-child {
+            margin-left: 0;
+        }
+
+        .stats-text {
+            font-size: 0.9rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Updated Learn More button to royal blue with full rounded corners */
+        .learn-more-btn {
+            background: #1e40af;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 3rem;
+        }
+
+        .learn-more-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* See More button - matching Learn More button design exactly */
+        .see-more-btn {
+            background: #1e40af;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .see-more-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Our Impacts Section */
+        .our-impacts-section {
+            background: white;
+            padding: 5rem 0;
+            margin: 0;
+        }
+
+        .our-impacts-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .our-impacts-title {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+        }
+
+        .our-impacts-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #1e40af;
+            border-radius: 2px;
+        }
+
+        .our-impacts-description {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.6;
+        }
+
+        /* Image Slider Styles */
+        .image-slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1rem;
+        }
+
+        .slider-card {
+            min-width: 300px;
+            height: 400px;
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .slider-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .slider-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .slider-card:hover .slider-card-overlay {
+            transform: translateY(0);
+        }
+
+        .slider-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider-card-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Slider Navigation */
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .slider-btn:hover {
+            background: #1e3a8a;
+            transform: scale(1.1);
+        }
+
+        .slider-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive Design for Our Impacts */
+        @media (max-width: 768px) {
+            .our-impacts-section {
+                padding: 3rem 0;
+            }
+
+            .our-impacts-title {
+                font-size: 2rem;
+            }
+
+            .our-impacts-container {
+                padding: 0 1rem;
+            }
+
+            .slider-card {
+                min-width: 250px;
+                height: 350px;
+            }
+
+            .slider-nav {
+                gap: 0.5rem;
+            }
+
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            /* Center See More button in mobile view */
+            .see-more-btn {
+                display: inline-block;
+                margin: 2rem auto 0 auto;
+                text-align: center;
+                width: auto;
+            }
+            
+            .who-we-are-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .our-impacts-title {
+                font-size: 1.8rem;
+            }
+
+            .slider-card {
+                min-width: 200px;
+                height: 300px;
+            }
+        }
+
+        /* Updated bento grid to span full width with proper positioning */
+        .bento-grid {
+            display: flex;
+            gap: 1rem;
+            overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 0 1rem;
+        }
+
+        .bento-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .bento-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 1rem;
+        }
+
+        /* Fixed border radius for all bento cards to ensure no sharp edges */
+        .bento-card:nth-child(1) {
+            width: 280px;
+            height: 320px;
+            transform: translateY(17px);
+            margin-left: -80px;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(1) img {
+            border-radius: 1rem;
+        }
+
+        .bento-card:nth-child(2) {
+            width: 200px;
+            height: 270px;
+            transform: translateY(5px);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(2) img {
+            border-radius: 1rem;
+        }
+
+        .bento-card:nth-child(3) {
+            width: 260px;
+            height: 300px;
+            transform: translateY(19px);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(3) img {
+            border-radius: 1rem;
+        }
+
+        .bento-card:nth-child(4) {
+            width: 260px;
+            height: 300px;
+            transform: translateY(3px);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(4) img {
+            border-radius: 1rem;
+        }
+
+        .bento-card:nth-child(5) {
+            width: 200px;
+            height: 280px;
+            transform: translateY(32px);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(5) img {
+            border-radius: 1rem;
+        }
+
+        .bento-card:nth-child(6) {
+            width: 280px;
+            height: 320px;
+            transform: translateY(-15px);
+            margin-right: -140px;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .bento-card:nth-child(6) img {
+            border-radius: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-btn {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
+            .stats-box {
+                margin-bottom: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .learn-more-btn {
+                margin-bottom: 2rem;
+            }
+
+            /* Increased mobile bento card height and added staggered heights for visual interest */
+            .bento-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, auto);
+                gap: 1rem;
+                width: 100%;
+                margin-left: 0;
+                padding: 0;
+            }
+
+            .bento-card {
+                width: 100% !important;
+                height: 220px !important;
+                transform: none !important;
+                margin: 0 !important;
+                border-radius: 1rem;
+            }
+
+            .bento-card img {
+                border-radius: 1rem;
+            }
+
+            /* Added staggered heights for mobile bento cards */
+            .bento-card:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+                height: 200px !important;
+            }
+
+            .bento-card:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+                height: 240px !important;
+            }
+
+            .bento-card:nth-child(3) {
+                grid-column: 1;
+                grid-row: 2;
+                height: 230px !important;
+            }
+
+            .bento-card:nth-child(4) {
+                grid-column: 2;
+                grid-row: 2;
+                height: 210px !important;
+            }
+
+            .bento-card:nth-child(5) {
+                grid-column: 1;
+                grid-row: 3;
+                height: 220px !important;
+            }
+
+            .bento-card:nth-child(6) {
+                grid-column: 2;
+                grid-row: 3;
+                height: 250px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .stats-box {
+                padding: 0.5rem 1rem;
+                gap: 0.5rem;
+            }
+
+            .profile-img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .stats-text {
+                font-size: 0.8rem;
+            }
+
+            /* Maintained increased height for very small screens */
+            .bento-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+
+            .bento-card {
+                height: 180px !important;
+            }
+
+            /* Added staggered heights for very small screens */
+            .bento-card:nth-child(1) { height: 170px !important; }
+            .bento-card:nth-child(2) { height: 190px !important; }
+            .bento-card:nth-child(3) { height: 185px !important; }
+            .bento-card:nth-child(4) { height: 175px !important; }
+            .bento-card:nth-child(5) { height: 180px !important; }
+            .bento-card:nth-child(6) { height: 195px !important; }
+        }
+
+        /* Core Objectives Section */
+        .core-objectives {
+            padding: 5rem 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .objectives-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #1e40af;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: auto;
+            min-height: 280px;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .objective-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .objective-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 8px;
+            }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .objective-card:hover .objective-icon {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .objective-title {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .objective-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Core Objectives Responsive Design */
+        @media (max-width: 768px) {
+            .core-objectives {
+                padding: 3rem 0;
+            }
+
+            .objectives-container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .objectives-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .objective-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .objective-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 1.5rem;
+            }
+
+            .objective-title {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .objective-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .core-objectives {
+                padding: 2.5rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .objective-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .objective-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .objective-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .objective-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Who We Are Section */
+        .who-we-are-section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .who-we-are-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Image Collage Styles */
+        .image-collage {
+            position: relative;
+            height: 550px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .collage-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-item {
+            position: absolute;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Books and pen image - left side, shorter height, same baseline as main image */
+        .first-image {
+            width: 160px;
+            height: 200px;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        /* Children in school uniform - very, very large main focal point */
+        .second-image {
+            width: 320px;
+            height: 280px;
+            top: 0;
+            left: 170px;
+            z-index: 2;
+        }
+
+        /* Woman with microphone - same size as books image, overlapping bottom right of main image */
+        .third-image {
+            width: 160px;
+            height: 200px;
+            top: 160px;
+            left: 350px;
+            z-index: 4;
+        }
+
+        /* Children with banner - directly under main image, same size as books image */
+        .fourth-image {
+            width: 160px;
+            height: 200px;
+            top: 290px;
+            left: 170px;
+            z-index: 1;
+        }
+
+        /* Fifth image - under books and pen image, left side */
+        .fifth-image {
+            width: 150px;
+            height: 200px;
+            top: 220px;
+            left: 0px;
+            z-index: 2;
+        }
+
+        /* Right side content styling */
+        .who-we-are-text {
+            padding: 2rem 0;
+        }
+
+        .who-we-are-text .section-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .content-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .content-description p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .content-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-summary {
+            space-y: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .objectives-list, .impact-summary {
+            margin-bottom: 2rem;
+        }
+
+        .objectives-list h3, .impact-summary h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .objectives-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .objectives-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #4a5568;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .objectives-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .impact-summary p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .cta-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        /* Responsive Design for Who We Are Section */
+        @media (max-width: 768px) {
+            .who-we-are-section {
+                padding: 3rem 0;
+            }
+
+            .who-we-are-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 0 1rem;
+            }
+
+            .image-collage {
+                height: 480px;
+                order: 2;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .who-we-are-text {
+                order: 1;
+            }
+
+            .who-we-are-text .section-title {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+
+            /* Tablet layout - maintaining relationships but scaled down */
+            .first-image {
+                width: 140px;
+                height: 180px;
+                top: 0;
+                left: 0;
+            }
+
+            .second-image {
+                width: 280px;
+                height: 240px;
+                top: 0;
+                left: 150px;
+            }
+
+            .third-image {
+                width: 140px;
+                height: 180px;
+                top: 140px;
+                left: 300px;
+            }
+
+            .fourth-image {
+                width: 140px;
+                height: 180px;
+                top: 250px;
+                left: 150px;
+            }
+
+            .fifth-image {
+                width: 130px;
+                height: 180px;
+                top: 190px;
+                left: 0px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .who-we-are-section {
+                padding: 2rem 0;
+            }
+
+            .who-we-are-text .section-title {
+                font-size: 1.8rem;
+            }
+
+            .image-collage {
+                height: 420px;
+                max-width: 350px;
+            }
+
+            /* Creative mobile layout - stacked with overlaps */
+            .first-image {
+                width: 120px;
+                height: 150px;
+                top: 0;
+                left: 0;
+            }
+
+            .second-image {
+                width: 200px;
+                height: 180px;
+                top: 0;
+                left: 130px;
+            }
+
+            .third-image {
+                width: 120px;
+                height: 150px;
+                top: 120px;
+                left: 210px;
+            }
+
+            .fourth-image {
+                width: 120px;
+                height: 150px;
+                top: 190px;
+                left: 130px;
+            }
+
+            .fifth-image {
+                width: 115px;
+                height: 150px;
+                top: 170px;
+                left: 0px;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-container">
+        <header class="header">
+            <div class="logo">Learn With Ease</div>
+            
+            <nav class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#objectives">Core Objectives</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+            </nav>
+            
+            <button class="contact-btn">Contact Us</button>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#objectives">Core Objectives</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
+                </ul>
+                <button class="mobile-contact-btn">Contact Us</button>
+            </div>
+        </header>
+
+        <main class="hero-content">
+            <div class="stats-box">
+                <div class="profile-images">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0171.jpg-eeJdP24Ta8utXjz8tzJjAIYEgaoke0.jpeg" alt="Student 1" class="profile-img">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 2" class="profile-img">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Student 3" class="profile-img">
+                </div>
+                <span class="stats-text">200+ Students Impacted</span>
+            </div>
+
+            <h1 class="hero-title">
+                Bringing Hope And Light<br>
+                To The Next Generation
+            </h1>
+            
+            <p class="hero-subtitle">
+                Empowering students with God's love and truth for a brighter future.
+            </p>
+            
+            <a href="#objectives" class="learn-more-btn" style="display: inline-block; text-decoration: none;">Learn More</a>
+            
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0171.jpg-eeJdP24Ta8utXjz8tzJjAIYEgaoke0.jpeg" alt="Students with certificates">
+                </div>
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Professional women at event">
+                </div>
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom">
+                </div>
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Women at conference">
+                </div>
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student with Bible">
+                </div>
+                <div class="bento-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Three people outdoors">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Core Objectives Section -->
+    <section class="core-objectives" id="objectives">
+        <div class="objectives-container">
+            <div class="section-header">
+                <h2 class="section-title">Core Objectives</h2>
+                <p class="section-subtitle">
+                    Our mission is built on three fundamental pillars that guide every aspect of our educational approach, 
+                    fostering holistic development in our students.
+                </p>
+            </div>
+
+            <div class="objectives-grid">
+                <!-- Spiritual Growth -->
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <img src="WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png" alt="Spiritual Growth Icon" />
+                    </div>
+                    <h3 class="objective-title">Spiritual Growth</h3>
+                    <p class="objective-description">
+                        Sharing Jesus' love and guiding students to live with hope and eternal purpose.
+                    </p>
+                </div>
+
+                <!-- Moral Development -->
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <img src="WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png" alt="Moral Development Icon" />
+                    </div>
+                    <h3 class="objective-title">Moral Development</h3>
+                    <p class="objective-description">
+                        Promoting integrity by discouraging exam malpractice, cultism, bullying, and premarital sex.
+                    </p>
+                </div>
+
+                <!-- Educational Support -->
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <img src="WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png" alt="Educational Support Icon" />
+                    </div>
+                    <h3 class="objective-title">Educational Support</h3>
+                    <p class="objective-description">
+                        Providing academic assistance and resources to help students achieve their educational goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="who-we-are-section">
+        <div class="container">
+            <div class="who-we-are-content">
+                <!-- Left Side - Image Collage -->
+                <div class="image-collage">
+                    <div class="collage-container">
+                        <!-- First image - moderate size, left side -->
+                        <div class="image-item first-image">
+                            <img src="WhatsApp Image 2025-08-14 at 19.36.42_55d18e24.jpg" alt="Outreach Activity 1" />
+                        </div>
+                        <!-- Second image - largest, next to first -->
+                        <div class="image-item second-image">
+                            <img src="WhatsApp Image 2025-08-14 at 19.38.22_2d59d957.jpg" alt="Outreach Activity 2" />
+                        </div>
+                        <!-- Third image - overlapping second, bottom right -->
+                        <div class="image-item third-image">
+                            <img src="WhatsApp Image 2025-08-14 at 19.40.58_9e07b776.jpg" alt="Outreach Activity 3" />
+                        </div>
+                        <!-- Fourth image - same size as first, under second -->
+                        <div class="image-item fourth-image">
+                            <img src="WhatsApp Image 2025-08-14 at 19.41.06_bd38db26.jpg" alt="Outreach Activity 4" />
+                        </div>
+                        <!-- Fifth image - under first image, left side -->
+                        <div class="image-item fifth-image">
+                            <img src="WhatsApp Image 2025-08-14 at 19.40.53_51e877bd.jpg" alt="Outreach Activity 5" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Content -->
+                <div class="who-we-are-text">
+                    <h2 class="section-title">Who Are We?</h2>
+                    
+                    <div class="content-description">
+                        <p>
+                            Learn With Ease Initiative is a Christian-based educational outreach committed to shaping young minds for a purposeful future. We are a team of passionate Nigerian professionals who value education and believe in nurturing students beyond academics. Our mission is to guide young people to embrace the love of Christ, make positive life choices, and overcome vices such as examination malpractice, cultism, bullying, and premarital sex.
+                        </p>
+                        <p>
+                            Through school outreaches, mentorship, counselling, and the distribution of learning materials, we inspire students to pursue excellence while preparing them not only for a meaningful life here on earth but also for eternity with Christ. At Learn With Ease, we believe in raising a generation of disciplined, responsible, and Christ-centered youth for a better society.
+                        </p>
+                        
+                        <a href="about.html" class="see-more-btn">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impacts Section -->
+    <section class="our-impacts-section">
+        <div class="our-impacts-container">
+            <h2 class="our-impacts-title">Our Impacts</h2>
+            <p class="our-impacts-description">
+                Through our dedicated outreach programs and educational initiatives, we have touched countless lives across Nigeria. 
+                Our impact extends beyond academic excellence to character development, spiritual growth, and community transformation. 
+                See how we're making a difference in the lives of young people and their communities.
+            </p>
+            
+            <div class="image-slider-container">
+                <div class="image-slider" id="imageSlider">
+                    <!-- Slider Card 1 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.37.15_3f09fe9c.jpg" alt="Educational Outreach">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Educational Outreach</div>
+                            <div class="slider-card-description">Reaching students in schools across Nigeria with quality educational materials and mentorship.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 2 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.37.23_1165ba81.jpg" alt="Student Mentorship">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Student Mentorship</div>
+                            <div class="slider-card-description">Providing guidance and counseling to help students make positive life choices.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 3 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.38.21_af82621b.jpg" alt="Community Impact">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Community Impact</div>
+                            <div class="slider-card-description">Building stronger communities through education and character development programs.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 4 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.38.29_ce39c981.jpg" alt="Learning Materials">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Learning Materials</div>
+                            <div class="slider-card-description">Distributing quality educational resources to support academic excellence.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 5 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.38.42_6dc3a667.jpg" alt="Youth Development">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Youth Development</div>
+                            <div class="slider-card-description">Empowering young people to become responsible and Christ-centered leaders.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 6 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.38.49_3a763c55.jpg" alt="Academic Excellence">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Academic Excellence</div>
+                            <div class="slider-card-description">Promoting excellence in education while building strong moral foundations.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 7 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.39.23_cb9673fa.jpg" alt="Character Building">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Character Building</div>
+                            <div class="slider-card-description">Shaping young minds with strong values and Christian principles.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 8 - New Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.40.23_13cf2bfc.jpg" alt="Future Leaders">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Future Leaders</div>
+                            <div class="slider-card-description">Preparing the next generation of disciplined and responsible leaders.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 9 - Additional Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.40.53_51e877bd.jpg" alt="Educational Excellence">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Educational Excellence</div>
+                            <div class="slider-card-description">Fostering academic achievement through innovative teaching methods and resources.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 10 - Additional Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.40.58_9e07b776.jpg" alt="Community Engagement">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Community Engagement</div>
+                            <div class="slider-card-description">Building strong partnerships with local communities for sustainable development.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Card 11 - Additional Image -->
+                    <div class="slider-card">
+                        <img src="WhatsApp Image 2025-08-14 at 19.40.58_a35c2ce7.jpg" alt="Student Support">
+                        <div class="slider-card-overlay">
+                            <div class="slider-card-title">Student Support</div>
+                            <div class="slider-card-description">Providing comprehensive support systems for student success and well-being.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-nav">
+                <button class="slider-btn" id="prevBtn" onclick="moveSlider(-1)">‹</button>
+                <button class="slider-btn" id="nextBtn" onclick="moveSlider(1)">›</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Image Slider Functionality
+        let currentSlide = 0;
+        const slider = document.getElementById('imageSlider');
+        const slides = document.querySelectorAll('.slider-card');
+        const totalSlides = slides.length;
+        
+        function getSlidesToShow() {
+            return window.innerWidth <= 480 ? 1 : window.innerWidth <= 768 ? 2 : 3;
+        }
+        
+        function getMaxSlide() {
+            const slidesToShow = getSlidesToShow();
+            return Math.max(0, totalSlides - slidesToShow);
+        }
+
+        function updateSlider() {
+            const slideWidth = slides[0].offsetWidth + 16; // 16px for gap
+            const translateX = -currentSlide * slideWidth;
+            slider.style.transform = `translateX(${translateX}px)`;
+            
+            const maxSlide = getMaxSlide();
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide >= maxSlide;
+        }
+
+        function moveSlider(direction) {
+            const maxSlide = getMaxSlide();
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide <= maxSlide) {
+                currentSlide = newSlide;
+                updateSlider();
+            }
+        }
+
+        // Touch/Swipe functionality
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        slider.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // Check if horizontal swipe is more significant than vertical
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    moveSlider(1); // Swipe left - next slide
+                } else {
+                    moveSlider(-1); // Swipe right - previous slide
+                }
+            }
+        });
+
+        // Mouse drag functionality for desktop
+        let isMouseDown = false;
+        let mouseStartX = 0;
+
+        slider.addEventListener('mousedown', (e) => {
+            isMouseDown = true;
+            mouseStartX = e.clientX;
+            slider.style.cursor = 'grabbing';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return;
+            e.preventDefault();
+        });
+
+        slider.addEventListener('mouseup', (e) => {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            slider.style.cursor = 'grab';
+            
+            const mouseEndX = e.clientX;
+            const diffX = mouseStartX - mouseEndX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    moveSlider(1); // Drag left - next slide
+                } else {
+                    moveSlider(-1); // Drag right - previous slide
+                }
+            }
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isMouseDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                moveSlider(-1);
+            } else if (e.key === 'ArrowRight') {
+                moveSlider(1);
+            }
+        });
+
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                const maxSlide = getMaxSlide();
+                if (currentSlide >= maxSlide) {
+                    currentSlide = 0;
+                } else {
+                    currentSlide++;
+                }
+                updateSlider();
+            }, 4000); // Change slide every 4 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Pause auto-play on hover
+        const sliderContainer = document.querySelector('.image-slider-container');
+        sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+        sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+        // Initialize slider
+        window.addEventListener('load', () => {
+            updateSlider();
+            startAutoPlay();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newMaxSlide = getMaxSlide();
+            
+            if (currentSlide > newMaxSlide) {
+                currentSlide = newMaxSlide;
+            }
+            
+            updateSlider();
+        });
+    </script>
+</body>
+</html>
