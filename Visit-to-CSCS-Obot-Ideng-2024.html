@@ -149,6 +149,8 @@
             font-weight: 500;
             cursor: pointer;
             width: calc(100% - 4rem);
+            /* --- Ensure button link inherits style --- */
+            text-align: center;
         }
 
         /* * ===================================================================
@@ -233,7 +235,7 @@
         
         .gallery-item {
             border-radius: 1rem;
-            overflow: hidden; /* This is key for the zoom effect */
+            overflow: hidden; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: box-shadow 0.3s ease;
             cursor: pointer;
@@ -249,19 +251,17 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            /* --- UI IMPROVEMENT --- */
             transition: transform 0.4s ease;
         }
 
         .gallery-item:hover img {
-            /* --- UI IMPROVEMENT --- */
             transform: scale(1.1); 
         }
         
         /* Creative span rules for mosaic */
         .gallery-item.v-span {
              grid-row: span 2;
-             height: 516px; /* 250*2 + 16px gap (1rem) */
+             height: 516px; 
         }
         
         .gallery-item.h-span {
@@ -428,7 +428,8 @@
 
         .footer-links {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            /* --- CHANGE: Updated to 2 columns --- */
+            grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
         }
 
@@ -491,29 +492,29 @@
 
         .contact-item {
             display: flex;
-            align-items: flex-start; /* Aligned to top for multi-line */
+            align-items: flex-start; 
             gap: 0.8rem;
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.85);
             font-size: 0.95rem;
         }
         
-        .contact-item i { /* Rule for FontAwesome */
+        .contact-item i { 
             color: #3b82f6;
             flex-shrink: 0;
             font-size: 1.1rem;
             width: 1.25em;
             text-align: center;
-            padding-top: 3px; /* Align icon with first line of text */
+            padding-top: 3px; 
         }
         
-        .contact-item svg { /* Rule from user CSS */
+        .contact-item svg { 
             color: #3b82f6;
             flex-shrink: 0;
         }
         
         .contact-item span {
-            line-height: 1.5; /* For multi-line text like phones */
+            line-height: 1.5; 
         }
 
         .footer-bottom {
@@ -569,7 +570,7 @@
                 gap: 3rem;
             }
             .footer-links {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* This is already correct */
             }
         }
         
@@ -590,7 +591,6 @@
                 padding: 0 1rem;
             }
             
-            /* Reset creative spans for tablet */
             .gallery-item.v-span {
                  grid-row: span 1;
                  height: 200px;
@@ -617,17 +617,17 @@
             }
 
             .gallery-container {
-                grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+                grid-template-columns: 1fr 1fr; 
                 grid-auto-rows: 180px;
                 gap: 0.5rem;
                 padding: 0 1rem;
             }
             .gallery-item.v-span {
-                 height: 180px; /* Reset height */
+                 height: 180px; 
             }
 
             .footer-links {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* This was already correct */
             }
             .footer-bottom-content {
                 flex-direction: column;
@@ -649,14 +649,16 @@
         <div class="logo">Learn With Ease</div>
         
         <nav class="nav-menu">
-            <li><a href="Learn-with-ease.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="Our-Impact.html">Our Impact</a></li>
-            <li><a href="#" class="active">Photo Gallery</a></li>
+            <li><a href="gallery.html" class="active">Photo Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </nav>
         
-        <button class="contact-btn">Contact Us</button>
+        <a href="contact.html" style="text-decoration: none;">
+            <button class="contact-btn">Contact Us</button>
+        </a>
         
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <div class="hamburger">
@@ -668,13 +670,15 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="Learn-with-ease.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="Our-Impact.html">Our Impact</a></li>
-                <li><a href="#" class="active">Photo Gallery</a></li>
+                <li><a href="gallery.html" class="active">Photo Gallery</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
-            <button class="mobile-contact-btn">Contact Us</button>
+            <a href="contact.html" style="text-decoration: none;">
+                <button class="mobile-contact-btn">Contact Us</button>
+            </a>
         </div>
     </header>
 
@@ -788,21 +792,11 @@
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="Learn-with-ease.html">Home</a></li>
+                            <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="Our-Impact.html">Our Impact</a></li>
-                            <li><a href="#">Photo Gallery</a></li>
+                            <li><a href="gallery.html">Photo Gallery</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Get Involved</h4>
-                        <ul>
-                            <li><a href="#">Partner With Us</a></li>
-                            <li><a href="#">Volunteer</a></li>
-                            <li><a href="#">Donate</a></li>
-                            <li><a href="#">Careers</a></li>
                         </ul>
                     </div>
                     
