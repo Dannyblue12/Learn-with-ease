@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-K">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery - Learn With Ease</title>
-    <!-- FontAwesome for footer icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* * ===================================================================
@@ -163,7 +162,7 @@
          * ===================================================================
          */
 
-        /* --- NEW: Gallery Hero Section --- */
+        /* --- Gallery Hero Section --- */
         .gallery-hero {
             text-align: center;
             padding: 4rem 2rem 5rem;
@@ -171,7 +170,6 @@
             position: relative;
         }
         
-        /* Gradient from original hero, but subtle */
         .gallery-hero::after {
             content: "";
             position: absolute;
@@ -221,29 +219,27 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- NEW: Creative Gallery Grid --- */
+        /* --- Creative Gallery Grid --- */
         .gallery-container {
             max-width: 1400px;
             margin: 0 auto 5rem;
             padding: 0 2rem;
             display: grid;
-            /* Creative mosaic grid */
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 250px; /* Base row height */
-            grid-auto-flow: dense; /* This packs items tightly */
+            grid-auto-rows: 250px; 
+            grid-auto-flow: dense; 
             gap: 1rem;
         }
         
         .gallery-item {
             border-radius: 1rem;
-            overflow: hidden;
+            overflow: hidden; /* This is key for the zoom effect */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease;
             cursor: pointer;
         }
         
         .gallery-item:hover {
-            transform: scale(1.03);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             z-index: 5;
         }
@@ -253,21 +249,28 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            /* --- UI IMPROVEMENT --- */
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            /* --- UI IMPROVEMENT --- */
+            transform: scale(1.1); 
         }
         
         /* Creative span rules for mosaic */
         .gallery-item.v-span {
-             grid-row: span 2; /* Makes image taller */
-             height: 516px; /* 250*2 + 16px gap */
+             grid-row: span 2;
+             height: 516px; /* 250*2 + 16px gap (1rem) */
         }
         
         .gallery-item.h-span {
-            grid-column: span 2; /* Makes image wider */
+            grid-column: span 2;
         }
         
-        /* --- NEW: Lightbox Styles --- */
+        /* --- Lightbox Styles --- */
         .lightbox {
-            display: none; /* Hidden by default */
+            display: none; 
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -291,7 +294,7 @@
             width: auto;
             height: auto;
             max-width: 100%;
-            max-height: 90vh; /* Viewport height minus some padding */
+            max-height: 90vh; 
             border-radius: 8px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
@@ -488,7 +491,7 @@
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Aligned to top for multi-line */
             gap: 0.8rem;
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.85);
@@ -501,11 +504,16 @@
             font-size: 1.1rem;
             width: 1.25em;
             text-align: center;
+            padding-top: 3px; /* Align icon with first line of text */
         }
         
         .contact-item svg { /* Rule from user CSS */
             color: #3b82f6;
             flex-shrink: 0;
+        }
+        
+        .contact-item span {
+            line-height: 1.5; /* For multi-line text like phones */
         }
 
         .footer-bottom {
@@ -615,7 +623,7 @@
                 padding: 0 1rem;
             }
             .gallery-item.v-span {
-                 height: 180px;
+                 height: 180px; /* Reset height */
             }
 
             .footer-links {
@@ -637,15 +645,9 @@
 </head>
 <body>
     
-    <!-- 
-      =======================================================
-      HEADER (With Updated Navigation)
-      =======================================================
-    -->
     <header class="header">
         <div class="logo">Learn With Ease</div>
         
-        <!-- --- NEW NAVIGATION --- -->
         <nav class="nav-menu">
             <li><a href="Learn-with-ease.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -666,7 +668,6 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <!-- --- NEW MOBILE NAVIGATION --- -->
                 <li><a href="Learn-with-ease.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="Our-Impact.html">Our Impact</a></li>
@@ -677,11 +678,6 @@
         </div>
     </header>
 
-    <!-- 
-      =======================================================
-      NEW: GALLERY HERO SECTION
-      =======================================================
-    -->
     <main class="gallery-hero" id="gallery-hero">
         <div class="gallery-hero-content">
             <h1 class="gallery-hero-title">A Gallery of Hope and Progress</h1>
@@ -694,14 +690,7 @@
         </div>
     </main>
 
-    <!-- 
-      =======================================================
-      NEW: CREATIVE GALLERY GRID
-      =======================================================
-    -->
     <section class="gallery-container">
-        <!-- I've creatively assigned spans to create a mosaic. -->
-        <!-- All image paths are built from your folder and file list. -->
         <div class="gallery-item v-span">
             <img src="Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.40.56_34860929.jpg" alt="Gallery Image 1">
         </div>
@@ -770,11 +759,6 @@
         </div>
     </section>
 
-    <!-- 
-      =======================================================
-      NEW: LIGHTBOX HTML
-      =======================================================
-    -->
     <div class="lightbox" id="lightbox">
         <span id="close-lightbox">&times;</span>
         <div class="lightbox-content">
@@ -782,15 +766,9 @@
         </div>
     </div>
 
-    <!-- 
-      =======================================================
-      FOOTER (FROM USER'S CSS)
-      =======================================================
-    -->
     <footer class="footer-section" id="footer">
         <div class="footer-container">
             <div class="footer-top">
-                <!-- Footer Brand Column -->
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <h2>Learn With Ease</h2>
@@ -806,7 +784,6 @@
                     </div>
                 </div>
                 
-                <!-- Footer Links Columns -->
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Quick Links</h4>
@@ -833,16 +810,16 @@
                         <h4>Contact Us</h4>
                         <ul>
                             <li class="contact-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <span>+234 (800) 000 0000</span>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
                             </li>
                             <li class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <span>info@learnwithease.org</span>
+                                <span>learningwitheaseinitiative@gmail.com</span>
                             </li>
                             <li class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Garki, Abuja, Nigeria</span>
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
                             </li>
                         </ul>
                     </div>
@@ -927,7 +904,7 @@
                 footerObserver.observe(footer);
             }
             
-            // --- NEW: Lightbox Functionality ---
+            // --- Lightbox Functionality ---
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = document.getElementById('close-lightbox');
@@ -947,7 +924,6 @@
             
             closeBtn.addEventListener('click', closeLightbox);
             
-            // Close when clicking on the background (outside the image)
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) {
                     closeLightbox();
