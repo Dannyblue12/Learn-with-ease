@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-K">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery: Secondary School Etoi, 2022 - Learn With Ease</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ===================================================================
+         * START: BASE & REUSED STYLES (From Original)
+         * ===================================================================
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white; /* Consistent white background */
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+        
+        .nav-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .mobile-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+            text-align: center;
+        }
+
+        /* * ===================================================================
+         * END: BASE & REUSED STYLES
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: GALLERY.HTML PAGE-SPECIFIC STYLES
+         * ===================================================================
+         */
+
+        /* --- Gallery Hero Section --- */
+        .gallery-hero {
+            text-align: center;
+            padding: 4rem 2rem 5rem;
+            background: white;
+            position: relative;
+        }
+        
+        .gallery-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.05) 0%,
+                rgba(59, 130, 246, 0.02) 50%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gallery-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .gallery-hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .gallery-hero-context {
+            font-size: 0.9rem;
+            color: #1e40af;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Creative Gallery Grid --- */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px; 
+            grid-auto-flow: dense; 
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 1rem;
+            overflow: hidden; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 5;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1); 
+        }
+        
+        /* Creative span rules for mosaic */
+        .gallery-item.v-span {
+             grid-row: span 2;
+             height: 516px; 
+        }
+        
+        .gallery-item.h-span {
+            grid-column: span 2;
+        }
+        
+        /* --- Lightbox Styles --- */
+        .lightbox {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .lightbox-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 90vh; 
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        
+        #close-lightbox {
+            position: absolute;
+            top: 1.5rem;
+            right: 2.5rem;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            line-height: 1;
+        }
+        
+        #close-lightbox:hover {
+            transform: scale(1.1);
+            color: #ccc;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
+
+        /* * ===================================================================
+         * START: FOOTER (CSS provided by user)
+         * ===================================================================
+         */
+        
+        .footer-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            position: relative;
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .logo-underline {
+            display: none;
+        }
+
+        .footer-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start; 
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i { 
+            color: #3b82f6;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 1.25em;
+            text-align: center;
+            padding-top: 3px; 
+        }
+        
+        .contact-item svg { 
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+        
+        .contact-item span {
+            line-height: 1.5; 
+        }
+
+        .footer-bottom {
+            padding: 2rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+        /* * ===================================================================
+         * END: FOOTER
+         * ===================================================================
+         */
+
+
+        /* * ===================================================================
+         * START: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+        
+        /* --- Tablet (max-width: 900px) --- */
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* --- Tablet (max-width: 768px) --- */
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-auto-rows: 200px;
+                gap: 0.75rem;
+                padding: 0 1rem;
+            }
+            
+            .gallery-item.v-span {
+                 grid-row: span 1;
+                 height: 200px;
+            }
+            .gallery-item.h-span {
+                grid-column: span 1;
+            }
+        }
+        
+        /* --- Mobile (max-width: 500px) --- */
+        @media (max-width: 500px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .gallery-hero {
+                padding: 3rem 1.5rem 4rem;
+            }
+            .gallery-hero-title {
+                font-size: 2rem;
+            }
+            .gallery-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr 1fr; 
+                grid-auto-rows: 180px;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            .gallery-item.v-span {
+                 height: 180px; 
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-bottom-links {
+                gap: 1.5rem;
+            }
+        }
+        /* * ===================================================================
+         * END: RESPONSIVE DESIGN
+         * ===================================================================
+         */
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">Learn With Ease</div>
+        
+        <nav class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="Our-Impact.html">Our Impact</a></li>
+            <li><a href="gallery.html" class="active">Photo Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </nav>
+        
+        <a href="contact.html" style="text-decoration: none;">
+            <button class="contact-btn">Contact Us</button>
+        </a>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Our-Impact.html">Our Impact</a></li>
+                <li><a href="gallery.html" class="active">Photo Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <a href="contact.html" style="text-decoration: none;">
+                <button class="mobile-contact-btn">Contact Us</button>
+            </a>
+        </div>
+    </header>
+
+    <main class="gallery-hero" id="gallery-hero">
+        <div class="gallery-hero-content">
+            <h1 class="gallery-hero-title">Empowering Futures at Etoi</h1>
+            <p class="gallery-hero-subtitle">
+                A look at our meaningful outreach at Secondary School Etoi, connecting with students and sharing our vision.
+            </p>
+            <p class="gallery-hero-context">
+                Visit to Secondary School Etoi, 2022
+            </p>
+        </div>
+    </main>
+
+    <section class="gallery-container">
+        <div class="gallery-item v-span">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.01_a74382ea.jpg" alt="Gallery Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.02_488e565f.jpg" alt="Gallery Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.04_63dccdf0.jpg" alt="Gallery Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.06_8c6858fb.jpg" alt="Gallery Image 4">
+        </div>
+        <div class="gallery-item v-span">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.07_64f28f6f.jpg" alt="Gallery Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.10_0a779253.jpg" alt="Gallery Image 6">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.11_61f21d75.jpg" alt="Gallery Image 7">
+        </div>
+        <div class="gallery-item v-span">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.15_9a64b2ca.jpg" alt="Gallery Image 8">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.17_3f531658.jpg" alt="Gallery Image 9">
+        </div>
+        <div class="gallery-item">
+            <img src="Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.18_6e2c788e.jpg" alt="Gallery Image 10">
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span id="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Enlarged gallery image" id="lightbox-img">
+        </div>
+    </div>
+
+    <footer class="footer-section" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <h2>Learn With Ease</h2>
+                    </div>
+                    <p class="footer-description">
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="Our-Impact.html">Our Impact</a></li>
+                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>learningwitheaseinitiative@gmail.com</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learn With Ease Initiative. All Rights Reserved.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        /* * ===================================================================
+         * JAVASCRIPT
+         * ===================================================================
+         */
+    
+        // --- Mobile Menu Functionality ---
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenu && mobileMenuBtn && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // --- Smooth Scrolling for Anchor Links (for this page) ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault(); 
+                    return;
+                }
+                
+                if (this.hostname === window.location.hostname && this.pathname === window.location.pathname) {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // --- Set Current Year in Footer ---
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // --- Intersection Observer for Footer Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.getElementById('footer');
+            if (footer) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('visible');
+                            footerObserver.unobserve(footer);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                footerObserver.observe(footer);
+            }
+            
+            // --- Lightbox Functionality ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('close-lightbox');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.querySelector('img').src;
+                    lightboxImg.src = imgSrc;
+                    lightbox.style.display = 'flex';
+                });
+            });
+            
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
+            }
+            
+            closeBtn.addEventListener('click', closeLightbox);
+            
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
