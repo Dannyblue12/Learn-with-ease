@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* * ===================================================================
-         * START: BASE & REUSED STYLES (From Original)
+         * START: BASE & REUSED STYLES
          * ===================================================================
          */
         * {
@@ -30,7 +30,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* No border-bottom for seamless look */
         }
 
         .logo {
@@ -150,6 +149,7 @@
             font-weight: 500;
             cursor: pointer;
             width: calc(100% - 4rem);
+            text-align: center;
         }
 
         /* Reusable Section Header Styles */
@@ -222,86 +222,120 @@
          * ===================================================================
          */
 
-        /* --- NEW: Impact Hero Split Section --- */
-        .impact-hero-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        /* --- NEW: Impact Hero Section --- */
+        .impact-hero-container {
+            position: relative;
+            min-height: 60vh;
+            background: white;
+            display: flex;
             align-items: center;
-            max-width: 1200px;
-            margin: 4rem auto 6rem;
-            padding: 0 2rem;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
         }
-        
-        .impact-hero-left .hero-title {
-            font-size: clamp(2.8rem, 5vw, 4rem);
+
+        .impact-hero-container::after { /* Reusing hero gradient */
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.08) 0%,
+                rgba(59, 130, 246, 0.05) 30%,
+                rgba(59, 130, 246, 0.03) 50%,
+                rgba(59, 130, 246, 0.015) 70%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .impact-hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+        }
+
+        .impact-hero-title {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem); /* Larger title */
             font-weight: 500;
             color: #000;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
-        
-        .impact-hero-left .hero-subtitle {
-            font-size: 1.125rem;
+
+        .impact-hero-subtitle {
+            font-size: 1.25rem; /* Larger subtitle */
             color: #6b7280;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             line-height: 1.6;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
-        
-        .hero-stats-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-        }
-        
-        .hero-stats-list li {
-            position: relative;
-            padding-left: 2rem; 
-            margin-bottom: 1rem;
-            color: #4a5568;
+
+        .learn-more-btn {
+            background: #1e40af;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
             font-size: 1rem;
             font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
         }
-        
-        .hero-stats-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: -2px;
-            color: white;
-            background: #1e40af;
-            font-weight: bold;
-            font-size: 0.9rem;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .impact-hero-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .impact-hero-right img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 1rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        .learn-more-btn:hover {
+            background: #1e3a8a;
         }
 
-        /* --- NEW: Full-Width Story Section --- */
+        /* --- NEW: Stats Bar Section --- */
+        .stats-bar-section {
+            padding: 3rem 2rem;
+            background-color: white;
+            /* Give it a top/bottom border to separate it */
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        .stat-item i {
+            font-size: 2rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Full-Width Story Section --- */
         .full-width-story {
             padding: 5rem 2rem;
             background: white;
             position: relative;
-            border-top: 1px solid #f1f5f9;
         }
         
         .story-container {
@@ -344,87 +378,13 @@
             font-weight: 600;
         }
         
-        /* --- NEW: Impact Areas Section --- */
-        .impact-areas-section {
-            padding: 5rem 0;
-            background: white;
-            position: relative;
-            border-top: 1px solid #f1f5f9;
-        }
-        
-        .impact-areas-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .impact-areas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .impact-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .impact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-        
-        .impact-card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .impact-card-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px;
-        }
-        
-        .impact-card-title {
-            font-size: 1.25rem;
-            color: #000;
-            margin-bottom: 1rem;
-            font-weight: 500;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-        }
-        
-        .impact-card-description {
-            color: #6b7280;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-        }
-
-        /* --- NEW: Pull Quote Section --- */
+        /* --- Pull Quote Section --- */
         .pull-quote-section {
             padding: 5rem 2rem;
             background: white;
             position: relative;
             border-top: 1px solid #f1f5f9;
         }
-        
         .pull-quote-container {
             max-width: 900px;
             margin: 0 auto;
@@ -613,7 +573,8 @@
 
         .footer-links {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            /* --- CHANGE: Updated to 2 columns --- */
+            grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
         }
 
@@ -676,24 +637,29 @@
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start; 
             gap: 0.8rem;
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.85);
             font-size: 0.95rem;
         }
         
-        .contact-item i { /* Rule for FontAwesome */
+        .contact-item i { 
             color: #3b82f6;
             flex-shrink: 0;
             font-size: 1.1rem;
             width: 1.25em;
             text-align: center;
+            padding-top: 3px; 
         }
         
-        .contact-item svg { /* Rule from user CSS */
+        .contact-item svg { 
             color: #3b82f6;
             flex-shrink: 0;
+        }
+        
+        .contact-item span {
+            line-height: 1.5; 
         }
 
         .footer-bottom {
@@ -751,23 +717,8 @@
             .footer-links {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .impact-hero-split {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                margin-top: 2rem;
-                margin-bottom: 4rem;
-                text-align: center;
-            }
-            .impact-hero-left .hero-title {
-                font-size: 2.5rem;
-            }
-            .hero-stats-list {
-                display: inline-block;
-                text-align: left;
-                margin: 2rem auto;
-            }
-            .impact-hero-right {
-                order: -1; /* Image on top on mobile */
+            .stats-grid {
+                grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
             }
         }
         
@@ -800,6 +751,17 @@
             .cta-button {
                 width: 100%;
                 padding: 1rem;
+            }
+
+            .impact-hero-title {
+                font-size: 2.2rem;
+            }
+            .impact-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr; /* 1 column on mobile */
             }
 
             .full-width-story {
@@ -837,14 +799,16 @@
         <div class="logo">Learn With Ease</div>
         
         <nav class="nav-menu">
-            <li><a href="Learn-with-ease.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="#" class="active">Our Impact</a></li>
-            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="impact.html" class="active">Our Impact</a></li>
+            <li><a href="photo-gallery.html">Photo Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </nav>
         
-        <button class="contact-btn">Contact Us</button>
+        <a href="contact.html" style="text-decoration: none;">
+            <button class="contact-btn">Contact Us</button>
+        </a>
         
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <div class="hamburger">
@@ -856,100 +820,80 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="Learn-with-ease.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="#" class="active">Our Impact</a></li>
-                <li><a href="gallery.html">Photo Gallery</a></li>
+                <li><a href="impact.html" class="active">Our Impact</a></li>
+                <li><a href="photo-gallery.html">Photo Gallery</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
-            <button class="mobile-contact-btn">Contact Us</button>
+            <a href="contact.html" style="text-decoration: none;">
+                <button class="mobile-contact-btn">Contact Us</button>
+            </a>
         </div>
     </header>
 
-    <main class="impact-hero-split" id="impact-hero">
-        <div class="impact-hero-left">
-            <h1 class="hero-title">
-                The Ripple Effect of a Single "Yes"
+    <main class="impact-hero-container" id="impact-hero">
+        <div class="impact-hero-content">
+            <h1 class="impact-hero-title">
+                More Than a Mission. A Movement.
             </h1>
-            <p class="hero-subtitle">
-                Our mission isn't just an event. It's a continuous, prayer-fueled movement that starts with one person saying "yes" to God's calling, touching one student, and watching that spark of hope ignite a generation.
+            <p class="impact-hero-subtitle">
+                We measure our success not in numbers, but in futures changed, in hope restored, and in faith awakened. See the story of our impact.
             </p>
-            <ul class="hero-stats-list">
-                <li>Lives touched by the message of Christ.</li>
-                <li>Students empowered with skills and integrity.</li>
-                <li>Communities strengthened by a new generation.</li>
-            </ul>
-        </div>
-        <div class="impact-hero-right">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom engaged in learning">
+            <a href="#story" class="learn-more-btn" style="text-decoration: none;">Read Our Story of Change</a>
         </div>
     </main>
 
+    <section class="stats-bar-section" id="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <i class="fas fa-user-graduate"></i>
+                <div class="stat-number" data-count="200">0+</div>
+                <div class="stat-label">Students Impacted</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-school"></i>
+                <div class="stat-number" data-count="15">0+</div>
+                <div class="stat-label">Schools Visited</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-book-open"></i>
+                <div class="stat-number" data-count="1000">0+</div>
+                <div class="stat-label">Resources Shared</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-hands-helping"></i>
+                <div class="stat-number" data-count="50">0+</div>
+                <div class="stat-label">Dedicated Volunteers</div>
+            </div>
+        </div>
+    </section>
+
     <section class="full-width-story" id="story">
         <div class="story-container">
-            <h2 class="story-title">Beyond the Numbers: A Story of Change</h2>
+            <h2 class="story-title">The Spark of One Changed Life</h2>
             <p>
-                Imagine a student we'll call Samuel. He's bright, but hopeless. He sees cheating as the only path forward and feels the pull of bad company. He's one of hundreds, lost in the crowd.
+                Imagine a student we'll call Favour. She's brilliant, but overlooked. She helps support her family and her schoolwork suffers, leaving her to believe that her dreams are out of reach. She sees others cheating and wonders if it's the only way to pass.
             </p>
             <p>
-                Then our team arrives. It's not just another lecture. It's a conversation. A mentor listens to him. He hears a message of hope rooted in Christ's love—a message that tells him he was <strong>created for a purpose.</strong> He receives a textbook for a class he was failing. For the first time, he sees a different path.
+                Then our team arrives. It's not just another assembly. It's a message of worth. A mentor speaks with her, not *at* her. She hears a message of hope rooted in Christ's love—a message that tells her she is <strong>seen, valued, and created for a purpose.</strong> She receives a scholarship pack with the textbooks she couldn't afford.
             </p>
             <p>
-                A single decision. He chooses to study. He chooses integrity. He chooses to lead his friends instead of following them. <strong>That is the impact.</strong> It's not just one life changed; it's a family's future, a community's leader, and a nation's hope, all set in motion by a single encounter with God's love.
+                A single decision. She chooses to study. She chooses integrity. She chooses to believe in herself and her future. <strong>That is the impact.</strong> It's not just one life changed; it's a family's future, a community's leader, and a nation's hope, all set in motion by a single encounter.
             </p>
         </div>
     </section>
     
-    <section class="impact-areas-section" id="areas">
-        <div class="impact-areas-container">
-            <div class="section-header">
-                <h2 class="section-title">Our Core Areas of Impact</h2>
-                <p class="section-subtitle">
-                    Our mission is focused on three pillars that create holistic, lasting transformation in every student we meet.
-                </p>
-            </div>
-
-            <div class="impact-areas-grid">
-                <div class="impact-card">
-                    <div class="impact-card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png-gqUqB9K1tHk02UjT0tct2Yk3dJcg2K.png" alt="Faith Icon" />
-                    </div>
-                    <h3 class="impact-card-title">Igniting Faith</h3>
-                    <p class="impact-card-description">
-                        We introduce students to the unconditional love of Jesus, giving them a foundation of hope and eternal purpose that transcends their circumstances.
-                    </p>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png-u1hAn0u4sW5bAOMm2M9B6t5GqYAIg3.png" alt="Integrity Icon" />
-                    </div>
-                    <h3 class="impact-card-title">Building Character</h3>
-                    <p class="impact-card-description">
-                        We actively combat vices by championing integrity, courage, and respect. We don't just say "no" to malpractice; we show them a better "yes."
-                    </p>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png-JqXvwhByz1YwcZq0D0M5AU5c040m06.png" alt="Education Icon" />
-                    </div>
-                    <h3 class="impact-card-title">Opening Doors</h3>
-                    <p class="impact-card-description">
-                        By providing essential resources like textbooks and mentorship, we remove practical barriers to education, empowering students to unlock their full potential.
-                    </p>
-                </div>
-            </div>
+    <section class="pull-quote-section" id="testimonials">
+        <div class="section-header">
+            <h2 class="section-title">What People Say</h2>
         </div>
-    </section>
-
-    <section class="pull-quote-section" id="quote">
         <div class="pull-quote-container">
             <blockquote class="pull-quote-text">
                 "The 'Learn With Ease' team has become a true partner. I've seen a tangible shift in our students' attitudes... a new seriousness about their studies and a greater respect for one another. Their impact goes far beyond the materials they donate."
             </blockquote>
             <div class="pull-quote-author">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="School Principal">
+                <img src="https->
                 <div class="pull-quote-author-info">
                     <div class="name">Mrs. R. A. Bello</div>
                     <div class="role">Principal, Unity Secondary School</div>
@@ -961,7 +905,7 @@
     <section class="join-us-section">
         <div class="join-us-container">
             <div class="section-header">
-                <h2 class="section-title">Be Part of the Impact</h2>
+                <h2 class="section-title">Be Part of the Story</h2>
                 <p class="section-subtitle">
                     Our impact is only possible through the generosity and passion of people like you. Join us in transforming lives and building a brighter future.
                 </p>
@@ -992,21 +936,11 @@
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="Learn-with-ease.html">Home</a></li>
+                            <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Our Impact</a></li>
-                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            <li><a href="impact.html">Our Impact</a></li>
+                            <li><a href="photo-gallery.html">Photo Gallery</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Get Involved</h4>
-                        <ul>
-                            <li><a href="#">Partner With Us</a></li>
-                            <li><a href="#">Volunteer</a></li>
-                            <li><a href="#">Donate</a></li>
-                            <li><a href="#">Careers</a></li>
                         </ul>
                     </div>
                     
@@ -1014,16 +948,16 @@
                         <h4>Contact Us</h4>
                         <ul>
                             <li class="contact-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <span>+234 (800) 000 0000</span>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
                             </li>
                             <li class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <span>info@learnwithease.org</span>
+                                <span>learningwitheaseinitiative@gmail.com</span>
                             </li>
                             <li class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Garki, Abuja, Nigeria</span>
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
                             </li>
                         </ul>
                     </div>
@@ -1075,7 +1009,6 @@
                     return;
                 }
                 
-                // Only smooth-scroll for links on THIS page
                 if (this.hostname === window.location.hostname && this.pathname === window.location.pathname) {
                     const target = document.querySelector(targetId);
                     if (target) {
@@ -1094,6 +1027,30 @@
             yearSpan.textContent = new Date().getFullYear();
         }
 
+        // --- Animated Counter Function ---
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200; // Speed of animation
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const plusSign = counter.innerText.includes('+') ? '+' : '';
+                
+                const updateCount = () => {
+                    const count = +counter.innerText.replace('+', '');
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc) + plusSign;
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + plusSign;
+                    }
+                };
+                updateCount();
+            });
+        }
+
         // --- Intersection Observer for Animations ---
         document.addEventListener('DOMContentLoaded', () => {
             // Footer Animation
@@ -1108,6 +1065,20 @@
                     });
                 }, { threshold: 0.1 });
                 footerObserver.observe(footer);
+            }
+
+            // Counter Animation
+            const statsBar = document.getElementById('stats');
+            if (statsBar) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounters();
+                            statsObserver.unobserve(statsBar); 
+                        }
+                    });
+                }, { threshold: 0.5 });
+                statsObserver.observe(statsBar);
             }
         });
 
