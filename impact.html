@@ -222,84 +222,84 @@
          * ===================================================================
          */
 
-        /* --- NEW: Impact Hero Section --- */
-        .impact-hero-container {
-            position: relative;
-            min-height: 60vh;
-            background: white;
-            display: flex;
+        /* --- Impact Hero Split Section --- */
+        .impact-hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            text-align: center;
+            max-width: 1200px;
+            margin: 4rem auto 6rem;
+            padding: 0 2rem;
         }
-
-        .impact-hero-container::after { /* Reusing hero gradient */
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(
-                ellipse 100% 120% at 100% 0%,
-                rgba(59, 130, 246, 0.08) 0%,
-                rgba(59, 130, 246, 0.05) 30%,
-                rgba(59, 130, 246, 0.03) 50%,
-                rgba(59, 130, 246, 0.015) 70%,
-                transparent 100%
-            );
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .impact-hero-content {
-            position: relative;
-            z-index: 5;
-            max-width: 800px;
-        }
-
-        .impact-hero-title {
-            font-size: clamp(2.8rem, 5.5vw, 4.5rem); /* Larger title */
+        
+        .impact-hero-left .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4rem);
             font-weight: 500;
             color: #000;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
-
-        .impact-hero-subtitle {
-            font-size: 1.25rem; /* Larger subtitle */
+        
+        .impact-hero-left .hero-subtitle {
+            font-size: 1.125rem;
             color: #6b7280;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 2rem;
             line-height: 1.6;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
-
-        .learn-more-btn {
-            background: #1e40af;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 2rem;
+        
+        .hero-stats-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .hero-stats-list li {
+            position: relative;
+            padding-left: 2rem; 
+            margin-bottom: 1rem;
+            color: #4a5568;
             font-size: 1rem;
             font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
         }
-        .learn-more-btn:hover {
-            background: #1e3a8a;
+        
+        .hero-stats-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: white;
+            background: #1e40af;
+            font-weight: bold;
+            font-size: 0.9rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .impact-hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .impact-hero-right img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
         }
 
         /* --- NEW: Stats Bar Section --- */
         .stats-bar-section {
             padding: 3rem 2rem;
             background-color: white;
-            /* Give it a top/bottom border to separate it */
             border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
         }
@@ -378,73 +378,67 @@
             font-weight: 600;
         }
         
-        /* --- Pull Quote Section --- */
-        .pull-quote-section {
-            padding: 5rem 2rem;
+        /* --- NEW: "Voices of Change" Testimonial Grid --- */
+        .testimonial-grid-section {
+            padding: 5rem 0;
             background: white;
             position: relative;
             border-top: 1px solid #f1f5f9;
         }
-        .pull-quote-container {
-            max-width: 900px;
+        .testimonial-grid-container {
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
+            padding: 0 2rem;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .testimonial-grid-card {
             background: white;
+            padding: 2rem;
             border-radius: 1rem;
             border: 1px solid #f1f5f9;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.09);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
         }
-        
-        .pull-quote-container::before {
-            content: "“";
-            font-size: 10rem;
-            color: #1e40af;
-            opacity: 0.05;
-            font-weight: 800;
-            position: absolute;
-            top: -1rem;
-            left: 1rem;
-            z-index: 1;
-            line-height: 1;
+        .testimonial-grid-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
-        .pull-quote-text {
-            font-size: 1.5rem;
-            font-weight: 400;
+        .testimonial-grid-card .quote {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.7;
             font-style: italic;
-            color: #1f2937;
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
-        
-        .pull-quote-author {
+        .testimonial-grid-card .author-info {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
-            position: relative;
-            z-index: 2;
+            margin-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.5rem;
         }
-        
-        .pull-quote-author img {
+        .testimonial-grid-card .author-photo {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #1e40af;
         }
-        
-        .pull-quote-author-info .name {
+        .testimonial-grid-card .author-name {
             font-size: 1rem;
             font-weight: 600;
             color: #000;
         }
-        
-        .pull-quote-author-info .role {
+        .testimonial-grid-card .author-role {
             font-size: 0.9rem;
             color: #6b7280;
         }
@@ -717,8 +711,40 @@
             .footer-links {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .impact-hero-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                margin-top: 2rem;
+                margin-bottom: 4rem;
+                text-align: center;
+            }
+            .impact-hero-left .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-stats-list {
+                display: inline-block;
+                text-align: left;
+                margin: 2rem auto;
+            }
+            .impact-hero-right {
+                order: -1; /* Image on top on mobile */
+            }
             .stats-grid {
                 grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
+            }
+            .focus-content {
+                grid-template-columns: 1fr;
+            }
+            .focus-text .section-title {
+                text-align: center;
+            }
+            .focus-text .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .focus-image {
+                order: -1; /* Image on top on mobile */
+                height: 400px;
             }
         }
         
@@ -733,6 +759,9 @@
             }
             .section-title {
                 font-size: 2rem;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -753,10 +782,14 @@
                 padding: 1rem;
             }
 
-            .impact-hero-title {
+            .impact-hero-split {
+                margin-top: 1rem;
+                margin-bottom: 3rem;
+            }
+            .impact-hero-left .hero-title {
                 font-size: 2.2rem;
             }
-            .impact-hero-subtitle {
+            .impact-hero-left .hero-subtitle {
                 font-size: 1rem;
             }
 
@@ -770,10 +803,6 @@
             .story-container p {
                 font-size: 1rem;
                 line-height: 1.7;
-            }
-            
-            .pull-quote-text {
-                font-size: 1.2rem;
             }
 
             .footer-links {
@@ -832,15 +861,22 @@
         </div>
     </header>
 
-    <main class="impact-hero-container" id="impact-hero">
-        <div class="impact-hero-content">
-            <h1 class="impact-hero-title">
-                More Than a Mission. A Movement.
+    <main class="impact-hero-split" id="impact-hero">
+        <div class="impact-hero-left">
+            <h1 class="hero-title">
+                The Ripple Effect of a Single "Yes"
             </h1>
-            <p class="impact-hero-subtitle">
-                We measure our success not in numbers, but in futures changed, in hope restored, and in faith awakened. See the story of our impact.
+            <p class="hero-subtitle">
+                Our mission isn't just an event. It's a continuous, prayer-fueled movement that starts with one person saying "yes" to God's calling, touching one student, and watching that spark of hope ignite a generation.
             </p>
-            <a href="#story" class="learn-more-btn" style="text-decoration: none;">Read Our Story of Change</a>
+            <ul class="hero-stats-list">
+                <li>Lives touched by the message of Christ.</li>
+                <li>Students empowered with skills and integrity.</li>
+                <li>Communities strengthened by a new generation.</li>
+            </ul>
+        </div>
+        <div class="impact-hero-right">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom engaged in learning">
         </div>
     </main>
 
@@ -871,32 +907,75 @@
 
     <section class="full-width-story" id="story">
         <div class="story-container">
-            <h2 class="story-title">The Spark of One Changed Life</h2>
+            <h2 class="story-title">Beyond the Numbers: A Story of Change</h2>
             <p>
-                Imagine a student we'll call Favour. She's brilliant, but overlooked. She helps support her family and her schoolwork suffers, leaving her to believe that her dreams are out of reach. She sees others cheating and wonders if it's the only way to pass.
+                Imagine a student we'll call Samuel. He's bright, but hopeless. He sees cheating as the only path forward and feels the pull of bad company. He's one of hundreds, lost in the crowd.
             </p>
             <p>
-                Then our team arrives. It's not just another assembly. It's a message of worth. A mentor speaks with her, not *at* her. She hears a message of hope rooted in Christ's love—a message that tells her she is <strong>seen, valued, and created for a purpose.</strong> She receives a scholarship pack with the textbooks she couldn't afford.
+                Then our team arrives. It's not just another lecture. It's a conversation. A mentor listens to him. He hears a message of hope rooted in Christ's love—a message that tells him he was <strong>created for a purpose.</strong> He receives a textbook for a class he was failing. For the first time, he sees a different path.
             </p>
             <p>
-                A single decision. She chooses to study. She chooses integrity. She chooses to believe in herself and her future. <strong>That is the impact.</strong> It's not just one life changed; it's a family's future, a community's leader, and a nation's hope, all set in motion by a single encounter.
+                A single decision. He chooses to study. He chooses integrity. He chooses to lead his friends instead of following them. <strong>That is the impact.</strong> It's not just one life changed; it's a family's future, a community's leader, and a nation's hope, all set in motion by a single encounter with God's love.
             </p>
         </div>
     </section>
     
-    <section class="pull-quote-section" id="testimonials">
-        <div class="section-header">
-            <h2 class="section-title">What People Say</h2>
-        </div>
-        <div class="pull-quote-container">
-            <blockquote class="pull-quote-text">
-                "The 'Learn With Ease' team has become a true partner. I've seen a tangible shift in our students' attitudes... a new seriousness about their studies and a greater respect for one another. Their impact goes far beyond the materials they donate."
-            </blockquote>
-            <div class="pull-quote-author">
-                <img src="https->
-                <div class="pull-quote-author-info">
-                    <div class="name">Mrs. R. A. Bello</div>
-                    <div class="role">Principal, Unity Secondary School</div>
+    <section class="testimonial-grid-section" id="testimonials">
+        <div class="testimonial-grid-container">
+            <div class="section-header">
+                <h2 class="section-title">Voices of Change</h2>
+                <p class="section-subtitle">
+                    Hear directly from the students and partners touched by our mission.
+                </p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-grid-card">
+                    <p class="quote">
+                        "The 'Learn With Ease' team visited my school, and it changed my perspective. I used to think cheating was the only way, but their talk on integrity and purpose really spoke to me."
+                    </p>
+                    <div class="author-info">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student 1" class="author-photo">
+                        <div>
+                            <div class="author-name">Favour Adebayo</div>
+                            <div class="author-role">SS2 Student, Lagos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-grid-card">
+                    <p class="quote">
+                        "I received a scholarship pack with textbooks for my WAEC. My parents couldn't afford them, and I was so worried. This was a direct answer to my prayers. Thank you so much."
+                    </p>
+                    <div class="author-info">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Student 2" class="author-photo">
+                        <div>
+                            <div class="author-name">Samuel Okeke</div>
+                            <div class="author-role">SS3 Student, Abuja</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-grid-card">
+                    <p class="quote">
+                        "As a principal, I've seen many groups. But the consistency and genuine passion from Learn With Ease are unmatched. They have become true partners in our mission."
+                    </p>
+                    <div class="author-info">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Principal" class="author-photo">
+                        <div>
+                            <div class="author-name">Mrs. R. A. Bello</div>
+                            <div class="author-role">Principal, Unity Secondary School</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-grid-card">
+                    <p class="quote">
+                        "The counseling session on bullying was powerful. It gave me the courage to speak up about a situation in my class, and the team helped us resolve it peacefully."
+                    </p>
+                    <div class="author-info">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 3" class="author-photo">
+                        <div>
+                            <div class="author-name">Titi Alabi</div>
+                            <div class="author-role">JSS3 Student, Ibadan</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
