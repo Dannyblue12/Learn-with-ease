@@ -267,7 +267,7 @@
         .timeline-item {
             position: relative;
             padding-left: 130px; /* Space for line and year */
-            margin-bottom: 3rem;
+            margin-bottom: 4rem; /* Moderate spacing */
             display: flex;
             gap: 2rem;
             align-items: center;
@@ -305,7 +305,8 @@
             color: #1e40af;
         }
         
-        .timeline-card {
+        /* This is the container for the stack and text */
+        .timeline-card-link {
             display: flex;
             gap: 2.5rem;
             align-items: center;
@@ -315,9 +316,10 @@
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
-        .timeline-card:hover {
+        .timeline-card-link:hover {
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transform: translateY(-5px);
         }
@@ -328,8 +330,6 @@
             width: 360px; /* Increased width */
             height: 270px; /* Increased height (4:3 ratio) */
             flex-shrink: 0;
-            display: block;
-            text-decoration: none;
             cursor: pointer;
         }
 
@@ -361,13 +361,13 @@
         }
 
         /* Sleek hover effect */
-        .timeline-card:hover .card-1 {
+        .timeline-card-link:hover .card-1 {
             transform: scale(1.03) rotate(1deg);
         }
-        .timeline-card:hover .card-2 {
+        .timeline-card-link:hover .card-2 {
             transform: rotate(-5deg) scale(1.03);
         }
-        .timeline-card:hover .card-3 {
+        .timeline-card-link:hover .card-3 {
             transform: rotate(-10deg) scale(1.03);
         }
         
@@ -399,10 +399,9 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            margin-top: 1rem;
             transition: all 0.3s ease;
         }
-        .see-all-btn:hover {
+        .timeline-card-link:hover .see-all-btn {
             background: #1e3a8a;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -672,10 +671,10 @@
             }
             
             .timeline-item {
-                flex-direction: column;
                 padding-left: 3.5rem; /* Space for line and dot */
                 gap: 1.5rem;
                 align-items: flex-start;
+                flex-direction: column; /* Stack card below year */
             }
 
             .timeline-item::before {
@@ -695,10 +694,12 @@
                 margin-bottom: 0.5rem;
             }
 
-            .timeline-card {
+            .timeline-card-link {
                 flex-direction: column;
                 margin-left: 0;
                 width: 100%;
+                padding: 1rem;
+                gap: 1.5rem;
             }
 
             .timeline-image-stack {
@@ -811,7 +812,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2021</div>
-                <a href="Visit-to-Orphanage-in-2021.html" class="timeline-card">
+                <a href="Visit-to-Orphanage-in-2021.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to Orphanage in 2021/WhatsApp Image 2025-08-14 at 19.35.44_dc7f3f4c.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to Orphanage in 2021/WhatsApp Image 2025-08-14 at 19.35.52_7a99a53f.jpg');"></div>
@@ -829,7 +830,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2022</div>
-                <a href="Visit-to-Secondary-School-Etoi-2022.html" class="timeline-card">
+                <a href="Visit-to-Secondary-School-Etoi-2022.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.02_488e565f.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.15_9a64b2ca.jpg');"></div>
@@ -847,7 +848,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2023</div>
-                <a href="Visit-to-Christian-Commercial-School-2023.html" class="timeline-card">
+                <a href="Visit-to-Christian-Commercial-School-2023.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.19_58f0ce4a.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.38_2760af2c.jpg');"></div>
@@ -865,7 +866,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2023</div>
-                <a href="Visit-to-Special-Education-Center-2023.html" class="timeline-card">
+                <a href="Visit-to-Special-Education-Center-2023.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to Special Education Center, 2023/WhatsApp Image 2025-08-14 at 19.39.00_f43b4bca.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to Special Education Center, 2023/WhatsApp Image 2025-08-14 at 19.39.35_8a1f19f7.jpg');"></div>
@@ -883,7 +884,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2024</div>
-                <a href="Visit-to-CSCS-Itam-2024.html" class="timeline-card">
+                <a href="Visit-to-CSCS-Itam-2024.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to CSCS, Itam, 2024/WhatsApp Image 2025-08-14 at 19.39.55_bb7ddfc5.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to CSCS, Itam, 2024/WhatsApp Image 2025-08-14 at 19.40.16_360afeae.jpg');"></div>
@@ -901,7 +902,7 @@
             
             <div class="timeline-item">
                 <div class="timeline-year">2024</div>
-                <a href="Visit-to-CSCS-Obot-Ideng-2024.html" class="timeline-card">
+                <a href="Visit-to-CSCS-Obot-Ideng-2024.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
                         <div class="stacked-card card-3" style="background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.40.58_b9037065.jpg');"></div>
                         <div class="stacked-card card-2" style="background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.38_2baa03f2.jpg');"></div>
