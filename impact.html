@@ -331,72 +331,11 @@
             margin-top: 0.5rem;
         }
 
-        /* --- NEW: Focus in Action Section (2-Column) --- */
-        .focus-section {
-            padding: 5rem 0;
-            background: white; 
-            position: relative;
-        }
-
-        .focus-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .focus-image {
-            width: 100%;
-            height: 500px;
-            border-radius: 1rem;
-            object-fit: cover;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .focus-text {
-            padding: 2rem 0;
-        }
-
-        .focus-text .section-title {
-            font-size: 2.8rem;
-            font-weight: 400;
-            color: #1a202c;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            text-align: left; 
-        }
-        
-        .focus-text .section-title::after {
-            left: 0; 
-            transform: translateX(0);
-        }
-
-        .content-description {
-            font-size: 1rem;
-            color: #4a5568;
-            line-height: 1.7;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .content-description p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        .content-description p:last-child {
-            margin-bottom: 0;
-        }
-
         /* --- Full-Width Story Section (MAINTAINED) --- */
         .full-width-story {
             padding: 5rem 2rem;
             background: white;
             position: relative;
-            border-top: 1px solid #f1f5f9;
         }
         
         .story-container {
@@ -437,6 +376,58 @@
         .story-container p strong {
             color: #1f2937;
             font-weight: 600;
+        }
+
+        /* --- NEW: "Our Focus in Action" Grid --- */
+        .focus-grid-section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+            border-top: 1px solid #f1f5f9;
+        }
+        .focus-grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .focus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .focus-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start; /* Aligns icon and text */
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .focus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .focus-card-icon {
+            font-size: 1.5rem;
+            color: #1e40af;
+            margin-top: 5px;
+            min-width: 30px;
+            text-align: center;
+        }
+        .focus-card-content h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .focus-card-content p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.6;
         }
 
         /* --- Join Us CTA Section --- */
@@ -728,19 +719,8 @@
             .stats-grid {
                 grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
             }
-            .focus-content {
+            .focus-grid {
                 grid-template-columns: 1fr;
-            }
-            .focus-text .section-title {
-                text-align: center;
-            }
-            .focus-text .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .focus-image {
-                order: -1; /* Image on top on mobile */
-                height: 400px;
             }
         }
         
@@ -869,7 +849,7 @@
             </ul>
         </div>
         <div class="impact-hero-right">
-            <img src="httpsG" alt="Students in classroom engaged in learning">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom engaged in learning">
         </div>
     </main>
 
@@ -898,25 +878,6 @@
         </div>
     </section>
 
-    <section class="focus-section" id="focus">
-        <div class="focus-content">
-            <div class="focus-image-container">
-                <img src="Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.06_c1ca1fcc.jpg" alt="Mentorship in action" class="focus-image">
-            </div>
-            <div class="focus-text">
-                <h2 class="section-title">From Resources to Relationships</h2>
-                <div class="content-description">
-                    <p>
-                        Our impact begins with providing for tangible needs—a textbook, a notebook, a scholarship. But where our true work flourishes is in the relationships we build. We don't just drop off supplies; we stay, we listen, and we mentor.
-                    </p>
-                    <p>
-                        By pairing educational support with genuine, faith-based mentorship, we address the root causes of challenges like exam malpractice and apathy. We show students that their worth is not defined by their grades, but by their God-given purpose. This connection is the catalyst for real, lasting change.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="full-width-story" id="story">
         <div class="story-container">
             <h2 class="story-title">Beyond the Numbers: A Story of Change</h2>
@@ -932,6 +893,47 @@
         </div>
     </section>
     
+    <section class="focus-grid-section" id="focus-in-action">
+        <div class="focus-grid-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Focus in Action</h2>
+                <p class="section-subtitle">
+                    Our impact is holistic, addressing the spiritual, moral, and practical needs of every student.
+                </p>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <div class="focus-card-icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="focus-card-content">
+                        <h3>Mentorship & Guidance</h3>
+                        <p>We provide one-on-one and group counseling, guiding students through life's challenges with faith-based wisdom.</p>
+                    </div>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-card-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="focus-card-content">
+                        <h3>Academic Resources</h3>
+                        <p>We remove barriers to learning by distributing free textbooks, notebooks, and other essential school supplies to those in need.</p>
+                    </div>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-card-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="focus-card-content">
+                        <h3>Character Building</h3>
+                        <p>Through workshops and inspiring talks, we actively stand against malpractice and bullying, championing integrity and respect.</p>
+                    </div>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-card-icon"><i class="fas fa-heart"></i></div>
+                    <div class="focus-card-content">
+                        <h3>Community & Care</h3>
+                        <p>Our mission extends to orphanages and special education centers, ensuring every child feels seen, valued, and supported.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="join-us-section">
         <div class="join-us-container">
             <div class="section-header">
