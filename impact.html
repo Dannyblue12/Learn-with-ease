@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Impact - Learn With Ease</title>
+    <title>Our Impact - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* * ===================================================================
@@ -222,7 +222,7 @@
          * ===================================================================
          */
 
-        /* --- Impact Hero Split Section --- */
+        /* --- Impact Hero Split Section (MAINTAINED) --- */
         .impact-hero-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -331,11 +331,72 @@
             margin-top: 0.5rem;
         }
 
-        /* --- Full-Width Story Section --- */
+        /* --- NEW: Focus in Action Section (2-Column) --- */
+        .focus-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+
+        .focus-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .focus-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 1rem;
+            object-fit: cover;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-text {
+            padding: 2rem 0;
+        }
+
+        .focus-text .section-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            text-align: left; 
+        }
+        
+        .focus-text .section-title::after {
+            left: 0; 
+            transform: translateX(0);
+        }
+
+        .content-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .content-description p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .content-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Full-Width Story Section (MAINTAINED) --- */
         .full-width-story {
             padding: 5rem 2rem;
             background: white;
             position: relative;
+            border-top: 1px solid #f1f5f9;
         }
         
         .story-container {
@@ -376,71 +437,6 @@
         .story-container p strong {
             color: #1f2937;
             font-weight: 600;
-        }
-        
-        /* --- NEW: "Voices of Change" Testimonial Grid --- */
-        .testimonial-grid-section {
-            padding: 5rem 0;
-            background: white;
-            position: relative;
-            border-top: 1px solid #f1f5f9;
-        }
-        .testimonial-grid-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .testimonial-grid-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-        .testimonial-grid-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .testimonial-grid-card .quote {
-            font-size: 1.05rem;
-            color: #4a5568;
-            line-height: 1.7;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        .testimonial-grid-card .author-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 1.5rem;
-        }
-        .testimonial-grid-card .author-photo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #1e40af;
-        }
-        .testimonial-grid-card .author-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #000;
-        }
-        .testimonial-grid-card .author-role {
-            font-size: 0.9rem;
-            color: #6b7280;
         }
 
         /* --- Join Us CTA Section --- */
@@ -760,9 +756,6 @@
             .section-title {
                 font-size: 2rem;
             }
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         /* --- Mobile (max-width: 500px) --- */
@@ -825,14 +818,14 @@
 <body>
     
     <header class="header">
-        <div class="logo">Learn With Ease</div>
+        <div class="logo">Learning With Ease</div>
         
         <nav class="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="impact.html" class="active">Our Impact</a></li>
             <li><a href="photo-gallery.html">Photo Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
         </nav>
         
         <a href="contact.html" style="text-decoration: none;">
@@ -853,7 +846,7 @@
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="impact.html" class="active">Our Impact</a></li>
                 <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="partnership.html">Partnership</a></li>
             </ul>
             <a href="contact.html" style="text-decoration: none;">
                 <button class="mobile-contact-btn">Contact Us</button>
@@ -876,7 +869,7 @@
             </ul>
         </div>
         <div class="impact-hero-right">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Students in classroom engaged in learning">
+            <img src="httpsG" alt="Students in classroom engaged in learning">
         </div>
     </main>
 
@@ -905,6 +898,25 @@
         </div>
     </section>
 
+    <section class="focus-section" id="focus">
+        <div class="focus-content">
+            <div class="focus-image-container">
+                <img src="Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.06_c1ca1fcc.jpg" alt="Mentorship in action" class="focus-image">
+            </div>
+            <div class="focus-text">
+                <h2 class="section-title">From Resources to Relationships</h2>
+                <div class="content-description">
+                    <p>
+                        Our impact begins with providing for tangible needs—a textbook, a notebook, a scholarship. But where our true work flourishes is in the relationships we build. We don't just drop off supplies; we stay, we listen, and we mentor.
+                    </p>
+                    <p>
+                        By pairing educational support with genuine, faith-based mentorship, we address the root causes of challenges like exam malpractice and apathy. We show students that their worth is not defined by their grades, but by their God-given purpose. This connection is the catalyst for real, lasting change.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="full-width-story" id="story">
         <div class="story-container">
             <h2 class="story-title">Beyond the Numbers: A Story of Change</h2>
@@ -920,67 +932,6 @@
         </div>
     </section>
     
-    <section class="testimonial-grid-section" id="testimonials">
-        <div class="testimonial-grid-container">
-            <div class="section-header">
-                <h2 class="section-title">Voices of Change</h2>
-                <p class="section-subtitle">
-                    Hear directly from the students and partners touched by our mission.
-                </p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-grid-card">
-                    <p class="quote">
-                        "The 'Learn With Ease' team visited my school, and it changed my perspective. I used to think cheating was the only way, but their talk on integrity and purpose really spoke to me."
-                    </p>
-                    <div class="author-info">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student 1" class="author-photo">
-                        <div>
-                            <div class="author-name">Favour Adebayo</div>
-                            <div class="author-role">SS2 Student, Lagos</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-grid-card">
-                    <p class="quote">
-                        "I received a scholarship pack with textbooks for my WAEC. My parents couldn't afford them, and I was so worried. This was a direct answer to my prayers. Thank you so much."
-                    </p>
-                    <div class="author-info">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Student 2" class="author-photo">
-                        <div>
-                            <div class="author-name">Samuel Okeke</div>
-                            <div class="author-role">SS3 Student, Abuja</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-grid-card">
-                    <p class="quote">
-                        "As a principal, I've seen many groups. But the consistency and genuine passion from Learn With Ease are unmatched. They have become true partners in our mission."
-                    </p>
-                    <div class="author-info">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Principal" class="author-photo">
-                        <div>
-                            <div class="author-name">Mrs. R. A. Bello</div>
-                            <div class="author-role">Principal, Unity Secondary School</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-grid-card">
-                    <p class="quote">
-                        "The counseling session on bullying was powerful. It gave me the courage to speak up about a situation in my class, and the team helped us resolve it peacefully."
-                    </p>
-                    <div class="author-info">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 3" class="author-photo">
-                        <div>
-                            <div class="author-name">Titi Alabi</div>
-                            <div class="author-role">JSS3 Student, Ibadan</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="join-us-section">
         <div class="join-us-container">
             <div class="section-header">
@@ -998,7 +949,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <h2>Learn With Ease</h2>
+                        <h2>Learning With Ease</h2>
                     </div>
                     <p class="footer-description">
                         Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
@@ -1019,7 +970,7 @@
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="impact.html">Our Impact</a></li>
                             <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
                         </ul>
                     </div>
                     
@@ -1046,7 +997,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="copyright">
-                        © <span id="currentYear"></span> Learn With Ease Initiative. All Rights Reserved.
+                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
                     </p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy Policy</a>
