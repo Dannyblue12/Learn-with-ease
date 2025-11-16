@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Learn With Ease</title>
+    <title>About Us - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* * ===================================================================
-         * START: BASE & REUSED STYLES (From Original)
+         * START: BASE & REUSED STYLES
          * ===================================================================
          */
         * {
@@ -30,7 +30,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* No border-bottom */
         }
 
         .logo {
@@ -318,6 +317,47 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
             background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        /* Reusable Slider Styles */
+        .slider-container-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1.5rem; /* Standard gap for cards */
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .slider-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+        .slider-btn:hover {
+            background: #1e3a8a;
+            transform: scale(1.1);
+        }
+        .slider-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* * ===================================================================
@@ -616,59 +656,78 @@
             margin: 0;
         }
 
-        /* --- NEW: Pull Quote Section --- */
-        .pull-quote-section {
-            padding: 5rem 2rem;
-            background: white;
+        /* --- UPDATED: Testimonial Slider Section --- */
+        .testimonial-section {
+            padding: 5rem 0;
+            background: white; 
             position: relative;
             border-top: 1px solid #f1f5f9;
         }
-        .pull-quote-container {
-            max-width: 900px;
+        .testimonial-container {
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
-            background: white;
-            border-radius: 1rem;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.09);
+            padding: 0 2rem;
         }
         
-        .pull-quote-container::before {
+        .testimonial-card {
+            min-width: 350px;
+            flex-shrink: 0;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-quote {
+            /* --- UI IMPROVEMENT: Font size is moderate --- */
+            font-size: 1.05rem; 
+            color: #4a5568;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-card::before {
             content: "“";
-            font-size: 10rem;
+            /* --- UI IMPROVEMENT: Reduced quote size --- */
+            font-size: 6rem;
             color: #1e40af;
             opacity: 0.05;
             font-weight: 800;
             position: absolute;
-            top: -1rem;
-            left: 1rem;
+            /* --- UI IMPROVEMENT: Repositioned --- */
+            top: 0.5rem;
+            left: 0.5rem;
             z-index: 1;
             line-height: 1;
         }
-        
-        .pull-quote-text {
-            font-size: 1.5rem;
-            font-weight: 400;
-            font-style: italic;
-            color: #1f2937;
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 2rem;
-        }
-        
-        .pull-quote-author {
+
+        .author-info {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
-            position: relative;
+            margin-top: 1.5rem;
             z-index: 2;
+            position: relative;
         }
         
-        .pull-quote-author img {
+        .author-photo {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -676,13 +735,13 @@
             border: 2px solid #1e40af;
         }
         
-        .pull-quote-author-info .name {
+        .author-name {
             font-size: 1rem;
             font-weight: 600;
             color: #000;
         }
         
-        .pull-quote-author-info .role {
+        .author-role {
             font-size: 0.9rem;
             color: #6b7280;
         }
@@ -1039,9 +1098,10 @@
                 width: 100%;
                 padding: 1rem;
             }
-            
-            .pull-quote-text {
-                font-size: 1.2rem;
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
             .footer-links {
@@ -1064,14 +1124,14 @@
 <body>
     
     <header class="header">
-        <div class="logo">Learn With Ease</div>
+        <div class="logo">Learning With Ease</div>
         
         <nav class="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html" class="active">About Us</a></li>
             <li><a href="impact.html">Our Impact</a></li>
             <li><a href="photo-gallery.html">Photo Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
         </nav>
         
         <a href="contact.html" style="text-decoration: none;">
@@ -1092,7 +1152,7 @@
                 <li><a href="about.html" class="active">About Us</a></li>
                 <li><a href="impact.html">Our Impact</a></li>
                 <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="partnership.html">Partnership</a></li>
             </ul>
             <a href="contact.html" style="text-decoration: none;">
                 <button class="mobile-contact-btn">Contact Us</button>
@@ -1119,7 +1179,7 @@
                 
                 <div class="content-description">
                     <p>
-                        <strong>Learn With Ease Initiative</strong> was born from a deep-seated belief that education transcends academics. Founded on a bedrock of faith, we are a collective of Nigerian professionals who felt a divine calling to invest in the future of our nation's youth. We saw a gap—not just in resources, but in guidance, morals, and spiritual grounding.
+                        <strong>Learning With Ease Initiative</strong> was born from a deep-seated belief that education transcends academics. Founded on a bedrock of faith, we are a collective of Nigerian professionals who felt a divine calling to invest in the future of our nation's youth. We saw a gap—not just in resources, but in guidance, morals, and spiritual grounding.
                     </p>
                     <p>
                         We are not just educators; we are mentors, counselors, and advocates for a generation poised to make a difference. Our mission is to illuminate the path for young students, guiding them with the love of Christ to navigate the complex challenges of modern life. We stand firmly against societal vices like exam malpractice, cultism, and bullying, offering a positive alternative rooted in integrity and purpose.
@@ -1164,7 +1224,7 @@
             <div class="card-grid">
                 <div class="card">
                     <div class="card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png-gqUqB9K1tHk02UjT0tct2Yk3dJcg2K.png" alt="Faith Icon" />
+                        <img src="WhatsApp_Image_2025-09-25_at_16.02.07_16efcca1-removebg-preview.png" alt="Faith Icon" />
                     </div>
                     <h3 class="card-title">Faith-Centered</h3>
                     <p class="card-description">
@@ -1174,7 +1234,7 @@
 
                 <div class="card">
                     <div class="card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png-u1hAn0u4sW5bAOMm2M9B6t5GqYAIg3.png" alt="Integrity Icon" />
+                        <img src="WhatsApp_Image_2025-09-25_at_16.00.49_edf10a0c-removebg-preview.png" alt="Integrity Icon" />
                     </div>
                     <h3 class="card-title">Integrity & Character</h3>
                     <p class="card-description">
@@ -1184,7 +1244,7 @@
 
                 <div class="card">
                     <div class="card-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png-JqXvwhByz1YwcZq0D0M5AU5c040m06.png" alt="Empowerment Icon" />
+                        <img src="WhatsApp_Image_2025-09-25_at_15.50.19_32151cd8-removebg-preview.png" alt="Empowerment Icon" />
                     </div>
                     <h3 class="card-title">Educational Empowerment</h3>
                     <p class="card-description">
@@ -1243,7 +1303,7 @@
                     <h3 class="team-name">Mrs. Grace Adewale</h3>
                     <p class="team-role">Founder & Lead Mentor</p>
                     <p class="team-bio">
-                        Grace is a passionate educator with over 15 years of experience. She founded Learn With Ease to provide the spiritual and academic guidance she wished she had as a student.
+                        Grace is a passionate educator with over 15 years of experience. She founded Learning With Ease to provide the spiritual and academic guidance she wished she had as a student.
                     </p>
                 </div>
 
@@ -1268,23 +1328,74 @@
         </div>
     </section>
 
-    <section class="pull-quote-section" id="testimonials">
-        <div class="section-header">
-            <h2 class="section-title">What People Say</h2>
-            <p class="section-subtitle">
-                Hear directly from the partners whose lives we've had the privilege to touch.
-            </p>
-        </div>
-        <div class="pull-quote-container">
-            <blockquote class="pull-quote-text">
-                "As a principal, I've seen many groups come and go. But the consistency and genuine passion from Learn With Ease are unmatched. They provided materials for 50 of our students and have become true partners in our mission."
-            </blockquote>
-            <div class="pull-quote-author">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="School Principal">
-                <div class="pull-quote-author-info">
-                    <div class="name">Mrs. R. A. Bello</div>
-                    <div class="role">Principal, Unity Secondary School</div>
+    <section class="testimonial-section" id="testimonials">
+        <div class="testimonial-container">
+            <div class="section-header">
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">
+                    Hear directly from the students, teachers, and partners whose lives we've had the privilege to touch.
+                </p>
+            </div>
+
+            <div class="slider-container-wrapper">
+                <div class="slider" id="testimonialSlider">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "The 'Learning With Ease' team visited my school, and it changed my perspective. I used to think cheating was the only way, but their talk on integrity and purpose really spoke to me. I'm now focused on studying hard."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student 1" class="author-photo">
+                            <div>
+                                <div class="author-name">Favour Adebayo</div>
+                                <div class="author-role">SS2 Student, Lagos</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "As a principal, I've seen many groups come and go. But the consistency and genuine passion from Learning With Ease are unmatched. They provided materials for 50 of our students and have become true partners in our mission."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Principal" class="author-photo">
+                            <div>
+                                <div class="author-name">Mrs. R. A. Bello</div>
+                                <div class="author-role">Principal, Unity Secondary School</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "I received a 'Learning With Ease' scholarship pack which included textbooks for my WAEC. My parents couldn't afford them, and I was so worried. This was a direct answer to my prayers. Thank you so much."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Student 2" class="author-photo">
+                            <div>
+                                <div class="author-name">Samuel Okeke</div>
+                                <div class="author-role">SS3 Student, Abuja</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "The counseling session on bullying and cultism was powerful. It gave me the courage to speak up about a situation in my class, and the team helped us resolve it peacefully. I feel safer at school now."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 3" class="author-photo">
+                            <div>
+                                <div class="author-name">Titi Alabi</div>
+                                <div class="author-role">JSS3 Student, Ibadan</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="slider-nav">
+                <button class="slider-btn" id="testimonialPrevBtn">‹</button>
+                <button class="slider-btn" id="testimonialNextBtn">›</button>
             </div>
         </div>
     </section>
@@ -1307,7 +1418,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <h2>Learn With Ease</h2>
+                        <h2>Learning With Ease</h2>
                     </div>
                     <p class="footer-description">
                         Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
@@ -1328,7 +1439,7 @@
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="impact.html">Our Impact</a></li>
                             <li><a href="photo-gallery.html">Photo Gallery</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
                         </ul>
                     </div>
                     
@@ -1355,7 +1466,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="copyright">
-                        © <span id="currentYear"></span> Learn With Ease Initiative. All Rights Reserved.
+                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
                     </p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy Policy</a>
@@ -1414,6 +1525,122 @@
         if (yearSpan) {
             yearSpan.textContent = new Date().getFullYear();
         }
+
+        // --- Testimonial Slider Functionality ---
+        function initializeSlider(sliderId, prevBtnId, nextBtnId) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return; 
+
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const slides = slider.querySelectorAll('.testimonial-card');
+            if (slides.length === 0) return;
+
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let slideWidth = slides[0].offsetWidth + 24; // 24px for 1.5rem gap
+
+            function getSlidesToShow() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 1; 
+                if (window.innerWidth <= 1024) return 2; 
+                return 3; 
+            }
+            
+            function getMaxSlide() {
+                const slidesToShow = getSlidesToShow();
+                return Math.max(0, totalSlides - slidesToShow);
+            }
+
+            function updateSlider() {
+                // Recalculate slide width on update
+                const slideGap = 24; // 1.5rem
+                const cardWidth = slides[0].offsetWidth;
+                slideWidth = cardWidth + slideGap; 
+                
+                const maxSlide = getMaxSlide();
+
+                if (currentSlide > maxSlide) {
+                    currentSlide = maxSlide;
+                }
+                
+                const translateX = -currentSlide * slideWidth;
+                slider.style.transform = `translateX(${translateX}px)`;
+                
+                if (prevBtn) prevBtn.disabled = currentSlide === 0;
+                if (nextBtn) nextBtn.disabled = currentSlide >= maxSlide;
+            }
+
+            function moveSlider(direction) {
+                const maxSlide = getMaxSlide();
+                const newSlide = currentSlide + direction;
+                if (newSlide >= 0 && newSlide <= maxSlide) {
+                    currentSlide = newSlide;
+                    updateSlider();
+                }
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => moveSlider(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => moveSlider(1));
+
+            let startX = 0;
+            let isDragging = false;
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                
+                if (Math.abs(diffX) > 50) {
+                    moveSlider(diffX > 0 ? 1 : -1);
+                }
+            });
+
+            let isMouseDown = false;
+            let mouseStartX = 0;
+            slider.addEventListener('mousedown', (e) => {
+                isMouseDown = true;
+                mouseStartX = e.clientX;
+                slider.style.cursor = 'grabbing';
+            });
+            
+            slider.addEventListener('mousemove', (e) => {
+                if (!isMouseDown) return;
+                e.preventDefault();
+            });
+
+            slider.addEventListener('mouseup', (e) => {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                slider.style.cursor = 'grab';
+                const mouseEndX = e.clientX;
+                const diffX = mouseStartX - mouseEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    moveSlider(diffX > 0 ? 1 : -1);
+                }
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                isMouseDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            window.addEventListener('load', updateSlider);
+            window.addEventListener('resize', updateSlider);
+        }
+
+        // --- Initialize the Testimonial Slider ---
+        initializeSlider('testimonialSlider', 'testimonialPrevBtn', 'testimonialNextBtn');
 
         // --- Intersection Observer for Footer Animation ---
         document.addEventListener('DOMContentLoaded', () => {
