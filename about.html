@@ -323,6 +323,8 @@
         .slider-container-wrapper {
             position: relative;
             overflow: hidden;
+            /* Added padding to prevent cards from touching the edges */
+            padding: 0.5rem 0;
         }
         .slider {
             display: flex;
@@ -670,7 +672,8 @@
         }
         
         .testimonial-card {
-            min-width: 350px;
+            /* --- FIX: Set a flexible width, not min-width --- */
+            width: 350px; 
             flex-shrink: 0;
             background: white;
             padding: 2.5rem 2rem;
@@ -693,7 +696,7 @@
 
         .testimonial-quote {
             /* --- UI IMPROVEMENT: Font size is moderate --- */
-            font-size: 1.05rem; 
+            font-size: 1rem; 
             color: #4a5568;
             line-height: 1.7;
             font-style: italic;
@@ -706,12 +709,11 @@
         .testimonial-card::before {
             content: "“";
             /* --- UI IMPROVEMENT: Reduced quote size --- */
-            font-size: 6rem;
+            font-size: 5rem;
             color: #1e40af;
             opacity: 0.05;
             font-weight: 800;
             position: absolute;
-            /* --- UI IMPROVEMENT: Repositioned --- */
             top: 0.5rem;
             left: 0.5rem;
             z-index: 1;
@@ -1103,6 +1105,11 @@
                 height: 40px;
                 font-size: 1rem;
             }
+            
+            /* --- FIX for overflow --- */
+            .testimonial-card {
+                width: 300px; /* Smaller fixed width for mobile */
+            }
 
             .footer-links {
                 grid-template-columns: 1fr;
@@ -1390,6 +1397,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "The mentorship program has been invaluable. Having someone to talk to who understands and guides me with godly counsel has made all the difference in my academic and personal life."
+                        </p>
+                        <div class="author-info">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Student 4" class="author-photo">
+                            <div>
+                                <div class="author-name">Daniel Eze</div>
+                                <div class="author-role">University Student</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1538,7 +1558,7 @@
 
             const totalSlides = slides.length;
             let currentSlide = 0;
-            let slideWidth = slides[0].offsetWidth + 24; // 24px for 1.5rem gap
+            let slideWidth = 0; // Will be set in updateSlider
 
             function getSlidesToShow() {
                 if (window.innerWidth <= 480) return 1;
@@ -1553,10 +1573,20 @@
             }
 
             function updateSlider() {
-                // Recalculate slide width on update
+                // This function now recalculates width on resize
                 const slideGap = 24; // 1.5rem
-                const cardWidth = slides[0].offsetWidth;
-                slideWidth = cardWidth + slideGap; 
+                let cardWidth = 350; // Default desktop width
+
+                if (window.innerWidth <= 500) {
+                    cardWidth = 300; // Use 300px width on mobile
+                }
+                
+                // Set all slide widths explicitly
+                slides.forEach(slide => {
+                    slide.style.width = `${cardWidth}px`;
+                });
+                
+                slideWidth = cardWidth + slideGap;
                 
                 const maxSlide = getMaxSlide();
 
@@ -1635,6 +1665,7 @@
                 slider.style.cursor = 'grab';
             });
 
+            // Initial setup on load and resize
             window.addEventListener('load', updateSlider);
             window.addEventListener('resize', updateSlider);
         }
