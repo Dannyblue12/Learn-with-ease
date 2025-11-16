@@ -296,7 +296,7 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
         }
 
-        /* --- NEW: Stats Bar Section --- */
+        /* --- Stats Bar Section --- */
         .stats-bar-section {
             padding: 3rem 2rem;
             background-color: white;
@@ -331,15 +331,76 @@
             margin-top: 0.5rem;
         }
 
-        /* --- Full-Width Story Section (MAINTAINED) --- */
+        /* --- "From Resources to Relationships" Section (RESTORED) --- */
+        .focus-section {
+            padding: 5rem 0;
+            background: white; 
+            position: relative;
+        }
+
+        .focus-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .focus-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 1rem;
+            object-fit: cover;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-text {
+            padding: 2rem 0;
+        }
+
+        .focus-text .section-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            text-align: left; 
+        }
+        
+        .focus-text .section-title::after {
+            left: 0; 
+            transform: translateX(0);
+        }
+
+        .content-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .content-description p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .content-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Full-Width Story Section --- */
         .full-width-story {
             padding: 5rem 2rem;
             background: white;
             position: relative;
+            border-top: 1px solid #f1f5f9;
         }
         
         .story-container {
-            max-width: 800px; /* Narrower for readability */
+            max-width: 800px; 
             margin: 0 auto;
             text-align: center;
         }
@@ -719,6 +780,20 @@
             .stats-grid {
                 grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
             }
+            .focus-content {
+                grid-template-columns: 1fr;
+            }
+            .focus-text .section-title {
+                text-align: center;
+            }
+            .focus-text .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .focus-image {
+                order: -1; /* Image on top on mobile */
+                height: 400px;
+            }
             .focus-grid {
                 grid-template-columns: 1fr;
             }
@@ -874,6 +949,25 @@
                 <i class="fas fa-hands-helping"></i>
                 <div class="stat-number" data-count="50">0+</div>
                 <div class="stat-label">Dedicated Volunteers</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="focus-section" id="focus">
+        <div class="focus-content">
+            <div class="focus-image-container">
+                <img src="Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.06_c1ca1fcc.jpg" alt="Mentorship in action" class="focus-image">
+            </div>
+            <div class="focus-text">
+                <h2 class="section-title">From Resources to Relationships</h2>
+                <div class="content-description">
+                    <p>
+                        Our impact begins with providing for tangible needs—a textbook, a notebook, a scholarship. But where our true work flourishes is in the relationships we build. We don't just drop off supplies; we stay, we listen, and we mentor.
+                    </p>
+                    <p>
+                        By pairing educational support with genuine, faith-based mentorship, we address the root causes of challenges like exam malpractice and apathy. We show students that their worth is not defined by their grades, but by their God-given purpose. This connection is the catalyst for real, lasting change.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
