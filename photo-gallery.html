@@ -5,7 +5,7 @@
     <title>Photo Gallery - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* * ===================================================================
+/* * ===================================================================
          * START: BASE & REUSED STYLES
          * ===================================================================
          */
@@ -254,7 +254,7 @@
         .timeline-line {
             position: absolute;
             top: 2.5rem; /* Start dot slightly lower */
-            left: 100px; /* Fixed position for the year */
+            left: 100px; /* Fixed position for the line */
             width: 4px;
             height: calc(100% - 5rem); /* End slightly higher */
             background-color: #1e40af;
@@ -265,18 +265,19 @@
         
         .timeline-item {
             position: relative;
-            padding-left: 130px; /* Space for line and year */
+            padding-left: 130px; /* Space for line and year/dot */
             margin-bottom: 4rem; /* Moderate spacing */
             display: flex;
             gap: 2rem;
             align-items: center;
         }
         
-        /* The dot on the line (Already correct) */
+        /* The dot on the line (MODIFIED) */
         .timeline-item::before {
             content: '';
             position: absolute;
-            top: 2.5rem; /* Aligns with the year */
+            top: 50%; /* Center vertically with the content/card */
+            transform: translateY(-50%); /* Adjust for its own height */
             left: 92px; /* 100px (line) - 8px (half dot width) = 92px */
             width: 16px;
             height: 16px;
@@ -291,12 +292,12 @@
             margin-bottom: 0;
         }
 
-        /* Year on the left (Already correct) */
+        /* Year on the left (MODIFIED) */
         .timeline-year {
             position: absolute;
             left: 0;
-            top: 2.5rem; /* Align with dot */
-            transform: translateY(-50%);
+            top: 50%; /* Align with the dot */
+            transform: translateY(-50%); /* Adjust for its own height */
             width: 80px; /* Space to the left of the line */
             text-align: right;
             font-size: 1.5rem;
@@ -678,7 +679,8 @@
 
             .timeline-item::before {
                 left: 12px; /* 20px - (16px/2) */
-                top: 0; /* Align to top of content */
+                top: 2rem; /* Position the dot for mobile */
+                transform: none; /* Remove vertical centering on mobile */
             }
             
             .timeline-year {
