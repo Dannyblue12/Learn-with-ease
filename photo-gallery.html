@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-K">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-K"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -273,12 +272,12 @@
             align-items: center;
         }
         
-        /* The dot on the line */
+        /* The dot on the line (Already correct) */
         .timeline-item::before {
             content: '';
             position: absolute;
             top: 2.5rem; /* Aligns with the year */
-            left: 92px; /* 100px - (16px/2) */
+            left: 92px; /* 100px (line) - 8px (half dot width) = 92px */
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -292,7 +291,7 @@
             margin-bottom: 0;
         }
 
-        /* Year on the left */
+        /* Year on the left (Already correct) */
         .timeline-year {
             position: absolute;
             left: 0;
@@ -324,7 +323,7 @@
             transform: translateY(-5px);
         }
 
-        /* --- NEW: Image Stack --- */
+        /* --- Image Stack (Size already increased) --- */
         .timeline-image-stack {
             position: relative;
             width: 360px; /* Increased width */
@@ -346,29 +345,29 @@
             border: 3px solid white;
         }
 
-        /* Neat, angled stack */
+        /* --- MODIFIED: Neat, angled stack --- */
         .stacked-card.card-1 {
             z-index: 3; /* Front card */
-            transform: rotate(2deg);
+            transform: rotate(2deg); /* Kept as is */
         }
         .stacked-card.card-2 {
             z-index: 2;
-            transform: rotate(-3deg);
+            transform: rotate(-1deg); /* MODIFIED: Was -3deg */
         }
         .stacked-card.card-3 {
             z-index: 1;
-            transform: rotate(-8deg);
+            transform: rotate(-4deg); /* MODIFIED: Was -8deg */
         }
 
-        /* Sleek hover effect */
+        /* --- MODIFIED: Sleek hover effect --- */
         .timeline-card-link:hover .card-1 {
             transform: scale(1.03) rotate(1deg);
         }
         .timeline-card-link:hover .card-2 {
-            transform: rotate(-5deg) scale(1.03);
+            transform: rotate(-2deg) scale(1.03); /* MODIFIED */
         }
         .timeline-card-link:hover .card-3 {
-            transform: rotate(-10deg) scale(1.03);
+            transform: rotate(-5deg) scale(1.03); /* MODIFIED */
         }
         
         .timeline-content {
@@ -389,7 +388,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- NEW: "See All" Button --- */
+        /* --- "See All" Button (Already styled as button) --- */
         .see-all-btn {
             display: inline-block;
             background: #1e40af;
