@@ -17,7 +17,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background: white; /* Consistent white background */
+            background: white;
             overflow-x: hidden;
         }
 
@@ -151,11 +151,6 @@
             text-align: center;
         }
 
-        /* * ===================================================================
-         * END: BASE & REUSED STYLES
-         * ===================================================================
-         */
-
 
         /* * ===================================================================
          * START: GALLERY.HTML PAGE-SPECIFIC STYLES
@@ -212,7 +207,7 @@
         }
         
         /* * ===================================================================
-         * START: REWRITTEN TIMELINE STYLES
+         * START: UPDATED TIMELINE STYLES (Nodes on Line)
          * ===================================================================
          */
 
@@ -222,73 +217,72 @@
         }
 
         .timeline-container {
-            max-width: 900px;
+            max-width: 1000px; /* Increased width slightly */
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
         }
         
-        /* The vertical blue line */
+        /* The Vertical Line */
         .timeline-line {
             position: absolute;
-            top: 2.5rem; 
-            left: 100px; /* Fixed position for the line */
-            width: 4px;
-            height: calc(100% - 5rem); 
+            top: 0; 
+            left: 130px; /* Fixed line position */
+            width: 4px; /* Thickness of the line */
+            height: 100%; 
             background-color: #1e40af;
-            opacity: 0.3;
+            opacity: 0.2; /* Subtle line */
             border-radius: 2px;
             z-index: 1;
         }
         
-        /* Container for one timeline entry */
         .timeline-item {
             position: relative;
-            margin-bottom: 4rem; /* Moderate spacing */
-            /* REMOVED padding-left and flex properties */
+            margin-bottom: 4rem;
         }
         
         .timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        /* The dot on the line (REWRITTEN) */
+        /* The Node (Curve/Circle on the line) */
+        /* This creates the semi-circle bulge effect on the line */
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 92px; /* 100px (line) - 8px (half dot) = 92px */
-            top: 50%; /* Center vertically relative to the item */
+            left: 122px; /* (Line Left 130px) - (Half Node 10px) + (Half Line 2px) = 122px */
+            top: 50%; 
             transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background-color: #1e40af;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px #1e40af;
+            background-color: #1e40af; /* Solid blue to match line */
+            border: 3px solid white; /* White border cuts into line to create shape definition */
+            box-shadow: 0 0 0 1px #1e40af; /* Thin outer ring for definition */
             z-index: 2;
         }
 
-        /* Year on the left (REWRITTEN) */
+        /* The Year - Positioned 30px from left */
         .timeline-year {
             position: absolute;
-            left: 0;
-            top: 50%; /* Center vertically relative to the item */
+            left: 30px; /* EXACTLY 30px margin from left */
+            top: 50%; 
             transform: translateY(-50%);
-            width: 80px; /* Space to the left of the line */
+            width: 80px;
             text-align: right;
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #1e40af;
-            z-index: 2; /* Ensure it's above the line */
+            z-index: 2;
         }
         
-        /* This is the container for the stack and text (REWRITTEN) */
+        /* The Card Content */
         .timeline-card-link {
             display: flex;
             gap: 2.5rem;
             align-items: center;
-            width: auto; /* Let content define width */
-            margin-left: 130px; /* NEW: This pushes the card right */
+            width: auto;
+            margin-left: 160px; /* Space for (30px margin + Year + Line + Gap) */
             background: white;
             padding: 1.5rem;
             border-radius: 1rem;
@@ -305,8 +299,8 @@
         /* --- Image Stack --- */
         .timeline-image-stack {
             position: relative;
-            width: 360px; /* Increased width */
-            height: 270px; /* Increased height (4:3 ratio) */
+            width: 360px;
+            height: 270px;
             flex-shrink: 0;
             cursor: pointer;
         }
@@ -325,29 +319,14 @@
         }
 
         /* Neat, angled stack */
-        .stacked-card.card-1 {
-            z-index: 3; /* Front card */
-            transform: rotate(2deg);
-        }
-        .stacked-card.card-2 {
-            z-index: 2;
-            transform: rotate(-1deg); /* Neater stack */
-        }
-        .stacked-card.card-3 {
-            z-index: 1;
-            transform: rotate(-4deg); /* Neater stack */
-        }
+        .stacked-card.card-1 { z-index: 3; transform: rotate(2deg); }
+        .stacked-card.card-2 { z-index: 2; transform: rotate(-1deg); }
+        .stacked-card.card-3 { z-index: 1; transform: rotate(-4deg); }
 
-        /* Sleek hover effect */
-        .timeline-card-link:hover .card-1 {
-            transform: scale(1.03) rotate(1deg);
-        }
-        .timeline-card-link:hover .card-2 {
-            transform: rotate(-2deg) scale(1.03);
-        }
-        .timeline-card-link:hover .card-3 {
-            transform: rotate(-5deg) scale(1.03);
-        }
+        /* Hover effect */
+        .timeline-card-link:hover .card-1 { transform: scale(1.03) rotate(1deg); }
+        .timeline-card-link:hover .card-2 { transform: rotate(-2deg) scale(1.03); }
+        .timeline-card-link:hover .card-3 { transform: rotate(-5deg) scale(1.03); }
         
         .timeline-content {
             flex-grow: 1;
@@ -367,7 +346,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- "See All" Button --- */
         .see-all-btn {
             display: inline-block;
             background: #1e40af;
@@ -386,7 +364,7 @@
         }
 
         /* * ===================================================================
-         * END: REWRITTEN TIMELINE STYLES
+         * END: TIMELINE STYLES
          * ===================================================================
          */
 
@@ -449,10 +427,6 @@
             height: 3px;
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             border-radius: 2px;
-        }
-
-        .logo-underline {
-            display: none;
         }
 
         .footer-description {
@@ -571,15 +545,6 @@
             padding-top: 3px; 
         }
         
-        .contact-item svg { 
-            color: #3b82f6;
-            flex-shrink: 0;
-        }
-        
-        .contact-item span {
-            line-height: 1.5; 
-        }
-
         .footer-bottom {
             padding: 2rem 0 0;
             margin-top: 3rem;
@@ -615,10 +580,6 @@
         .footer-bottom-links a:hover {
             color: #3b82f6;
         }
-        /* * ===================================================================
-         * END: FOOTER
-         * ===================================================================
-         */
 
 
         /* * ===================================================================
@@ -637,7 +598,7 @@
             }
         }
         
-        /* --- Tablet (max-width: 768px) --- */
+        /* --- Tablet/Mobile (max-width: 768px) --- */
         @media (max-width: 768px) {
             .nav-menu,
             .contact-btn {
@@ -647,45 +608,46 @@
                 display: block;
             }
             
-            /* --- Timeline Responsive (REWRITTEN) --- */
+            /* --- Timeline Responsive Mobile Update --- */
             .timeline-line {
-                left: 20px; /* Move line to the left */
+                left: 30px; /* Move line far left */
             }
             
             .timeline-item {
-                /* On mobile, we put all content to the right of the line */
-                padding-left: 3.5rem; /* 56px. This is the new content area */
+                padding-left: 0; 
                 margin-bottom: 3rem;
             }
 
+            /* Center the node on the new line position */
             .timeline-item::before {
-                left: 12px; /* 20px - (16px/2) */
-                top: 0.5rem; /* Align dot near the top */
-                transform: none; /* Reset transform */
+                left: 22px; /* (Line Left 30px) - (Half Node 10px) + (Half Line 2px) = 22px */
+                top: 1.5rem; /* Near top of card */
+                transform: none;
             }
             
+            /* Move year inside the flow for mobile, or above card */
             .timeline-year {
-                position: relative; /* Becomes in-flow */
-                left: auto;
+                position: relative;
+                left: 60px; /* Push it to the right of the line */
                 top: auto;
                 transform: none;
                 text-align: left;
                 width: auto;
                 font-size: 1.25rem;
                 margin-bottom: 0.5rem;
-                color: #1f2937; /* Change color to match content */
+                color: #1f2937; 
             }
 
             .timeline-card-link {
                 flex-direction: column;
-                margin-left: 0; /* Reset margin */
-                width: 100%;
+                margin-left: 60px; /* Indent to clear the line */
+                width: calc(100% - 60px);
                 padding: 1rem;
                 gap: 1.5rem;
             }
 
             .timeline-image-stack {
-                width: 100%; /* Full width */
+                width: 100%; 
                 height: 250px;
             }
 
@@ -706,21 +668,9 @@
             .gallery-hero-title {
                 font-size: 2rem;
             }
-            .gallery-hero-subtitle {
-                font-size: 1rem;
-            }
-
+            
             .timeline-container {
                 padding: 0 1rem;
-            }
-            .timeline-line {
-                left: 15px;
-            }
-            .timeline-item {
-                padding-left: 3rem; /* 48px */
-            }
-            .timeline-item::before {
-                left: 7px; /* 15px - 8px */
             }
 
             .footer-links {
@@ -730,14 +680,7 @@
                 flex-direction: column;
                 gap: 1.5rem;
             }
-            .footer-bottom-links {
-                gap: 1.5rem;
-            }
         }
-        /* * ===================================================================
-         * END: RESPONSIVE DESIGN
-         * ===================================================================
-         */
     </style>
 </head>
 <body>
@@ -868,9 +811,9 @@
                 <div class="timeline-year">2023</div>
                 <a href="Visit-to-Community-Secondary-School-Aka-Offot-2023.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
-                        <div class="stacked-card card-3" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
-                        <div class="stacked-card card-2" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
-                        <div class="stacked-card card-1" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
+                        <div class="stacked-card card-3" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg');"></div>
                     </div>
                     <div class="timeline-content">
                         <h3 class="timeline-title">Visit to Community Secondary School Aka Offot</h3>
@@ -1025,7 +968,7 @@
             }
         });
 
-        // --- Smooth Scrolling for Anchor Links (for this page) ---
+        // --- Smooth Scrolling for Anchor Links ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
