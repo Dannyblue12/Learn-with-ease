@@ -207,7 +207,7 @@
         }
         
         /* * ===================================================================
-         * START: UPDATED TIMELINE STYLES (Nodes on Line)
+         * START: TIMELINE STYLES (Clean Line, No Dots)
          * ===================================================================
          */
 
@@ -217,7 +217,7 @@
         }
 
         .timeline-container {
-            max-width: 1000px; /* Increased width slightly */
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
@@ -227,11 +227,12 @@
         .timeline-line {
             position: absolute;
             top: 0; 
-            left: 130px; /* Fixed line position */
-            width: 4px; /* Thickness of the line */
+            /* Positioned to create space between year and line */
+            left: 160px; 
+            width: 4px; 
             height: 100%; 
             background-color: #1e40af;
-            opacity: 0.2; /* Subtle line */
+            opacity: 0.2;
             border-radius: 2px;
             z-index: 1;
         }
@@ -245,30 +246,19 @@
             margin-bottom: 0;
         }
 
-        /* The Node (Curve/Circle on the line) */
-        /* This creates the semi-circle bulge effect on the line */
+        /* REMOVED THE CIRCLE/DOT */
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 122px; /* (Line Left 130px) - (Half Node 10px) + (Half Line 2px) = 122px */
-            top: 50%; 
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #1e40af; /* Solid blue to match line */
-            border: 3px solid white; /* White border cuts into line to create shape definition */
-            box-shadow: 0 0 0 1px #1e40af; /* Thin outer ring for definition */
-            z-index: 2;
+            display: none;
         }
 
-        /* The Year - Positioned 30px from left */
+        /* The Year - Positioned with spacing */
         .timeline-year {
             position: absolute;
-            left: 30px; /* EXACTLY 30px margin from left */
+            left: 0; 
+            /* Width ends at 120px. Line is at 160px. Gap is 40px. */
+            width: 120px; 
             top: 50%; 
             transform: translateY(-50%);
-            width: 80px;
             text-align: right;
             font-size: 1.5rem;
             font-weight: 700;
@@ -282,7 +272,8 @@
             gap: 2.5rem;
             align-items: center;
             width: auto;
-            margin-left: 160px; /* Space for (30px margin + Year + Line + Gap) */
+            /* 160px (line) + 40px gap = 200px margin */
+            margin-left: 200px; 
             background: white;
             padding: 1.5rem;
             border-radius: 1rem;
@@ -610,38 +601,30 @@
             
             /* --- Timeline Responsive Mobile Update --- */
             .timeline-line {
-                left: 30px; /* Move line far left */
+                left: 20px; /* Move line far left */
             }
             
             .timeline-item {
                 padding-left: 0; 
                 margin-bottom: 3rem;
             }
-
-            /* Center the node on the new line position */
-            .timeline-item::before {
-                left: 22px; /* (Line Left 30px) - (Half Node 10px) + (Half Line 2px) = 22px */
-                top: 1.5rem; /* Near top of card */
-                transform: none;
-            }
             
-            /* Move year inside the flow for mobile, or above card */
+            /* Move year right next to the line */
             .timeline-year {
                 position: relative;
-                left: 60px; /* Push it to the right of the line */
-                top: auto;
+                left: 50px; /* Push right of the line (20px + gap) */
+                width: auto; 
+                top: 0; 
                 transform: none;
                 text-align: left;
-                width: auto;
                 font-size: 1.25rem;
                 margin-bottom: 0.5rem;
-                color: #1f2937; 
             }
 
             .timeline-card-link {
                 flex-direction: column;
-                margin-left: 60px; /* Indent to clear the line */
-                width: calc(100% - 60px);
+                margin-left: 50px; /* Align with Year */
+                width: calc(100% - 50px);
                 padding: 1rem;
                 gap: 1.5rem;
             }
