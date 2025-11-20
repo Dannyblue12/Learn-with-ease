@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -18,7 +17,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background: white;
+            background: white; /* Consistent white background */
             overflow-x: hidden;
         }
 
@@ -157,6 +156,12 @@
          * ===================================================================
          */
 
+
+        /* * ===================================================================
+         * START: GALLERY.HTML PAGE-SPECIFIC STYLES
+         * ===================================================================
+         */
+
         /* --- Gallery Hero Section --- */
         .gallery-hero {
             text-align: center;
@@ -205,9 +210,9 @@
             line-height: 1.6;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
-
+        
         /* * ===================================================================
-         * START: TIMELINE STYLES
+         * START: REWRITTEN TIMELINE STYLES
          * ===================================================================
          */
 
@@ -227,7 +232,7 @@
         .timeline-line {
             position: absolute;
             top: 2.5rem; 
-            left: 100px;
+            left: 100px; /* Fixed position for the line */
             width: 4px;
             height: calc(100% - 5rem); 
             background-color: #1e40af;
@@ -239,19 +244,20 @@
         /* Container for one timeline entry */
         .timeline-item {
             position: relative;
-            margin-bottom: 4rem;
+            margin-bottom: 4rem; /* Moderate spacing */
+            /* REMOVED padding-left and flex properties */
         }
         
         .timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        /* The dot on the line */
+        /* The dot on the line (REWRITTEN) */
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 92px;
-            top: 50%;
+            left: 92px; /* 100px (line) - 8px (half dot) = 92px */
+            top: 50%; /* Center vertically relative to the item */
             transform: translateY(-50%);
             width: 16px;
             height: 16px;
@@ -262,27 +268,27 @@
             z-index: 2;
         }
 
-        /* Year on the left */
+        /* Year on the left (REWRITTEN) */
         .timeline-year {
             position: absolute;
             left: 0;
-            top: 50%;
+            top: 50%; /* Center vertically relative to the item */
             transform: translateY(-50%);
-            width: 80px;
+            width: 80px; /* Space to the left of the line */
             text-align: right;
             font-size: 1.5rem;
             font-weight: 600;
             color: #1e40af;
-            z-index: 2;
+            z-index: 2; /* Ensure it's above the line */
         }
         
-        /* Card container */
+        /* This is the container for the stack and text (REWRITTEN) */
         .timeline-card-link {
             display: flex;
             gap: 2.5rem;
             align-items: center;
-            width: auto;
-            margin-left: 130px;
+            width: auto; /* Let content define width */
+            margin-left: 130px; /* NEW: This pushes the card right */
             background: white;
             padding: 1.5rem;
             border-radius: 1rem;
@@ -296,11 +302,11 @@
             transform: translateY(-5px);
         }
 
-        /* Image Stack */
+        /* --- Image Stack --- */
         .timeline-image-stack {
             position: relative;
-            width: 360px;
-            height: 270px;
+            width: 360px; /* Increased width */
+            height: 270px; /* Increased height (4:3 ratio) */
             flex-shrink: 0;
             cursor: pointer;
         }
@@ -318,19 +324,21 @@
             border: 3px solid white;
         }
 
+        /* Neat, angled stack */
         .stacked-card.card-1 {
-            z-index: 3;
+            z-index: 3; /* Front card */
             transform: rotate(2deg);
         }
         .stacked-card.card-2 {
             z-index: 2;
-            transform: rotate(-1deg);
+            transform: rotate(-1deg); /* Neater stack */
         }
         .stacked-card.card-3 {
             z-index: 1;
-            transform: rotate(-4deg);
+            transform: rotate(-4deg); /* Neater stack */
         }
 
+        /* Sleek hover effect */
         .timeline-card-link:hover .card-1 {
             transform: scale(1.03) rotate(1deg);
         }
@@ -359,6 +367,7 @@
             margin-bottom: 1.5rem;
         }
 
+        /* --- "See All" Button --- */
         .see-all-btn {
             display: inline-block;
             background: #1e40af;
@@ -377,7 +386,7 @@
         }
 
         /* * ===================================================================
-         * END: TIMELINE STYLES
+         * END: REWRITTEN TIMELINE STYLES
          * ===================================================================
          */
 
@@ -391,9 +400,17 @@
             color: white;
             position: relative;
             padding: 4rem 0 2rem;
-            margin-top: 5rem;
-            display: block;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .footer-container {
@@ -432,6 +449,10 @@
             height: 3px;
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             border-radius: 2px;
+        }
+
+        .logo-underline {
+            display: none;
         }
 
         .footer-description {
@@ -550,6 +571,11 @@
             padding-top: 3px; 
         }
         
+        .contact-item svg { 
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+        
         .contact-item span {
             line-height: 1.5; 
         }
@@ -589,17 +615,18 @@
         .footer-bottom-links a:hover {
             color: #3b82f6;
         }
-
         /* * ===================================================================
          * END: FOOTER
          * ===================================================================
          */
+
 
         /* * ===================================================================
          * START: RESPONSIVE DESIGN
          * ===================================================================
          */
         
+        /* --- Tablet (max-width: 900px) --- */
         @media (max-width: 900px) {
             .footer-top {
                 grid-template-columns: 1fr;
@@ -610,6 +637,7 @@
             }
         }
         
+        /* --- Tablet (max-width: 768px) --- */
         @media (max-width: 768px) {
             .nav-menu,
             .contact-btn {
@@ -619,23 +647,25 @@
                 display: block;
             }
             
+            /* --- Timeline Responsive (REWRITTEN) --- */
             .timeline-line {
-                left: 20px;
+                left: 20px; /* Move line to the left */
             }
             
             .timeline-item {
-                padding-left: 3.5rem;
+                /* On mobile, we put all content to the right of the line */
+                padding-left: 3.5rem; /* 56px. This is the new content area */
                 margin-bottom: 3rem;
             }
 
             .timeline-item::before {
-                left: 12px;
-                top: 0.5rem;
-                transform: none;
+                left: 12px; /* 20px - (16px/2) */
+                top: 0.5rem; /* Align dot near the top */
+                transform: none; /* Reset transform */
             }
             
             .timeline-year {
-                position: relative;
+                position: relative; /* Becomes in-flow */
                 left: auto;
                 top: auto;
                 transform: none;
@@ -643,19 +673,19 @@
                 width: auto;
                 font-size: 1.25rem;
                 margin-bottom: 0.5rem;
-                color: #1f2937;
+                color: #1f2937; /* Change color to match content */
             }
 
             .timeline-card-link {
                 flex-direction: column;
-                margin-left: 0;
+                margin-left: 0; /* Reset margin */
                 width: 100%;
                 padding: 1rem;
                 gap: 1.5rem;
             }
 
             .timeline-image-stack {
-                width: 100%;
+                width: 100%; /* Full width */
                 height: 250px;
             }
 
@@ -664,6 +694,7 @@
             }
         }
         
+        /* --- Mobile (max-width: 500px) --- */
         @media (max-width: 500px) {
             .header {
                 padding: 1rem;
@@ -681,6 +712,15 @@
 
             .timeline-container {
                 padding: 0 1rem;
+            }
+            .timeline-line {
+                left: 15px;
+            }
+            .timeline-item {
+                padding-left: 3rem; /* 48px */
+            }
+            .timeline-item::before {
+                left: 7px; /* 15px - 8px */
             }
 
             .footer-links {
@@ -703,14 +743,14 @@
 <body>
     
     <header class="header">
-        <div class="logo">Learn With Ease</div>
+        <div class="logo">Learning With Ease</div>
         
         <nav class="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="Our-Impact.html">Our Impact</a></li>
-            <li><a href="gallery.html" class="active">Photo Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="impact.html">Our Impact</a></li>
+            <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
         </nav>
         
         <a href="contact.html" style="text-decoration: none;">
@@ -729,9 +769,9 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="Our-Impact.html">Our Impact</a></li>
-                <li><a href="gallery.html" class="active">Photo Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="impact.html">Our Impact</a></li>
+                <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+                <li><a href="partnership.html">Partnership</a></li>
             </ul>
             <a href="contact.html" style="text-decoration: none;">
                 <button class="mobile-contact-btn">Contact Us</button>
@@ -739,11 +779,11 @@
         </div>
     </header>
 
-    <main class="gallery-hero">
+    <main class="gallery-hero" id="gallery-hero">
         <div class="gallery-hero-content">
-            <h1 class="gallery-hero-title">Our School Visits</h1>
+            <h1 class="gallery-hero-title">Our Journey in Moments</h1>
             <p class="gallery-hero-subtitle">
-                Exploring educational journeys and community impact across schools. Each visit represents our commitment to empowering students and fostering learning.
+                A chronological look at our mission in action. Each visit is a story of hope, empowerment, and faith. Explore our galleries to see the lives we've had the privilege to touch.
             </p>
         </div>
     </main>
@@ -751,106 +791,209 @@
     <section class="timeline-section">
         <div class="timeline-container">
             <div class="timeline-line"></div>
-
-            <!-- First timeline item for Otop Christian High School 2025 -->
+            
             <div class="timeline-item">
-                <div class="timeline-year">2025</div>
-                <a href="otop-christian-high-school.html" class="timeline-card-link">
+                <div class="timeline-year">2021</div>
+                <a href="Visit-to-Orphanage-in-2021.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
-                        <div class="stacked-card card-1" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.46_8da20275.jpg');"></div>
-                        <div class="stacked-card card-2" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.49_a10e3be9.jpg');"></div>
-                        <div class="stacked-card card-3" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.05_fea98dcb.jpg');"></div>
+                        <div class="stacked-card card-3" style="background-image: url('Visit to Orphanage in 2021/WhatsApp Image 2025-08-14 at 19.35.44_dc7f3f4c.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to Orphanage in 2021/WhatsApp Image 2025-08-14 at 19.35.52_7a99a53f.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to Orphanage in 2021/WhatsApp Image 2025-08-14 at 19.35.48_b9c075b3.jpg');"></div>
                     </div>
                     <div class="timeline-content">
-                        <h3 class="timeline-title">Visit to Otop Christian High School</h3>
+                        <h3 class="timeline-title">Visit to Orphanage</h3>
                         <p class="timeline-description">
-                            Ikot Ukpong Eren Oruk Anam - A memorable visit where we engaged with students, shared educational resources, and fostered community connections. Witness the enthusiasm and dedication of young minds.
+                            Sharing love, joy, and essential supplies. A heartfelt day spent connecting with wonderful children and dedicated staff.
                         </p>
-                        <span class="see-all-btn">View Gallery</span>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
                     </div>
                 </a>
             </div>
-
-            <!-- Second timeline item for Community Secondary School Offot 2023 -->
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <a href="Visit-to-Secondary-School-Etoi-2022.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.02_488e565f.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.15_9a64b2ca.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.07_64f28f6f.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Visit to Secondary School Etoi</h3>
+                        <p class="timeline-description">
+                            Empowering the next generation. Our visit focused on mentorship, spiritual guidance, and encouraging academic excellence.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            
             <div class="timeline-item">
                 <div class="timeline-year">2023</div>
-                <a href="offot-secondary-school.html" class="timeline-card-link">
+                <a href="Visit-to-Christian-Commercial-School-2023.html" class="timeline-card-link">
                     <div class="timeline-image-stack">
-                        <div class="stacked-card card-1" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
-                        <div class="stacked-card card-2" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
-                        <div class="stacked-card card-3" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
+                        <div class="stacked-card card-3" style="background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.19_58f0ce4a.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.38_2760af2c.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.28_b8d3f74e.jpg');"></div>
                     </div>
                     <div class="timeline-content">
-                        <h3 class="timeline-title">Visit to Community Secondary School</h3>
+                        <h3 class="timeline-title">Visit to Christian Commercial School</h3>
                         <p class="timeline-description">
-                            Aka Offot - Our impactful outreach program reaching hundreds of students. We distributed learning materials, conducted workshops, and inspired academic excellence through interactive sessions with faculty and students.
+                            Engaging with students and staff, sharing our mission, and fostering an environment of integrity and purpose.
                         </p>
-                        <span class="see-all-btn">View Gallery</span>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
                     </div>
                 </a>
             </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <a href="Visit-to-Special-Education-Center-2023.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('Visit to Special Education Center, 2023/WhatsApp Image 2025-08-14 at 19.39.00_f43b4bca.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to Special Education Center, 2023/WhatsApp Image 2025-08-14 at 19.39.35_8a1f19f7.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to Special Education Center, 2023/WhatsApp Image 2025-08-14 at 19.39.16_6272ff8e.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Visit to Special Education Center</h3>
+                        <p class="timeline-description">
+                            A memorable visit connecting with inspiring students and dedicated teachers, sharing support and encouragement.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <a href="Visit-to-Community-Secondary-School-Aka-Offot-2023.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('/images/whatsapp-20image-202025-08-14-20at-2019.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Visit to Community Secondary School Aka Offot</h3>
+                        <p class="timeline-description">
+                            Celebrating educational excellence and community engagement through moments of learning and growth.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <a href="Visit-to-CSCS-Itam-2024.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('Visit to CSCS, Itam, 2024/WhatsApp Image 2025-08-14 at 19.39.55_bb7ddfc5.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to CSCS, Itam, 2024/WhatsApp Image 2025-08-14 at 19.40.16_360afeae.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to CSCS, Itam, 2024/WhatsApp Image 2025-08-14 at 19.40.00_06619700.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Visit to CSCS, Itam</h3>
+                        <p class="timeline-description">
+                            Sharing our vision and resources at CSCS, Itam. A powerful day of engagement, prayer, and empowerment.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <a href="Visit-to-CSCS-Obot-Ideng-2024.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.40.58_b9037065.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.38_2baa03f2.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.06_c1ca1fcc.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Visit to CSCS Obot Ideng</h3>
+                        <p class="timeline-description">
+                            Our journey continued at CSCS Obot Ideng, where we connected with bright minds and shared the message of hope.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <a href="Visit-to-Otop-Christian-High-School-Ikot-Ukpong-Eren-Oruk-Anam-2025.html" class="timeline-card-link">
+                    <div class="timeline-image-stack">
+                        <div class="stacked-card card-3" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.05_fea98dcb.jpg');"></div>
+                        <div class="stacked-card card-2" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.49_a10e3be9.jpg');"></div>
+                        <div class="stacked-card card-1" style="background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.46_8da20275.jpg');"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Inspiring Minds at Otop Christian High</h3>
+                        <p class="timeline-description">
+                            A memorable visit to Otop Christian High School in Ikot Ukpong Eren Oruk Anam. We shared resources, guidance, and the joy of community building with the students and staff.
+                        </p>
+                        <span class="see-all-btn">See All Photos &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </section>
 
-    <footer class="footer-section">
+    <footer class="footer-section" id="footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <h2>Learn With Ease</h2>
-                        <span class="logo-underline"></span>
+                        <h2>Learning With Ease</h2>
                     </div>
                     <p class="footer-description">
-                        Empowering students and educators with innovative learning solutions. Our mission is to make quality education accessible and engaging for everyone.
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
                     </p>
                     <div class="footer-social">
-                        <a href="#" class="social-link" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-
+                
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="Our-Impact.html">Our Impact</a></li>
-                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            <li><a href="impact.html">Our Impact</a></li>
+                            <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
                         </ul>
                     </div>
-
+                    
                     <div class="footer-column">
-                        <h4>Get In Touch</h4>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Akwa Ibom State, Nigeria</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span><a href="mailto:info@learnwithease.com" style="color: inherit; text-decoration: none;">info@learnwithease.com</a></span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span><a href="tel:+2340000000000" style="color: inherit; text-decoration: none;">+234 (0) 000 000 0000</a></span>
-                        </div>
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>learningwitheaseinitiative@gmail.com</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p class="copyright">&copy; 2025 Learn With Ease. All rights reserved.</p>
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
+                    </p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Service</a>
@@ -860,18 +1003,71 @@
         </div>
     </footer>
 
+
     <script>
+        /* * ===================================================================
+         * JAVASCRIPT
+         * ===================================================================
+         */
+    
+        // --- Mobile Menu Functionality ---
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
         }
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.remove('active');
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenu && mobileMenuBtn && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // --- Smooth Scrolling for Anchor Links (for this page) ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault(); 
+                    return;
+                }
+                
+                if (this.hostname === window.location.hostname && this.pathname === window.location.pathname) {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             });
         });
+
+        // --- Set Current Year in Footer ---
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // --- Intersection Observer for Footer Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.getElementById('footer');
+            if (footer) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('visible');
+                            footerObserver.unobserve(footer);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                footerObserver.observe(footer);
+            }
+        });
+
     </script>
 </body>
 </html>
