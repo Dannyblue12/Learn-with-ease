@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Gallery: Visit to Community Secondary School Aka Offot, 2023 - Learning Made Easy</title>
+  <title>Photo Gallery: Visit to Community Secondary School Aka Offot, 2023 - Learning With Ease</title>
   <style>
     /* * ===================================================================
        * START: BASE & REUSED STYLES
@@ -28,6 +28,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: white;
     }
 
     .logo {
@@ -326,184 +327,6 @@
       to { transform: scale(1); }
     }
 
-    /* * ===================================================================
-       * START: FOOTER
-       * =================================================================== */
-
-    .footer-section {
-      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-      color: white;
-      position: relative;
-      padding: 4rem 0 2rem;
-      margin-top: 0;
-      display: block;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.5s ease-out;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .footer-brand {
-      max-width: 400px;
-    }
-
-    .footer-logo h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: white;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-logo h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      border-radius: 2px;
-    }
-
-    .logo-underline {
-      display: none;
-    }
-
-    .footer-description {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .social-link:hover {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      border-color: #3b82f6;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-    }
-
-    .footer-column h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: white;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-column h4::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      border-radius: 1px;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-column ul li a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      position: relative;
-      padding-left: 15px;
-    }
-
-    .footer-column ul li a::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      opacity: 0;
-      transition: all 0.3s ease;
-      color: #3b82f6;
-    }
-
-    .footer-column ul li a:hover {
-      color: white;
-      padding-left: 20px;
-    }
-
-    .footer-column ul li a:hover::before {
-      opacity: 1;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.95rem;
-    }
-
-    .footer-bottom {
-      padding-top: 2rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-    }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       .nav-menu {
@@ -534,15 +357,6 @@
         font-size: clamp(1.75rem, 4vw, 2.5rem);
       }
 
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .footer-links {
-        grid-template-columns: 1fr;
-      }
-
       #close-lightbox {
         top: 1rem;
         right: 1rem;
@@ -552,15 +366,20 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
-    <div class="logo">Learning Made Easy</div>
+    <div class="logo">Learning With Ease</div>
     <nav class="nav-menu">
-      <a href="#home">Home</a>
-      <a href="#gallery" class="active">Gallery</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="impact.html">Our Impact</a>
+      <a href="photo-gallery.html" class="active">Photo Gallery</a>
+      <a href="partnership.html">Partnership</a>
     </nav>
+    
+    <a href="contact.html" style="text-decoration: none;">
+        <button class="contact-btn">Contact Us</button>
+    </a>
+
     <button class="mobile-menu-btn" id="mobile-menu-btn">
       <div class="hamburger">
         <span></span>
@@ -570,16 +389,18 @@
     </button>
     <nav class="mobile-menu" id="mobile-menu">
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery" class="active">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="impact.html">Our Impact</a></li>
+        <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+        <li><a href="partnership.html">Partnership</a></li>
       </ul>
-      <button class="mobile-contact-btn">Contact Us</button>
+      <a href="contact.html" style="text-decoration: none;">
+        <button class="mobile-contact-btn">Contact Us</button>
+      </a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="gallery-hero" id="gallery">
     <div class="gallery-hero-content">
       <p class="gallery-hero-context">School Visit - 2023</p>
@@ -588,155 +409,165 @@
     </div>
   </section>
 
-  <!-- Gallery Grid -->
   <div class="gallery-container">
-    <!-- Image 1: School supplies and materials -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="School supplies and educational materials">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg" alt="School supplies and educational materials">
     </div>
 
-    <!-- Image 2: Guest speaker at the school -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Guest speaker engaging with students">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg" alt="Guest speaker engaging with students">
     </div>
 
-    <!-- Image 3: Community leaders engagement -->
-    <div class="gallery-item h-span" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Community leaders at the school visit">
+    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg" alt="Community leaders at the school visit">
     </div>
 
-    <!-- Image 4: Teacher with students in classroom -->
-    <div class="gallery-item v-span" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Teacher engagement with students">
+    <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.50_544878e3.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.50_544878e3.jpg" alt="Teacher engagement with students">
     </div>
 
-    <!-- Image 5: Student engagement -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Enthusiastic student participation">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.53_56bdf8f2.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.53_56bdf8f2.jpg" alt="Enthusiastic student participation">
     </div>
 
-    <!-- Image 6: Speakers addressing students -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Speaker addressing the audience">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.54_483a943e.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.54_483a943e.jpg" alt="Speaker addressing the audience">
     </div>
 
-    <!-- Image 7: Student receiving educational materials -->
-    <div class="gallery-item h-span" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Students receiving educational resources">
+    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.55_fea54c52.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.55_fea54c52.jpg" alt="Students receiving educational resources">
     </div>
 
-    <!-- Image 8: Students in uniform standing attentively -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Students in uniform attentively listening">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.59_ec57e5e1.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.59_ec57e5e1.jpg" alt="Students in uniform attentively listening">
     </div>
 
-    <!-- Image 9: Speaker presenting to audience -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Speaker with microphone addressing audience">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.00_e37d2013.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.00_e37d2013.jpg" alt="Speaker with microphone addressing audience">
     </div>
 
-    <!-- Image 10: Female speaker with microphone -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Female speaker with microphone">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.01_72b53db6.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.01_72b53db6.jpg" alt="Female speaker with microphone">
     </div>
 
-    <!-- Image 11: Speaker with books and supplies -->
-    <div class="gallery-item v-span" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Speaker presenting with educational materials">
+    <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.03_cc19b896.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.03_cc19b896.jpg" alt="Speaker presenting with educational materials">
     </div>
 
-    <!-- Image 12: Event badges and credentials -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Event credentials and learning materials">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.04_0338c39e.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.04_0338c39e.jpg" alt="Event credentials and learning materials">
     </div>
 
-    <!-- Image 13: Students in classroom engaged in learning -->
-    <div class="gallery-item h-span" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Large classroom assembly with students engaged">
+    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.06_36b798dd.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.06_36b798dd.jpg" alt="Large classroom assembly with students engaged">
     </div>
 
-    <!-- Image 14: Organizers at the event -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Event organizers and coordinators">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.07_a54426ca.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.07_a54426ca.jpg" alt="Event organizers and coordinators">
     </div>
 
-    <!-- Image 15: Staff organizing event materials -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Staff member with materials and resources">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.09_1f3a0354.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.09_1f3a0354.jpg" alt="Staff member with materials and resources">
     </div>
 
-    <!-- Image 16: Speaker engaging with audience -->
-    <div class="gallery-item" onclick="openLightbox('/images/whatsapp-20image-202025-08-14-20at-2019.jpg')">
-      <img src="/images/whatsapp-20image-202025-08-14-20at-2019.jpg" alt="Speaker engaging with the audience">
+    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.12_cdef10aa.jpg')">
+      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.12_cdef10aa.jpg" alt="Speaker engaging with the audience">
     </div>
 
-    <!-- Image 17: Two women addressing the audience -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.30_4bd74301.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.30_4bd74301.jpg" alt="Two speakers presenting to audience">
     </div>
 
-    <!-- Image 18: Woman in vibrant outfit with badge -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.32_dd97ed5d.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.32_dd97ed5d.jpg" alt="Woman in traditional attire with event credentials">
     </div>
 
-    <!-- Image 19: Large student assembly in classroom -->
     <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.34_ef234015.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.34_ef234015.jpg" alt="Full assembly of students in bright classroom">
     </div>
 
-    <!-- Image 20: Man presenting at lectern -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.36_0ed82ad2.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.36_0ed82ad2.jpg" alt="Man presenting materials at lectern">
     </div>
 
-    <!-- Image 21: Group photo with LME Initiative banner -->
     <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.37_28edb899.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.37_28edb899.jpg" alt="Group photo with staff and students holding LME Initiative banner">
     </div>
 
-    <!-- Image 22: Panel discussion at event -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.39_85485667.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.39_85485667.jpg" alt="Panel discussion with speakers at table">
     </div>
 
-    <!-- Image 23: Presenter handing materials to student -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.41_f2d00987.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.41_f2d00987.jpg" alt="Student presentation or speech">
     </div>
 
-    <!-- Image 24: Large group assembly photo -->
     <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.46_be76b2a4.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.46_be76b2a4.jpg" alt="Large group assembly of students and staff">
     </div>
 
-    <!-- Image 25: Speaker sharing message -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.48_7744f5f9.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.48_7744f5f9.jpg" alt="Speaker sharing message with audience">
     </div>
 
-    <!-- Image 26: Student interaction during event -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.50_f2a5431d.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.50_f2a5431d.jpg" alt="Student interaction during event">
     </div>
 
-    <!-- Image 27: Learning materials distribution -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.52_5216e018.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.52_5216e018.jpg" alt="Learning materials being distributed">
     </div>
 
-    <!-- Image 28: Closing remarks and appreciation -->
     <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.53_7422d58f.jpg')">
       <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.53_7422d58f.jpg" alt="Closing remarks and appreciation">
     </div>
   </div>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span id="close-lightbox">&times;</span>
     <div class="lightbox-content">
-      <img id="lightbox-image" src="/placeholder.svg" alt="Enlarged gallery image">
+      <img id="lightbox-image" src="" alt="Enlarged gallery image">
     </div>
   </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeLightbox = document.getElementById('close-lightbox');
+
+    // Function called by onclick events in HTML
+    function openLightbox(imageUrl) {
+      lightboxImage.src = imageUrl;
+      lightbox.classList.add('active');
+    }
+
+    // Close button click
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    // Close when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
