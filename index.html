@@ -697,7 +697,9 @@
             transform-style: preserve-3d;
             /* Ensure the front card is NOT tilted and centered */
             transform: translate3d(0, 0, 0) rotate(0deg);
-            background-size: cover;
+            /* Updated background properties for full view */
+            background-size: contain; 
+            background-repeat: no-repeat;
             background-position: center;
         }
         
@@ -715,8 +717,9 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             z-index: -1;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* Set background image properties */
-            background-size: cover;
+            /* Updated background properties for full view */
+            background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
         }
 
@@ -1655,14 +1658,6 @@
             margin-top: 2.5rem;
             padding-top: 2rem;
             border-top: 1px solid #e2e8f0;
-        }
-
-        .cta-text {
-            font-size: 1.1rem;
-            color: #2d3748;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .cta-button {
@@ -4250,9 +4245,9 @@
                     
                     // Toggle current item
                     if (isActive) {
-                        item.classList.remove('active');
-                    } else {
                         item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
                     }
                 });
             });
