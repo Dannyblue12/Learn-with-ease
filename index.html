@@ -668,7 +668,7 @@
             background: rgba(255, 255, 255, 0.7);
         }
 
-        /* See More Card Styling */
+        /* See More Card Styling - Stacked Effect */
         .see-more-card {
             position: absolute;
             top: -5px; /* Position at the very top of overlay */
@@ -680,6 +680,7 @@
             z-index: 10;
             opacity: 0.9;
             transition: all 0.3s ease;
+            text-decoration: none; /* Ensure the link doesn't look like a standard link */
         }
 
         .see-more-image-card {
@@ -692,7 +693,64 @@
             backdrop-filter: blur(5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
+            /* Added for 3D stacking perspective */
+            transform-style: preserve-3d;
+            /* Ensure the front card is NOT tilted and centered */
+            transform: translate3d(0, 0, 0) rotate(0deg);
+            background-size: cover;
+            background-position: center;
         }
+        
+        /* Pseudo-elements for stacked effect (Image 2 and Image 3) */
+        .see-more-image-card::before,
+        .see-more-image-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1); /* Subtle placeholder color */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Set background image properties */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Back Card 1 (::before) - Slightly offset bottom-right and rotated */
+        .see-more-image-card::before {
+            transform: translate3d(5px, 5px, -5px) rotate(3deg);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Back Card 2 (::after) - Slightly more offset bottom-right and rotated */
+        .see-more-image-card::after {
+            transform: translate3d(10px, 10px, -10px) rotate(6deg);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hover effect on the stack - only the background cards move */
+        .see-more-card:hover .see-more-image-card {
+             transform: scale(1.05); /* Only scale the front card slightly */
+             box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+        }
+        .see-more-card:hover .see-more-image-card::before {
+            transform: translate3d(8px, 8px, -5px) rotate(5deg);
+        }
+        .see-more-card:hover .see-more-image-card::after {
+            transform: translate3d(14px, 14px, -10px) rotate(10deg);
+        }
+
+        .see-more-card:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
 
         .see-more-text {
             color: white;
@@ -709,39 +767,54 @@
             transition: transform 0.3s ease;
         }
 
-        .see-more-card:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .see-more-card:hover .see-more-image-card {
-            transform: scale(1.05);
-            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
-        }
-
         .see-more-card:hover .arrow {
             transform: translateX(3px);
         }
 
         /* Specific images for each journey slide's see-more-image-card */
+        
+        /* Slide 0: Visit to Secondary School, Etoi 2022 */
         .journey-slide[data-slide="0"] .see-more-image-card {
-            background: url('text-behind-image (3).png') center/cover,
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.01_a74382ea.jpg');
+        }
+        .journey-slide[data-slide="0"] .see-more-image-card::before { 
+            background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.02_488e565f.jpg'); 
+        }
+        .journey-slide[data-slide="0"] .see-more-image-card::after { 
+            background-image: url('Visit to Secondary School Etoi, 2022/WhatsApp Image 2025-08-14 at 19.36.04_63dccdf0.jpg'); 
         }
 
+        /* Slide 1: Visit to Community Secondary School Aka Offot 2023 */
         .journey-slide[data-slide="1"] .see-more-image-card {
-            background: url('WhatsApp Image 2025-08-14 at 19.37.15_3f09fe9c.jpg') center/cover,
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg');
+        }
+        .journey-slide[data-slide="1"] .see-more-image-card::before { 
+            background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg'); 
+        }
+        .journey-slide[data-slide="1"] .see-more-image-card::after { 
+            background-image: url('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg'); 
         }
 
+        /* Slide 2: Visit to Christian Commercial School 2023 */
         .journey-slide[data-slide="2"] .see-more-image-card {
-            background: url('WhatsApp Image 2025-08-14 at 19.39.23_cb9673fa.jpg') center/cover,
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.13_39e59224.jpg');
+        }
+        .journey-slide[data-slide="2"] .see-more-image-card::before { 
+            background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.16_c3f37f9c.jpg'); 
+        }
+        .journey-slide[data-slide="2"] .see-more-image-card::after { 
+            background-image: url('Visit to Christian Commercial School, 2023/WhatsApp Image 2025-08-14 at 19.38.17_5378d3e7.jpg'); 
         }
 
+        /* Slide 3: Visit to CSCS Obot Ideng 2024 */
         .journey-slide[data-slide="3"] .see-more-image-card {
-            background: url('WhatsApp Image 2025-08-14 at 19.40.58_a35c2ce7.jpg') center/cover,
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.40.56_34860929.jpg');
+        }
+        .journey-slide[data-slide="3"] .see-more-image-card::before { 
+            background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.40.58_b9037065.jpg'); 
+        }
+        .journey-slide[data-slide="3"] .see-more-image-card::after { 
+            background-image: url('Visit to CSCS Obot Ideng, 2024/WhatsApp Image 2025-08-14 at 19.41.00_3df9ecd7.jpg'); 
         }
 
         /* Responsive Design for Our Impacts */
@@ -843,6 +916,21 @@
             .see-more-image-card {
                 width: 60px;
                 height: 45px;
+                transform: none; /* Ensure no tilt on mobile front card */
+            }
+            
+            /* Mobile Stacked Card adjustment */
+            .see-more-image-card::before {
+                transform: translate3d(4px, 4px, -5px) rotate(3deg);
+            }
+            .see-more-image-card::after {
+                transform: translate3d(8px, 8px, -10px) rotate(6deg);
+            }
+            .see-more-card:hover .see-more-image-card::before {
+                transform: translate3d(6px, 6px, -5px) rotate(5deg);
+            }
+            .see-more-card:hover .see-more-image-card::after {
+                transform: translate3d(10px, 10px, -10px) rotate(10deg);
             }
 
             .see-more-text {
@@ -2598,6 +2686,7 @@
             }
 
             .footer-links {
+                grid-template-columns: 1.5fr 1fr; /* Adjust for better stacking in mobile */
                 gap: 1.5rem;
             }
 
@@ -2620,7 +2709,7 @@
             }
         }
 
-        /* Footer Responsive Design */
+        /* Footer Visibility - Controlled by JavaScript */
         @media (max-width: 1024px) {
             .footer-top {
                 grid-template-columns: 1fr;
@@ -2725,8 +2814,6 @@
                 height: 80px;
             }
         }
-
-        /* Footer Visibility - Controlled by JavaScript */
     </style>
 </head>
 <body>
@@ -3058,12 +3145,12 @@
                                 <h3>Visit to Secondary School, Etoi</h3>
                                 <p>Our inaugural outreach program marked the beginning of our mission to transform young lives.</p>
                             </div>
-                            <div class="see-more-card">
+                            <a href="Visit-to-Secondary-School-Etoi-2022.html" class="see-more-card">
                                 <div class="see-more-image-card"></div>
                                 <div class="see-more-text">
                                     See More Images <span class="arrow">→</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3079,12 +3166,12 @@
                                 <h3>Visit to Community Secondary School Aka Offot</h3>
                                 <p>Building on our success, we expanded our reach focusing on character development and moral education.</p>
                             </div>
-                            <div class="see-more-card">
+                            <a href="Visit-to-Community-Secondary-School-Aka-Offot-2023.html" class="see-more-card">
                                 <div class="see-more-image-card"></div>
                                 <div class="see-more-text">
                                     See More <span class="arrow">→</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3100,12 +3187,12 @@
                                 <h3>Visit to Christian Commercial School</h3>
                                 <p>We emphasized combining faith with education through leadership development and career guidance.</p>
                             </div>
-                            <div class="see-more-card">
+                            <a href="Visit-to-Christian-Commercial-School-2023.html" class="see-more-card">
                                 <div class="see-more-image-card"></div>
                                 <div class="see-more-text">
                                     See More <span class="arrow">→</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3121,12 +3208,12 @@
                                 <h3>Visit to CSCS Obot Ideng</h3>
                                 <p>Our most recent outreach represents the culmination of our growing impact and holistic approach.</p>
                             </div>
-                            <div class="see-more-card">
+                            <a href="Visit-to-CSCS-Obot-Ideng-2024.html" class="see-more-card">
                                 <div class="see-more-image-card"></div>
                                 <div class="see-more-text">
                                     See More <span class="arrow">→</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3614,37 +3701,6 @@
                 return;
             }
 
-            // Disabled ScrollTrigger to prevent conflicts with wheel event handling
-            // gsap.registerPlugin(ScrollTrigger);
-
-            // ScrollTrigger disabled - using wheel events only for better control
-            // ScrollTrigger.create({
-            //     trigger: ".our-journey-slides-section",
-            //     start: "top top",
-            //     end: "bottom top",
-            //     pin: true,
-            //     pinSpacing: false,
-            //     onUpdate: (self) => {
-            //         const progress = self.progress;
-            //         let slideIndex;
-            //         
-            //         // Divide progress into equal segments for each slide
-            //         if (progress < 0.25) {
-            //             slideIndex = 0;
-            //         } else if (progress < 0.5) {
-            //             slideIndex = 1;
-            //         } else if (progress < 0.75) {
-            //             slideIndex = 2;
-            //         } else {
-            //             slideIndex = 3;
-            //         }
-            //         
-            //         if (slideIndex !== currentJourneySlide) {
-            //             updateJourneySlide(slideIndex);
-            //         }
-            //     }
-            // });
-            
             // Optimized wheel event for smooth and responsive navigation
             let wheelTimeout;
             let lastWheelTime = 0;
@@ -3658,7 +3714,7 @@
                 const currentTime = Date.now();
                 
                 if (isVisible && !isJourneyScrolling && (currentTime - lastWheelTime) > wheelCooldown) {
-                    // Always prevent default when in the journey section
+                    // Always prevent default when in the journey section to handle navigation
                     e.preventDefault();
                     
                     // Clear any existing timeout to prevent rapid firing
@@ -3670,11 +3726,12 @@
                     
                     wheelTimeout = setTimeout(() => {
                         if (scrollDirection > 0) {
-                            // Scrolling down - move to next slide if available
+                            // Scrolling down
                             if (currentJourneySlide < journeySlides.length - 1) {
+                                // Not on the last slide, advance slide
                                 moveJourneySlider(1);
                             } else {
-                                // On last slide (4th image), sections are already visible, allow scrolling to See More Experiences
+                                // On the last slide, release scroll lock to proceed to sections below
                                 const seeMoreSection = document.querySelector('.see-more-experiences-section');
                                 if (seeMoreSection && seeMoreSection.classList.contains('visible')) {
                                     seeMoreSection.scrollIntoView({ behavior: 'smooth' });
@@ -3704,14 +3761,14 @@
                             if (currentJourneySlide >= 1) {
                                 // When on slides 1, 2, or 3 (2nd, 3rd, or 4th image), scroll up ONLY goes to previous image
                                 // This BLOCKS scrolling to "Our Journey" heading when on these images
-                                e.preventDefault(); // Explicitly prevent default scroll behavior
+                                // e.preventDefault() already called at the start
                                 e.stopPropagation(); // Stop event from bubbling up
                                 moveJourneySlider(-1);
                                 // Prevent any further scroll handling
                                 return;
                             } else if (currentJourneySlide === 0) {
                                 // ONLY when on slide 0 (1st image), allow scrolling up to exit the section
-                                e.preventDefault(); // Prevent default to control the scroll behavior
+                                // e.preventDefault() already called at the start
                                 const journeySection = document.querySelector('.our-journey-slides-section');
                                 if (journeySection) {
                                     const targetY = journeySection.offsetTop - window.innerHeight;
@@ -3770,30 +3827,19 @@
                 lastWheelTime = currentTime;
 
                 if (diffY > 0) {
-                    // Swipe up => on first slide, require reaching bottom before advancing
-                    if (currentJourneySlide === 0) {
-                        const journeySection = document.querySelector('.our-journey-slides-section');
-                        if (journeySection) {
-                            const sectionBottom = journeySection.offsetTop + journeySection.offsetHeight;
-                            const viewportBottom = window.scrollY + window.innerHeight;
-                            const atBottom = viewportBottom >= sectionBottom - 10; // small threshold buffer
-                            if (!atBottom) {
-                                window.scrollTo({ top: sectionBottom - window.innerHeight, behavior: 'smooth' });
-                                return; // must reach bottom first; then user can swipe again to advance
-                            }
-                        }
-                    }
-                    // Proceed with normal advancement if not first slide or already at bottom
+                    // Swipe up (Scroll Down)
                     if (currentJourneySlide < journeySlides.length - 1) {
+                        // Not on the last slide, advance slide
                         moveJourneySlider(1);
                     } else {
+                         // On the last slide, release scroll lock to proceed to sections below
                         const seeMoreSection = document.querySelector('.see-more-experiences-section');
                         if (seeMoreSection && seeMoreSection.classList.contains('visible')) {
                             seeMoreSection.scrollIntoView({ behavior: 'smooth' });
                         }
                     }
                 } else {
-                    // Swipe down => go to previous image, or exit from first to heading
+                    // Swipe down (Scroll Up)
                     const faqSection = document.querySelector('.faq-section');
                     const contactSection = document.querySelector('.contact-section');
                     const isFAQVisible = faqSection && faqSection.classList.contains('visible');
@@ -3826,31 +3872,40 @@
                 }
             }, { passive: true });
 
-            // Global scroll prevention for Our Journey section
+            // Global scroll prevention for Our Journey section - FIX FOR GLITCH
             window.addEventListener('scroll', (e) => {
-                const rect = journeySlidesSection.getBoundingClientRect();
-                const isJourneySectionVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+                const journeySection = document.querySelector('.our-journey-slides-section');
+                if (!journeySection) return;
                 
-                // If we're in the Our Journey section and on slides 1-3 (images 2-4)
-                if (isJourneySectionVisible && currentJourneySlide >= 1) {
-                    const journeySection = document.querySelector('.our-journey-slides-section');
-                    if (journeySection) {
-                        const sectionTop = journeySection.offsetTop;
-                        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        
-                        // If user tries to scroll above the Our Journey section while on slides 1-3
-                        if (currentScrollTop < sectionTop) {
-                            // Force scroll back to the Our Journey section
-                            window.scrollTo({
-                                top: sectionTop,
-                                behavior: 'auto' // Use auto to prevent smooth scrolling conflicts
-                            });
-                        }
+                const rect = journeySection.getBoundingClientRect();
+                const sectionTop = journeySection.offsetTop;
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Condition 1: Check if we are past the expected pinned position while on slides 1-3
+                // Check if the current scroll is above the section's top, and we should be pinned
+                if (currentJourneySlide >= 1 && currentScrollTop < sectionTop) {
+                    // Force scroll back down to the section's top to hide the white space
+                    window.scrollTo({
+                        top: sectionTop,
+                        behavior: 'auto'
+                    });
+                }
+                
+                // Condition 2: Prevent scrolling up past the journey section when we're supposed to be pinned, 
+                // especially when returning from sections below (FAQ/Contact).
+                // If we are on the last slide (slide 3) and the sections below are still visible, 
+                // the scroll handler for FAQ/Contact exit should handle it, but this is a safety.
+                if (currentJourneySlide >= 0 && rect.top > 0) { // If top is showing white space above (i.e. rect.top > 0)
+                    // If we are on slides 1, 2, or 3, we MUST stay pinned
+                    if (currentJourneySlide >= 1) {
+                        window.scrollTo({
+                            top: sectionTop,
+                            behavior: 'auto'
+                        });
                     }
                 }
-            }, { passive: false });
 
-            // Don't set initial GSAP styles - let our initJourneySlides handle it
+            }, { passive: false });
         }
 
         // Fallback basic animations if GSAP is not available
@@ -4156,7 +4211,7 @@
                     if (e.deltaY < 0 && faqSection.scrollTop === 0) {
                         e.preventDefault();
                         
-                        // Hide FAQ and return to last journey slide (4th image)
+                        // Hide subsequent sections and transition back to the journey slide
                         hideFAQSection();
                         
                         // Ensure we're on the last slide and scroll to journey section
@@ -4339,4 +4394,3 @@
 </body>
 
 </html>
-
