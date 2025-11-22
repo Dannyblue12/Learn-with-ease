@@ -345,6 +345,12 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
+            /* Ensure the content inside (if any) allows interaction */
+            pointer-events: none;
+        }
+        
+        .slider-card * {
+            pointer-events: none;
         }
 
         .slider-card:hover {
@@ -406,6 +412,7 @@
             font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+            pointer-events: auto; /* Buttons must be clickable */
         }
 
         .slider-btn:hover {
@@ -2156,7 +2163,8 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             display: flex;
-            align-items: center;
+            /* Ensure alignment allows for responsive details */
+            align-items: flex-start;
             gap: 1.5rem;
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
@@ -2166,6 +2174,36 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
             background: white;
+        }
+        
+        /* Flex setup for contact details to handle long text wrapping */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            /* Allow text inside to wrap */
+            min-width: 0; 
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a202c;
+            margin: 0 0 0.5rem 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            /* Break word to ensure long emails fit */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .contact-details p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin: 0 0 0.25rem 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 500;
+            /* Break word to ensure long emails fit */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .contact-icon {
@@ -2178,22 +2216,6 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-        }
-
-        .contact-details h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #1a202c;
-            margin: 0 0 0.5rem 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .contact-details p {
-            font-size: 0.95rem;
-            color: #4a5568;
-            margin: 0 0 0.25rem 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 500;
         }
 
         .contact-description {
@@ -2352,6 +2374,14 @@
             .contact-card {
                 padding: 1.5rem;
                 gap: 1.5rem;
+                /* Reset alignment for mobile stack */
+                align-items: center; 
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-details {
+                text-align: center;
             }
 
             .contact-form-section {
@@ -2821,6 +2851,7 @@
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="impact.html">Impact</a></li>
                 <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                <!-- UPDATED: FAQS changed to Partnership -->
                 <li><a href="partnership.html">Partnership</a></li>
             </nav>
             
@@ -2840,6 +2871,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="impact.html">Impact</a></li>
                     <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                    <!-- UPDATED: FAQS changed to Partnership -->
                     <li><a href="partnership.html">Partnership</a></li>
                 </ul>
                 <button class="mobile-contact-btn">Contact Us</button>
@@ -2959,7 +2991,8 @@
                     <div class="collage-container">
                         <!-- First image - moderate size, left side -->
                         <div class="image-item first-image">
-                            <img src="WhatsApp Image 2025-08-14 at 19.40.58_a35c2ce7.jpg" alt="Outreach Activity 1" />
+                            <!-- UPDATED: Fixed image link for Outreach Activity 1 -->
+                            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg" alt="Outreach Activity 1" />
                         </div>
                         <!-- Second image - largest, next to first -->
                         <div class="image-item second-image">
@@ -3441,8 +3474,8 @@
                         <ul>
                             <li><a href="#home">Home</a></li>
                             <li><a href="#objectives">Core Objectives</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#impact">Our Impact</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="impact.html">Our Impact</a></li>
                             <li><a href="#resources">Resources</a></li>
                         </ul>
                     </div>
@@ -3452,7 +3485,7 @@
                         <ul>
                             <li><a href="#volunteer">Volunteer</a></li>
                             <li><a href="#donate">Donate</a></li>
-                            <li><a href="#partnership">Partnership</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
                             <li><a href="#events">Events</a></li>
                             <li><a href="#newsletter">Newsletter</a></li>
                         </ul>
@@ -3627,6 +3660,8 @@
             
             stopAutoPlay();
             slider.style.cursor = 'grabbing';
+            // Prevent text selection during drag
+            document.body.style.userSelect = 'none'; 
         }
 
         function drag(e) {
@@ -3644,6 +3679,7 @@
             
             isDragging = false;
             slider.style.cursor = 'grab';
+            document.body.style.userSelect = ''; // Restore default text selection
             
             const deltaX = currentX - startX;
             const threshold = 50;
@@ -3655,6 +3691,7 @@
                     moveSlider(1);
                 }
             } else {
+                // If not a significant drag, revert to original position
                 updateSlider();
             }
             
@@ -4389,5 +4426,3 @@
 </body>
 
 </html>
-
-
