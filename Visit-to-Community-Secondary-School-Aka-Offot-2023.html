@@ -1,573 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Gallery: Visit to Community Secondary School Aka Offot, 2023 - Learning With Ease</title>
-  <style>
-    /* * ===================================================================
-       * START: BASE & REUSED STYLES
-       * =================================================================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery: Otop Christian High School, 2025 - Learning With Ease</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ===================================================================
+         * START: BASE & REUSED STYLES
+         * ===================================================================
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      background: white;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white;
+            overflow-x: hidden;
+        }
 
-    /* Header Styles */
-    .header {
-      position: relative;
-      z-index: 10;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-    }
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: #000;
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
 
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2.5rem;
-      align-items: center;
-    }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
 
-    .nav-menu a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 400;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
 
-    .nav-menu a:hover {
-      color: #1e40af;
-    }
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+        
+        .nav-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
 
-    .nav-menu a.active {
-      color: #1e40af;
-      font-weight: 600;
-    }
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    .contact-btn {
-      background: #1e40af;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
 
-    .contact-btn:hover {
-      background: #1e3a8a;
-    }
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-    /* Mobile Menu */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
 
-    .hamburger {
-      width: 24px;
-      height: 18px;
-      position: relative;
-    }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
 
-    .hamburger span {
-      display: block;
-      height: 2px;
-      width: 100%;
-      background: #000;
-      margin: 4px 0;
-      transition: 0.3s;
-    }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
 
-    .mobile-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      z-index: 20;
-    }
+        .mobile-menu.active {
+            display: block;
+        }
 
-    .mobile-menu.active {
-      display: block;
-    }
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
 
-    .mobile-menu ul {
-      list-style: none;
-      padding: 1rem 0;
-    }
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
 
-    .mobile-menu li {
-      padding: 0.75rem 2rem;
-    }
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .mobile-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
 
-    .mobile-menu a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 400;
-    }
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+            text-align: center;
+        }
 
-    .mobile-menu a.active {
-      color: #1e40af;
-      font-weight: 600;
-    }
+        /* --- Gallery Hero Section --- */
+        .gallery-hero {
+            text-align: center;
+            padding: 4rem 2rem 5rem;
+            background: white;
+            position: relative;
+        }
+        
+        .gallery-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.05) 0%,
+                rgba(59, 130, 246, 0.02) 50%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gallery-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .mobile-contact-btn {
-      margin: 1rem 2rem;
-      background: #1e40af;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      width: calc(100% - 4rem);
-      text-align: center;
-    }
+        .gallery-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
 
-    /* * ===================================================================
-       * END: BASE & REUSED STYLES
-       * =================================================================== */
+        .gallery-hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .gallery-hero-context {
+            font-size: 0.9rem;
+            color: #1e40af;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    /* * ===================================================================
-       * START: GALLERY PAGE-SPECIFIC STYLES
-       * =================================================================== */
+        /* --- Creative Gallery Grid --- */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px; 
+            grid-auto-flow: dense; 
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 1rem;
+            overflow: hidden; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 5;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
 
-    /* --- Gallery Hero Section --- */
-    .gallery-hero {
-      text-align: center;
-      padding: 4rem 2rem 5rem;
-      background: white;
-      position: relative;
-    }
+        .gallery-item:hover img {
+            transform: scale(1.1); 
+        }
+        
+        /* Creative span rules for mosaic */
+        .gallery-item.v-span {
+             grid-row: span 2;
+             height: 516px; /* 250*2 + 16px gap */
+        }
+        
+        .gallery-item.h-span {
+            grid-column: span 2;
+        }
+        
+        /* --- Lightbox Styles --- */
+        .lightbox {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .lightbox-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 90vh; 
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        
+        #close-lightbox {
+            position: absolute;
+            top: 1.5rem;
+            right: 2.5rem;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            line-height: 1;
+            z-index: 1001;
+        }
+        
+        #close-lightbox:hover {
+            transform: scale(1.1);
+            color: #ccc;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
 
-    .gallery-hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 60%;
-      height: 100%;
-      background: radial-gradient(
-        ellipse 100% 120% at 100% 0%,
-        rgba(30, 64, 175, 0.08) 0%,
-        rgba(30, 64, 175, 0.03) 50%,
-        transparent 100%
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
+        /* --- Footer --- */
+        .footer-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            position: relative;
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-    .gallery-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .gallery-hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 500;
-      color: #000;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    .gallery-hero-subtitle {
-      font-size: 1.125rem;
-      color: #6b7280;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-    .gallery-hero-context {
-      font-size: 0.9rem;
-      color: #1e40af;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        .footer-brand {
+            max-width: 400px;
+        }
 
-    /* --- Creative Gallery Grid --- */
-    .gallery-container {
-      max-width: 1400px;
-      margin: 0 auto 5rem;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-auto-rows: 250px;
-      grid-auto-flow: dense;
-      gap: 1rem;
-    }
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
 
-    .gallery-item {
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: box-shadow 0.3s ease;
-      cursor: pointer;
-    }
+        .footer-logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
 
-    .gallery-item:hover {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      z-index: 5;
-    }
+        .footer-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
 
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
 
-    /* Creative span rules for mosaic */
-    .gallery-item.v-span {
-      grid-row: span 2;
-      height: 516px;
-    }
+        .social-link:hover {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
 
-    .gallery-item.h-span {
-      grid-column: span 2;
-    }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
 
-    /* --- Lightbox Styles --- */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(8px);
-      animation: fadeIn 0.3s ease;
-    }
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
 
-    .lightbox.active {
-      display: flex;
-    }
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 1px;
+        }
 
-    .lightbox-content {
-      max-width: 90%;
-      max-height: 90%;
-      animation: zoomIn 0.3s ease;
-      position: relative;
-    }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    .lightbox-content img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 90vh;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    }
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
 
-    #close-lightbox {
-      position: absolute;
-      top: 1.5rem;
-      right: 2.5rem;
-      color: #fff;
-      font-size: 3rem;
-      font-weight: 300;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      line-height: 1;
-      z-index: 1001;
-    }
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
 
-    #close-lightbox:hover {
-      transform: scale(1.1);
-      color: #ccc;
-    }
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
 
-    @keyframes zoomIn {
-      from { transform: scale(0.9); }
-      to { transform: scale(1); }
-    }
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
+        .contact-item {
+            display: flex;
+            align-items: flex-start; 
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i { 
+            color: #3b82f6;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 1.25em;
+            text-align: center;
+            padding-top: 3px; 
+        }
+        
+        .contact-item span {
+            line-height: 1.5; 
+        }
 
-      .mobile-menu-btn {
-        display: block;
-      }
+        .footer-bottom {
+            padding: 2rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-      .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-auto-rows: 200px;
-        gap: 0.75rem;
-        padding: 0 1rem;
-      }
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-      .gallery-item.v-span {
-        grid-row: span 1;
-        height: auto;
-      }
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
 
-      .gallery-item.h-span {
-        grid-column: span 1;
-      }
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-      .gallery-hero-title {
-        font-size: clamp(1.75rem, 4vw, 2.5rem);
-      }
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
 
-      #close-lightbox {
-        top: 1rem;
-        right: 1rem;
-        font-size: 2rem;
-      }
-    }
-  </style>
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-auto-rows: 200px;
+                gap: 0.75rem;
+                padding: 0 1rem;
+            }
+            
+            .gallery-item.v-span {
+                 grid-row: span 1;
+                 height: 200px;
+            }
+            .gallery-item.h-span {
+                grid-column: span 1;
+            }
+            
+            .gallery-hero-title {
+                font-size: clamp(1.75rem, 4vw, 2.5rem);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .gallery-hero {
+                padding: 3rem 1.5rem 4rem;
+            }
+            .gallery-hero-title {
+                font-size: 2rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr 1fr; 
+                grid-auto-rows: 180px;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            .gallery-item.v-span {
+                 height: 180px; 
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-bottom-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">Learning With Ease</div>
-    <nav class="nav-menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="impact.html">Our Impact</a>
-      <a href="photo-gallery.html" class="active">Photo Gallery</a>
-      <a href="partnership.html">Partnership</a>
-    </nav>
     
-    <a href="contact.html" style="text-decoration: none;">
-        <button class="contact-btn">Contact Us</button>
-    </a>
+    <header class="header">
+        <div class="logo">Learning With Ease</div>
+        
+        <nav class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Our Impact</a></li>
+            <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
+        </nav>
+        
+        <a href="contact.html" style="text-decoration: none;">
+            <button class="contact-btn">Contact Us</button>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="impact.html">Our Impact</a></li>
+                <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
+                <li><a href="partnership.html">Partnership</a></li>
+            </ul>
+            <a href="contact.html" style="text-decoration: none;">
+                <button class="mobile-contact-btn">Contact Us</button>
+            </a>
+        </div>
+    </header>
 
-    <button class="mobile-menu-btn" id="mobile-menu-btn">
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </button>
-    <nav class="mobile-menu" id="mobile-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="impact.html">Our Impact</a></li>
-        <li><a href="photo-gallery.html" class="active">Photo Gallery</a></li>
-        <li><a href="partnership.html">Partnership</a></li>
-      </ul>
-      <a href="contact.html" style="text-decoration: none;">
-        <button class="mobile-contact-btn">Contact Us</button>
-      </a>
-    </nav>
-  </header>
+    <main class="gallery-hero" id="gallery-hero">
+        <div class="gallery-hero-content">
+            <h1 class="gallery-hero-title">Building Foundations in Oruk Anam</h1>
+            <p class="gallery-hero-subtitle">
+                Empowering the next generation at Otop Christian High School with resources, faith, and mentorship for a brighter future.
+            </p>
+            <p class="gallery-hero-context">
+                Visit to Otop Christian High School, 2025
+            </p>
+        </div>
+    </main>
 
-  <section class="gallery-hero" id="gallery">
-    <div class="gallery-hero-content">
-      <p class="gallery-hero-context">School Visit - 2023</p>
-      <h1 class="gallery-hero-title">Visit to Community Secondary School Aka Offot</h1>
-      <p class="gallery-hero-subtitle">Celebrating educational excellence and community engagement through moments of learning and growth</p>
+    <section class="gallery-container">
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.46_8da20275.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.46_8da20275.jpg" alt="Otop Visit 1">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.49_a10e3be9.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.41.49_a10e3be9.jpg" alt="Otop Visit 2">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.05_fea98dcb.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.05_fea98dcb.jpg" alt="Otop Visit 3">
+        </div>
+        <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.06_c1e8f191.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.06_c1e8f191.jpg" alt="Otop Visit 4">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.08_2990c90f.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.08_2990c90f.jpg" alt="Otop Visit 5">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.10_1f428be6.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.10_1f428be6.jpg" alt="Otop Visit 6">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.11_a8884af1.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.11_a8884af1.jpg" alt="Otop Visit 7">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.12_8508a81d.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.12_8508a81d.jpg" alt="Otop Visit 8">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.16_6d72bbda.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.16_6d72bbda.jpg" alt="Otop Visit 9">
+        </div>
+        <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.18_7a4da6d4.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.18_7a4da6d4.jpg" alt="Otop Visit 10">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.22_6e72ef1c.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.22_6e72ef1c.jpg" alt="Otop Visit 11">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.24_8c3e285f.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.24_8c3e285f.jpg" alt="Otop Visit 12">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.26_2c2c756d.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.26_2c2c756d.jpg" alt="Otop Visit 13">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.28_8365b9eb.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.28_8365b9eb.jpg" alt="Otop Visit 14">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.30_f70e09c2.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.30_f70e09c2.jpg" alt="Otop Visit 15">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.33_92d6ac60.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.33_92d6ac60.jpg" alt="Otop Visit 16">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.35_a26ec0ee.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.35_a26ec0ee.jpg" alt="Otop Visit 17">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.37_a75db2dc.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.37_a75db2dc.jpg" alt="Otop Visit 18">
+        </div>
+        <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.40_e123edfa.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.40_e123edfa.jpg" alt="Otop Visit 19">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.42_4571ce09.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.42_4571ce09.jpg" alt="Otop Visit 20">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.43_df445674.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.43_df445674.jpg" alt="Otop Visit 21">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.45_653dc4fb.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.45_653dc4fb.jpg" alt="Otop Visit 22">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.51_606b52b4.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.51_606b52b4.jpg" alt="Otop Visit 23">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.54_76eef57d.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.54_76eef57d.jpg" alt="Otop Visit 24">
+        </div>
+        <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.58_dc336d95.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.42.58_dc336d95.jpg" alt="Otop Visit 25">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.00_04d6924a.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.00_04d6924a.jpg" alt="Otop Visit 26">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.02_f315acdc.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.02_f315acdc.jpg" alt="Otop Visit 27">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.05_b6cbbf93.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.05_b6cbbf93.jpg" alt="Otop Visit 28">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.06_cf7b1037.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.06_cf7b1037.jpg" alt="Otop Visit 29">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.08_e79304bb.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.43.08_e79304bb.jpg" alt="Otop Visit 30">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.14_bf462210.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.14_bf462210.jpg" alt="Otop Visit 31">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.15_3f09fe9c.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.15_3f09fe9c.jpg" alt="Otop Visit 32">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.17_e423a6aa.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.17_e423a6aa.jpg" alt="Otop Visit 33">
+        </div>
+        <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.19_ade011d0.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.19_ade011d0.jpg" alt="Otop Visit 34">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.21_8e7e3ca6.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.21_8e7e3ca6.jpg" alt="Otop Visit 35">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.22_f90bee2f.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.22_f90bee2f.jpg" alt="Otop Visit 36">
+        </div>
+        <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.23_471a1420.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.23_471a1420.jpg" alt="Otop Visit 37">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.25_7d0ade14.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.25_7d0ade14.jpg" alt="Otop Visit 38">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.28_df00a786.jpg')">
+            <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.28_df00a786.jpg" alt="Otop Visit 39">
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span id="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="Enlarged gallery image">
+        </div>
     </div>
-  </section>
 
-  <div class="gallery-container">
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.42_55d18e24.jpg" alt="School supplies and educational materials">
-    </div>
+    <footer class="footer-section" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <h2>Learning With Ease</h2>
+                    </div>
+                    <p class="footer-description">
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="impact.html">Our Impact</a></li>
+                            <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>learningwitheaseinitiative@gmail.com</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.44_8982124c.jpg" alt="Guest speaker engaging with students">
-    </div>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.48_0a3eec77.jpg" alt="Community leaders at the school visit">
-    </div>
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
 
-    <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.50_544878e3.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.50_544878e3.jpg" alt="Teacher engagement with students">
-    </div>
+        // Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeLightbox = document.getElementById('close-lightbox');
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.53_56bdf8f2.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.53_56bdf8f2.jpg" alt="Enthusiastic student participation">
-    </div>
+        function openLightbox(imageUrl) {
+            lightboxImage.src = imageUrl;
+            lightbox.classList.add('active');
+        }
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.54_483a943e.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.54_483a943e.jpg" alt="Speaker addressing the audience">
-    </div>
+        closeLightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
 
-    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.55_fea54c52.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.55_fea54c52.jpg" alt="Students receiving educational resources">
-    </div>
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.59_ec57e5e1.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.59_ec57e5e1.jpg" alt="Students in uniform attentively listening">
-    </div>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
+        });
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.00_e37d2013.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.00_e37d2013.jpg" alt="Speaker with microphone addressing audience">
-    </div>
+        // Set Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.01_72b53db6.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.01_72b53db6.jpg" alt="Female speaker with microphone">
-    </div>
-
-    <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.03_cc19b896.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.03_cc19b896.jpg" alt="Speaker presenting with educational materials">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.04_0338c39e.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.04_0338c39e.jpg" alt="Event credentials and learning materials">
-    </div>
-
-    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.06_36b798dd.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.06_36b798dd.jpg" alt="Large classroom assembly with students engaged">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.07_a54426ca.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.07_a54426ca.jpg" alt="Event organizers and coordinators">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.09_1f3a0354.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.09_1f3a0354.jpg" alt="Staff member with materials and resources">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.12_cdef10aa.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.12_cdef10aa.jpg" alt="Speaker engaging with the audience">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.30_4bd74301.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.30_4bd74301.jpg" alt="Two speakers presenting to audience">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.32_dd97ed5d.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.32_dd97ed5d.jpg" alt="Woman in traditional attire with event credentials">
-    </div>
-
-    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.34_ef234015.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.34_ef234015.jpg" alt="Full assembly of students in bright classroom">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.36_0ed82ad2.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.36_0ed82ad2.jpg" alt="Man presenting materials at lectern">
-    </div>
-
-    <div class="gallery-item v-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.37_28edb899.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.37_28edb899.jpg" alt="Group photo with staff and students holding LME Initiative banner">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.39_85485667.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.39_85485667.jpg" alt="Panel discussion with speakers at table">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.41_f2d00987.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.41_f2d00987.jpg" alt="Student presentation or speech">
-    </div>
-
-    <div class="gallery-item h-span" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.46_be76b2a4.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.46_be76b2a4.jpg" alt="Large group assembly of students and staff">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.48_7744f5f9.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.48_7744f5f9.jpg" alt="Speaker sharing message with audience">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.50_f2a5431d.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.50_f2a5431d.jpg" alt="Student interaction during event">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.52_5216e018.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.52_5216e018.jpg" alt="Learning materials being distributed">
-    </div>
-
-    <div class="gallery-item" onclick="openLightbox('https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.53_7422d58f.jpg')">
-      <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.53_7422d58f.jpg" alt="Closing remarks and appreciation">
-    </div>
-  </div>
-
-  <div class="lightbox" id="lightbox">
-    <span id="close-lightbox">&times;</span>
-    <div class="lightbox-content">
-      <img id="lightbox-image" src="" alt="Enlarged gallery image">
-    </div>
-  </div>
-
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
-
-    // Lightbox Functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const closeLightbox = document.getElementById('close-lightbox');
-
-    // Function called by onclick events in HTML
-    function openLightbox(imageUrl) {
-      lightboxImage.src = imageUrl;
-      lightbox.classList.add('active');
-    }
-
-    // Close button click
-    closeLightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-    });
-
-    // Close when clicking outside the image
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-      }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        lightbox.classList.remove('active');
-      }
-    });
-  </script>
+        // Footer Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.getElementById('footer');
+            if (footer) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('visible');
+                            footerObserver.unobserve(footer);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                footerObserver.observe(footer);
+            }
+        });
+    </script>
 </body>
 </html>
