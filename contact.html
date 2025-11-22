@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Learning With Ease</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ===================================================================
+         * START: BASE & REUSED STYLES
+         * ===================================================================
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: white;
+            overflow-x: hidden;
+            color: #1f2937;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+        
+        .nav-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .contact-btn {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 2rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 400;
+        }
+        
+        .mobile-menu a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .mobile-contact-btn {
+            margin: 1rem 2rem;
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: calc(100% - 4rem);
+            text-align: center;
+        }
+
+        /* * ===================================================================
+         * START: CONTACT.HTML SPECIFIC STYLES
+         * ===================================================================
+         */
+
+        /* Hero Section */
+        .contact-hero {
+            position: relative;
+            padding: 4rem 2rem 6rem;
+            background: white;
+            text-align: center;
+        }
+
+        .contact-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse 100% 120% at 100% 0%,
+                rgba(59, 130, 246, 0.05) 0%,
+                rgba(59, 130, 246, 0.02) 50%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-hero-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Split Content Section */
+        .contact-split-section {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Left Side: Info Cards */
+        .contact-info-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(30, 64, 175, 0.1);
+            color: #1e40af;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .info-content a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Map Container */
+        .map-container {
+            margin-top: 1rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            height: 300px;
+            position: relative;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Right Side: Form */
+        .contact-form-container {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f1f5f9;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            color: #1f2937;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #1e40af;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: #f9fafb;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #1f2937;
+            transition: background-color 0.2s ease;
+        }
+
+        .faq-question h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-toggle {
+            color: #1e40af;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg); /* Rotate + to x */
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 1.5rem;
+            max-height: 200px; /* Adjust as needed */
+            transition: all 0.3s cubic-bezier(1, 0, 1, 0);
+        }
+
+        /* Social Bar */
+        .social-section {
+            padding: 4rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-large {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 2px solid #f1f5f9;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #6b7280;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon-large:hover {
+            background: #1e40af;
+            color: white;
+            border-color: #1e40af;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+        }
+
+        /* * ===================================================================
+         * START: FOOTER (CSS provided by user)
+         * ===================================================================
+         */
+        
+        .footer-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            position: relative;
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            display: block; 
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out; 
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        .logo-underline {
+            display: none;
+        }
+
+        .footer-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #3b82f6;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start; 
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i { 
+            color: #3b82f6;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            width: 1.25em;
+            text-align: center;
+            padding-top: 3px; 
+        }
+        
+        .contact-item svg { 
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+        
+        .contact-item span {
+            line-height: 1.5; 
+        }
+
+        .footer-bottom {
+            padding: 2rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #3b82f6;
+        }
+        /* * ===================================================================
+         * END: FOOTER
+         * ===================================================================
+         */
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-split-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu, .contact-btn {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .header {
+                padding: 1rem;
+            }
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .contact-hero-title {
+                font-size: 2.2rem;
+            }
+            .contact-form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Learning With Ease</div>
+        <nav class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Our Impact</a></li>
+            <li><a href="photo-gallery.html">Photo Gallery</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
+        </nav>
+        <a href="#" class="active" style="text-decoration: none;">
+            <button class="contact-btn">Contact Us</button>
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="impact.html">Our Impact</a></li>
+                <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                <li><a href="partnership.html">Partnership</a></li>
+            </ul>
+            <a href="#" class="active" style="text-decoration: none;">
+                <button class="mobile-contact-btn">Contact Us</button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="contact-hero">
+        <div class="contact-hero-content">
+            <h1 class="contact-hero-title">Get in Touch</h1>
+            <p class="contact-hero-subtitle">
+                Have questions about our mission? Want to volunteer or partner with us? We'd love to hear from you.
+            </p>
+        </div>
+    </main>
+
+    <!-- Split Contact Section -->
+    <section class="contact-split-section">
+        
+        <!-- Left: Info Cards -->
+        <div class="contact-info-wrapper">
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-content">
+                    <h3>Visit Us</h3>
+                    <p>2 Enen Ikot Abasi street, Uyo<br>Akwa Ibom State, Nigeria</p>
+                </div>
+            </div>
+            
+            <!-- Embedded Map -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.279576397943!2d7.917625573736736!3d5.058483738447656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105d57b3c2e9295f%3A0x27e1c8d8e53424c!2s2%20Enen%20Ikot%20Abasi%20St%2C%20Uyo%20520102%2C%20Akwa%20Ibom!5e0!3m2!1sen!2sng!4v1708620000000!5m2!1sen!2sng" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-content">
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:learningwitheaseinitiative@gmail.com">learningwitheaseinitiative@gmail.com</a></p>
+                    <p>We aim to respond within 24 hours.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="info-content">
+                    <h3>Call Us</h3>
+                    <p>0802 657 5624</p>
+                    <p>0803 235 9477</p>
+                    <p>0703 797 4782</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="contact-form-container">
+            <div class="form-header">
+                <h2>Send a Message</h2>
+                <p style="color: #6b7280;">Fill out the form below and our team will get back to you shortly.</p>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="e.g. john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <select id="subject" class="form-input">
+                        <option value="general">General Inquiry</option>
+                        <option value="partnership">Partnership / Sponsorship</option>
+                        <option value="volunteer">Volunteering</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p style="color: #6b7280;">Quick answers to common questions about our initiative.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I get involved with Learning With Ease?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can join us as a volunteer, donate to support our programs, or partner with us for outreach activities. Contact us through our website or social media channels to learn about current opportunities.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What age groups do your programs target?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our programs primarily focus on secondary school students aged 12-18, but we also extend our reach to young adults and community members who can benefit from our educational initiatives.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you provide scholarships or financial assistance?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer various forms of educational support including scholarships, learning materials, and mentorship programs. We assess each case individually to provide the most appropriate assistance.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How often do you conduct outreach programs?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We conduct outreach programs quarterly, visiting different schools and communities. We also organize special events and workshops throughout the year based on community needs and available resources.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <h2 class="social-title">Connect With Us on Social Media</h2>
+        <div class="social-icons-row">
+            <a href="#" class="social-icon-large"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-large"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon-large"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-large"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <h2>Learning With Ease</h2>
+                    </div>
+                    <p class="footer-description">
+                        Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="impact.html">Our Impact</a></li>
+                            <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                            <li><a href="partnership.html">Partnership</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>2 Enen Ikot Abasi street, Uyo</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>learningwitheaseinitiative@gmail.com</span>
+                            </li>
+                            <li class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>08026575624, 08032359477 or 07037974782</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items (optional, for accordion effect)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Set Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Footer Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.getElementById('footer');
+            if (footer) {
+                const footerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('visible');
+                            footerObserver.unobserve(footer);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                footerObserver.observe(footer);
+            }
+        });
+    </script>
+</body>
+</html>
