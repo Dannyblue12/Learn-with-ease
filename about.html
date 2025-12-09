@@ -18,7 +18,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background: white; /* Consistent white background */
+            background: white;
             overflow-x: hidden;
         }
 
@@ -188,7 +188,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
 
-        /* Reusable Card Styles (from Core Objectives) */
+        /* Reusable Card Styles */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -256,7 +256,7 @@
             margin: 0;
         }
         
-        /* Reusable Image Collage Styles (from Who We Are) */
+        /* Reusable Image Collage Styles */
         .image-collage {
             position: relative;
             height: 550px;
@@ -296,13 +296,13 @@
         .fourth-image { width: 160px; height: 200px; top: 290px; left: 170px; z-index: 1; }
         .fifth-image { width: 150px; height: 200px; top: 220px; left: 0px; z-index: 2; }
 
-        /* Reusable CTA Button Style (from Who We Are) */
+        /* Reusable CTA Button Style */
         .cta-button {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             border: none;
             padding: 0.875rem 2rem;
-            border-radius: 2rem; /* Rounded corners */
+            border-radius: 2rem;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -323,13 +323,12 @@
         .slider-container-wrapper {
             position: relative;
             overflow: hidden;
-            /* Added padding to prevent cards from touching the edges */
             padding: 0.5rem 0;
         }
         .slider {
             display: flex;
             transition: transform 0.5s ease;
-            gap: 1.5rem; /* Standard gap for cards */
+            gap: 1.5rem;
         }
         .slider-nav {
             display: flex;
@@ -588,7 +587,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
         
-        /* --- Team Section (Card Grid) --- */
+        /* --- Team Section (Updated Layout) --- */
         .team-section {
             padding: 5rem 0;
             background: white; 
@@ -602,11 +601,28 @@
             padding: 0 2rem;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+        /* Layout Container for Team */
+        .team-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
             margin-top: 3rem;
+        }
+
+        /* Founder Container */
+        .founder-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Board Grid (3 Columns) */
+        .board-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
         }
 
         .team-card {
@@ -617,7 +633,13 @@
             transition: all 0.3s ease;
             border: 1px solid #f1f5f9;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            height: auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* For the founder card to not be too wide if singular */
+            max-width: 400px;
+            width: 100%;
         }
 
         .team-card:hover {
@@ -626,10 +648,12 @@
         }
 
         .team-photo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            /* UPDATED: Aligns image to top-center to show faces well in circle */
+            object-position: center 20%; 
             margin: 0 auto 1.5rem;
             border: 4px solid white;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -639,15 +663,17 @@
             font-size: 1.25rem;
             color: #000;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
         
         .team-role {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #1e40af; 
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .team-bio {
@@ -658,7 +684,7 @@
             margin: 0;
         }
 
-        /* --- UPDATED: Testimonial Slider Section --- */
+        /* --- Testimonial Slider Section --- */
         .testimonial-section {
             padding: 5rem 0;
             background: white; 
@@ -672,7 +698,6 @@
         }
         
         .testimonial-card {
-            /* --- FIX: Set a flexible width, not min-width --- */
             width: 350px; 
             flex-shrink: 0;
             background: white;
@@ -695,7 +720,6 @@
         }
 
         .testimonial-quote {
-            /* --- UI IMPROVEMENT: Font size is moderate --- */
             font-size: 1rem; 
             color: #4a5568;
             line-height: 1.7;
@@ -708,7 +732,6 @@
         
         .testimonial-card::before {
             content: "“";
-            /* --- UI IMPROVEMENT: Reduced quote size --- */
             font-size: 5rem;
             color: #1e40af;
             opacity: 0.05;
@@ -771,7 +794,7 @@
         }
         
         /* * ===================================================================
-         * START: FOOTER (CSS provided by user)
+         * START: FOOTER
          * ===================================================================
          */
         
@@ -831,16 +854,20 @@
             border-radius: 2px;
         }
 
-        .logo-underline {
-            display: none;
-        }
-
         .footer-description {
             font-size: 1rem;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
             margin-bottom: 2rem;
             margin-top: 1.5rem;
+        }
+        
+        .registration-info {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .footer-social {
@@ -872,7 +899,6 @@
 
         .footer-links {
             display: grid;
-            /* --- CHANGE: Updated to 2 columns --- */
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
         }
@@ -996,12 +1022,7 @@
         .footer-bottom-links a:hover {
             color: #3b82f6;
         }
-        /* * ===================================================================
-         * END: FOOTER
-         * ===================================================================
-         */
-
-
+        
         /* * ===================================================================
          * START: RESPONSIVE DESIGN
          * ===================================================================
@@ -1015,6 +1036,9 @@
             }
             .footer-links {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .board-grid {
+                grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
             }
         }
         
@@ -1073,6 +1097,10 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            
+            .board-grid {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
         }
         
         /* --- Mobile (max-width: 500px) --- */
@@ -1106,9 +1134,8 @@
                 font-size: 1rem;
             }
             
-            /* --- FIX for overflow --- */
             .testimonial-card {
-                width: 300px; /* Smaller fixed width for mobile */
+                width: 300px;
             }
 
             .footer-links {
@@ -1173,7 +1200,7 @@
                 Our Story, Our Mission
             </h1>
             <p class="about-hero-subtitle">
-                Learn more about the passionate team, guiding principles, and unwavering commitment behind our mission to shape the next generation.
+                Learn more about the dedicated team, guiding principles, and unwavering commitment behind our mission to shape the next generation of Nigeria.
             </p>
             <a href="#mission" class="learn-more-btn" style="text-decoration: none;">Read Our Mission</a>
         </div>
@@ -1186,13 +1213,13 @@
                 
                 <div class="content-description">
                     <p>
-                        <strong>Learning With Ease Initiative</strong> was born from a deep-seated belief that education transcends academics. Founded on a bedrock of faith, we are a collective of Nigerian professionals who felt a divine calling to invest in the future of our nation's youth. We saw a gap—not just in resources, but in guidance, morals, and spiritual grounding.
+                        <strong>Learning With Ease Initiative</strong> was born from a deep-seated belief that education transcends academics. Founded on a bedrock of faith, we are a collective of professionals who felt a divine calling to invest in the future of our nation's youth.
                     </p>
                     <p>
-                        We are not just educators; we are mentors, counselors, and advocates for a generation poised to make a difference. Our mission is to illuminate the path for young students, guiding them with the love of Christ to navigate the complex challenges of modern life. We stand firmly against societal vices like exam malpractice, cultism, and bullying, offering a positive alternative rooted in integrity and purpose.
+                        Our mission is to <strong>transform and impact the lives of young adults</strong> through the provision of material, financial aid, and counseling to better their lives and consequently the society at large. We believe in bridging the gap not just in resources, but in guidance, morals, and spiritual grounding.
                     </p>
                     <p>
-                        Every school outreach, every textbook distributed, and every counseling session is an investment in a brighter, Christ-centered future for Nigeria.
+                        We stand firmly against societal vices like exam malpractice, cultism, and bullying, offering a positive alternative rooted in integrity and purpose. Every school outreach, every textbook distributed, and every counseling session is an investment in a brighter, Christ-centered future for Nigeria.
                     </p>
                 </div>
             </div>
@@ -1298,38 +1325,51 @@
     <section class="team-section" id="team">
         <div class="team-container">
             <div class="section-header">
-                <h2 class="section-title">Meet The Team</h2>
+                <h2 class="section-title">Meet The Board</h2>
                 <p class="section-subtitle">
-                    We are a dedicated group of professionals, mentors, and volunteers united by a common passion for service and change.
+                    Led by our founder and governed by a dedicated Board of Trustees, we are united by a common passion for service and change.
                 </p>
             </div>
 
-            <div class="team-grid">
-                <div class="team-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Team Member 1" class="team-photo">
-                    <h3 class="team-name">Mrs. Grace Adewale</h3>
-                    <p class="team-role">Founder & Lead Mentor</p>
-                    <p class="team-bio">
-                        Grace is a passionate educator with over 15 years of experience. She founded Learning With Ease to provide the spiritual and academic guidance she wished she had as a student.
-                    </p>
+            <div class="team-layout">
+                <div class="founder-container">
+                    <div class="team-card">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.36.59_ec57e5e1.jpg" alt="Jenartha Andrew Isiip" class="team-photo">
+                        <h3 class="team-name">Jenartha Andrew Isiip</h3>
+                        <p class="team-role">Founder & President</p>
+                        <p class="team-bio">
+                            As the visionary behind Learning With Ease, Jenartha leads with a passion for transforming lives through faith, education, and strategic philanthropy.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="team-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0171.jpg-eeJdP24Ta8utXjz8tzJjAIYEgaoke0.jpeg" alt="Team Member 2" class="team-photo">
-                    <h3 class="team-name">Mr. David Okon</h3>
-                    <p class="team-role">Outreach Coordinator</p>
-                    <p class="team-bio">
-                        David manages our school partnerships and on-ground logistics. His dedication ensures our resources and programs reach the students who need them most.
-                    </p>
-                </div>
+                <div class="board-grid">
+                    <div class="team-card">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-12-09%20at%2011.32.34_9105eecb.jpg" alt="Bassey Bassey Samuel" class="team-photo">
+                        <h3 class="team-name">Bassey Bassey Samuel</h3>
+                        <p class="team-role">Board Trustee</p>
+                        <p class="team-bio">
+                            A dedicated member of our board, Bassey is committed to ensuring our strategic goals align with our mission to serve the less privileged.
+                        </p>
+                    </div>
 
-                <div class="team-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Team Member 3" class="team-photo">
-                    <h3 class="team-name">Chiamaka Eze</h3>
-                    <p class="team-role">Head of Counseling</p>
-                    <p class="team-bio">
-                        A certified counselor, Chiamaka leads our mentorship and support programs, providing a safe space for students to discuss their challenges and aspirations.
-                    </p>
+                    <div class="team-card">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-12-09%20at%2011.32.35_045641cb.jpg" alt="Esenowo Nsikan Monday" class="team-photo">
+                        <h3 class="team-name">Esenowo Nsikan Monday</h3>
+                        <p class="team-role">Board Trustee</p>
+                        <p class="team-bio">
+                            Bringing experience and wisdom to our governance, Esenowo ensures integrity, accountability, and impact in all our outreach programs.
+                        </p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="https://vorv4jye8h09tbza.public.blob.vercel-storage.com/WhatsApp%20Image%202025-12-09%20at%2011.32.37_3b957962.jpg" alt="Ukpong Hanson Isip" class="team-photo">
+                        <h3 class="team-name">Ukpong Hanson Isip</h3>
+                        <p class="team-role">Board Trustee</p>
+                        <p class="team-bio">
+                            Passionate about youth empowerment, Hanson is instrumental in guiding our operational excellence and connecting with the younger generation.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1354,7 +1394,7 @@
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0080.jpg-HVeEKKdkxEtYvCUG0gOBXKHJGOUEG5.jpeg" alt="Student 1" class="author-photo">
                             <div>
                                 <div class="author-name">Favour Adebayo</div>
-                                <div class="author-role">SS2 Student, Lagos</div>
+                                <div class="author-role">Secondary School Etoi</div>
                             </div>
                         </div>
                     </div>
@@ -1367,7 +1407,7 @@
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0200.jpg-STI9zLzWZdraYq3gRnrumO6RUe34bc.jpeg" alt="Principal" class="author-photo">
                             <div>
                                 <div class="author-name">Mrs. R. A. Bello</div>
-                                <div class="author-role">Principal, Unity Secondary School</div>
+                                <div class="author-role">Christian Commercial School</div>
                             </div>
                         </div>
                     </div>
@@ -1380,7 +1420,7 @@
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0161.jpg-pJHRbGRV0neMNJW0Rb6PQDERD2NHLP.jpeg" alt="Student 2" class="author-photo">
                             <div>
                                 <div class="author-name">Samuel Okeke</div>
-                                <div class="author-role">SS3 Student, Abuja</div>
+                                <div class="author-role">Special Education Center</div>
                             </div>
                         </div>
                     </div>
@@ -1393,7 +1433,7 @@
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0138.jpg-2A78nQ8ZWYU0gXL3orYJKOajCIskxk.jpeg" alt="Student 3" class="author-photo">
                             <div>
                                 <div class="author-name">Titi Alabi</div>
-                                <div class="author-role">JSS3 Student, Ibadan</div>
+                                <div class="author-role">Otop Christian High School</div>
                             </div>
                         </div>
                     </div>
@@ -1406,7 +1446,7 @@
                             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250814-WA0226.jpg-cpIaWEU7PqYAKs3xkTOl1GX1VerA6a.jpeg" alt="Student 4" class="author-photo">
                             <div>
                                 <div class="author-name">Daniel Eze</div>
-                                <div class="author-role">University Student</div>
+                                <div class="author-role">CSCS, Itam</div>
                             </div>
                         </div>
                     </div>
@@ -1443,7 +1483,10 @@
                     <p class="footer-description">
                         Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
                     </p>
-                    <div class="footer-social">
+                    <div class="registration-info">
+                        <p>Registered as a Corporate Body with the Corporate Affairs Commission (RC: 7417993)</p>
+                    </div>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
                         <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1468,7 +1511,7 @@
                         <ul>
                             <li class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>2 Enen Ikot Abasi street, Uyo</span>
+                                <span>2 Enen Ikot Abasi street, Uyo, AKS</span>
                             </li>
                             <li class="contact-item">
                                 <i class="fas fa-envelope"></i>
@@ -1486,7 +1529,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="copyright">
-                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
+                        © <span id="currentYear"></span> Learning With Ease Initiative. RC 7417993. All Rights Reserved.
                     </p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy Policy</a>
