@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partnership - Learning With Ease</title>
+    <title>Partnership & Support - Learning With Ease</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* * ===================================================================
@@ -347,7 +347,6 @@
             background-color: #f9fafb;
             padding: 6rem 0;
             border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
         }
 
         .options-grid {
@@ -391,6 +390,125 @@
             line-height: 1.6;
             font-size: 0.95rem;
         }
+        
+        /* --- Donation & Bank Details Section --- */
+        .donation-section {
+            padding: 6rem 0;
+            background: white;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .donation-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .donation-text h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .donation-text p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .transparency-box {
+            background: #f0f9ff;
+            border-left: 4px solid #1e40af;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .transparency-box i {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-top: 2px;
+        }
+        
+        .transparency-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #1e3a8a;
+        }
+        
+        .bank-card {
+            background: #1f2937; /* Dark background for contrast */
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Subtle texture for bank card */
+        .bank-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        
+        .bank-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+        }
+        
+        .bank-info {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bank-info .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.25rem;
+        }
+        
+        .bank-info .value {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: white;
+            font-family: monospace; /* Monospace for numbers */
+        }
+        
+        .bank-info.highlight .value {
+            font-size: 1.8rem;
+            color: #60a5fa; /* Light blue accent */
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .legal-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            text-align: right;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
 
         /* --- CTA Section --- */
         .partner-cta {
@@ -420,6 +538,16 @@
         .footer-logo h2::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 3px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 2px; }
         .logo-underline { display: none; }
         .footer-description { font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.85); margin-bottom: 2rem; margin-top: 1.5rem; }
+        
+        /* Registration Info for Footer */
+        .registration-info {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
         .footer-social { display: flex; gap: 1rem; }
         .social-link { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; backdrop-filter: blur(10px); }
         .social-link:hover { background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-color: #3b82f6; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); }
@@ -449,6 +577,8 @@
             .partner-hero-subtitle { margin-left: auto; margin-right: auto; }
             .footer-top { grid-template-columns: 1fr; gap: 3rem; }
             .footer-links { grid-template-columns: repeat(2, 1fr); }
+            
+            .donation-container { grid-template-columns: 1fr; gap: 3rem; }
         }
         @media (max-width: 768px) {
             .nav-menu, .contact-btn { display: none; }
@@ -462,6 +592,7 @@
             .partner-hero-title { font-size: 2.2rem; }
             .footer-links { grid-template-columns: 1fr; }
             .footer-bottom-content { flex-direction: column; gap: 1.5rem; }
+            .bank-card { padding: 2rem; }
         }
     </style>
 </head>
@@ -504,9 +635,9 @@
         <div class="partner-hero-text">
             <h1>Let's Build a Legacy of Hope Together</h1>
             <p class="partner-hero-subtitle">
-                We believe that when organizations, schools, and individuals unite for a cause, the impact is limitless. Join "Learning With Ease" to shape the future of Nigeria's youth.
+                We believe that when organizations, schools, and individuals unite for a cause, the impact is limitless. [cite_start]Join "Learning With Ease" to shape the future of Nigeria's youth[cite: 1, 2].
             </p>
-            <a href="#contact-form" class="cta-button">Become a Partner</a>
+            <a href="#donate" class="cta-button">Support Our Mission</a>
         </div>
         <div class="partner-hero-image">
             <img src="https://e7guoqvcdebehi5h.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-14%20at%2019.37.14_bf462210.jpg" alt="Students learning in classroom">
@@ -575,6 +706,43 @@
         </div>
     </section>
 
+    <section class="donation-section" id="donate">
+        <div class="donation-container">
+            <div class="donation-text">
+                <h2 class="section-title">Support Our Mission</h2>
+                <p>
+                    Your financial support is the lifeline of our work. It enables us to print educational materials, organize outreach logistics, and provide scholarships to students who need them most.
+                </p>
+                
+                <div class="transparency-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>
+                        [cite_start]<strong>Pledge of Integrity:</strong> We are committed to transparency and ensuring every donation is used strictly for humanitarian services and empowerment, as pledged by our Board of Trustees[cite: 76, 79, 81].
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bank-card">
+                <h3>Bank Transfer Details</h3>
+                
+                <div class="bank-info">
+                    <span class="label">Bank Name</span>
+                    <span class="value">FCMB</span> </div>
+                
+                <div class="bank-info">
+                    <span class="label">Account Name</span>
+                    <span class="value">Learning With Ease Initiative</span> </div>
+                
+                <div class="bank-info highlight">
+                    <span class="label">Account Number</span>
+                    <span class="value">2004364525</span> </div>
+                
+                <p class="legal-note">
+                    Registered as a Corporate Body (RC: 7417993) </p>
+            </div>
+        </div>
+    </section>
+
     <section class="partner-cta" id="contact-form">
         <div class="section-header" style="margin-bottom: 2rem;">
             <h2 class="section-title">Ready to Collaborate?</h2>
@@ -595,7 +763,10 @@
                     <p class="footer-description">
                         Bringing hope and light to the next generation by empowering students with God's love and truth for a brighter future.
                     </p>
-                    <div class="footer-social">
+                    <div class="registration-info">
+                       <p>Registered as a Corporate Body with the Corporate Affairs Commission (RC: 7417993)[cite: 101, 106].</p>
+                    </div>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
                         <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -620,16 +791,13 @@
                         <ul>
                             <li class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>2 Enen Ikot Abasi street, Uyo</span>
-                            </li>
+                                <span>2 Enen Ikot Abasi street, Uyo, AKS</span> </li>
                             <li class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <span>learningwitheaseinitiative@gmail.com</span>
-                            </li>
+                                <span>learningwitheaseinitiative@gmail.com</span> </li>
                             <li class="contact-item">
                                 <i class="fas fa-phone-alt"></i>
-                                <span>08026575624, 08032359477 or 07037974782</span>
-                            </li>
+                                <span>08026575624, 08032359477 or 07037974782</span> </li>
                         </ul>
                     </div>
                 </div>
@@ -638,7 +806,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="copyright">
-                        © <span id="currentYear"></span> Learning With Ease Initiative. All Rights Reserved.
+                        © <span id="currentYear"></span> Learning With Ease Initiative. RC 7417993. All Rights Reserved.
                     </p>
                     <div class="footer-bottom-links">
                         <a href="#">Privacy Policy</a>
